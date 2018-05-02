@@ -1,0 +1,13 @@
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\bin\Debug\Departamentos Seguimiento 2018.exe.config
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\bin\Debug\Departamentos Seguimiento 2018.exe
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\bin\Debug\Departamentos Seguimiento 2018.pdb
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos Seguimiento 2018.csprojResolveAssemblyReference.cache
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.Menu.resources
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.General.resources
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.Properties.Resources.resources
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos Seguimiento 2018.csproj.GenerateResource.cache
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos Seguimiento 2018.csproj.CoreCompileInputs.cache
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos Seguimiento 2018.exe
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos Seguimiento 2018.pdb
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.Area.resources
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.Elemento.resources

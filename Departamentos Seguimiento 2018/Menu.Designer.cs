@@ -176,7 +176,7 @@
             // 
             // elemento
             // 
-            this.elemento.Location = new System.Drawing.Point(450, 115);
+            this.elemento.Location = new System.Drawing.Point(450, 161);
             this.elemento.Name = "elemento";
             this.elemento.Size = new System.Drawing.Size(100, 20);
             this.elemento.TabIndex = 26;
@@ -185,7 +185,7 @@
             // elemento_labelE
             // 
             this.elemento_labelE.AutoSize = true;
-            this.elemento_labelE.Location = new System.Drawing.Point(388, 117);
+            this.elemento_labelE.Location = new System.Drawing.Point(388, 163);
             this.elemento_labelE.Name = "elemento_labelE";
             this.elemento_labelE.Size = new System.Drawing.Size(54, 13);
             this.elemento_labelE.TabIndex = 25;
@@ -204,7 +204,7 @@
             // 
             // grabarElemento
             // 
-            this.grabarElemento.Location = new System.Drawing.Point(391, 155);
+            this.grabarElemento.Location = new System.Drawing.Point(391, 201);
             this.grabarElemento.Name = "grabarElemento";
             this.grabarElemento.Size = new System.Drawing.Size(75, 23);
             this.grabarElemento.TabIndex = 30;

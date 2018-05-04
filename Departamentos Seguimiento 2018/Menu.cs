@@ -12,9 +12,8 @@ namespace Departamentos_Seguimiento_2018
 {
     public partial class Menu : Form
     {
-        public Conexion con = new Conexion();
-        Area are = new Area();
-        public DataTable conceptos, todosconceptos,dtarea;
+        public Conexion con = new Conexion();  
+        public DataTable conceptos, todosconceptos;
         string idConcepto_ingresos,idConcepto_gastos,idConcepto_beneficio,idConcepto_cobros,idConcepto_pagos,idConcepto_diferencia;
         int i = 0;
 
@@ -49,10 +48,15 @@ namespace Departamentos_Seguimiento_2018
             comboConcepto.ValueMember = "Id"; //columna a recordar  
             comboConceptoE.DataSource = conceptos;
             comboConceptoE.DisplayMember = "Concepto"; //columna a visualizar
-            comboConceptoE.ValueMember = "Id"; //columna a recordar 
-            //TablaArea
-            con.tablaDataSet("SELECT * FROM AREA", "dtArea");
-            dtarea = con.dataSet.Tables["dtArea"];
+            comboConceptoE.ValueMember = "Id"; //columna a recordar           
+            cargaComboAreas();
+        }
+
+        private void cargaComboAreas()
+        {         
+            comboArea.DataSource = con.tabla("SELECT * FROM AREA");
+            comboArea.DisplayMember = "Area";
+            comboArea.ValueMember = "Id";
         }
 
         ToolTip buttonToolTip = new ToolTip();
@@ -95,8 +99,7 @@ namespace Departamentos_Seguimiento_2018
         private void grabarElemento_Click(object sender, EventArgs e)
         {
             if (elemento.Text != "" && comboConceptoE.SelectedValue.ToString() != "")
-            {
-                MessageBox.Show(comboConceptoE.SelectedValue.ToString());
+            {              
                 con.insertarElemento(comboConceptoE.SelectedValue.ToString(), elemento.Text);
 
                 concepto_labelE.Visible = false;
@@ -113,7 +116,7 @@ namespace Departamentos_Seguimiento_2018
             {
                 con.insertarArea(area.Text);
                 //Actualizamos areas
-                dtarea = con.tabla("SELECT * FROM AREA");
+                cargaComboAreas();
 
                 area_labelA.Visible = false;
                 area.Visible = false;
@@ -162,10 +165,8 @@ namespace Departamentos_Seguimiento_2018
         }
 
         private void nuevoAsiento_Click(object sender, EventArgs e)
-        {      
-            comboArea.DataSource = dtarea;
-            comboArea.DisplayMember = "Area";
-            comboArea.ValueMember = "Id";
+        {
+                   
   
             concepto_label.Visible = true;
             comboConcepto.Visible = true;
@@ -176,6 +177,8 @@ namespace Departamentos_Seguimiento_2018
 
             
         }
+
+       
 
         private void comboConcepto_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -40,9 +40,9 @@
             this.acumuladoIngresos = new System.Windows.Forms.TextBox();
             this.año = new System.Windows.Forms.Label();
             this.areasIngresosEnero = new System.Windows.Forms.DataGridView();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.ingresosRealFebrero = new System.Windows.Forms.TextBox();
+            this.ingresosDescuentoFebrero = new System.Windows.Forms.TextBox();
+            this.ingresosEstimadosFebrero = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -162,7 +162,6 @@
             this.año.Size = new System.Drawing.Size(26, 13);
             this.año.TabIndex = 14;
             this.año.Text = "Año";
-
             // 
             // areasIngresosEnero
             // 
@@ -175,30 +174,30 @@
             this.areasIngresosEnero.Name = "areasIngresosEnero";
             this.areasIngresosEnero.RowHeadersVisible = false;
             this.areasIngresosEnero.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.areasIngresosEnero.Size = new System.Drawing.Size(402, 150);
+            this.areasIngresosEnero.Size = new System.Drawing.Size(400, 150);
             this.areasIngresosEnero.TabIndex = 26;
             this.areasIngresosEnero.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.areasIngresosEnero_CellContentClick);
             // 
-            // textBox4
+            // ingresosRealFebrero
             // 
-            this.textBox4.Location = new System.Drawing.Point(752, 71);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 33;
+            this.ingresosRealFebrero.Location = new System.Drawing.Point(752, 71);
+            this.ingresosRealFebrero.Name = "ingresosRealFebrero";
+            this.ingresosRealFebrero.Size = new System.Drawing.Size(100, 20);
+            this.ingresosRealFebrero.TabIndex = 33;
             // 
-            // textBox5
+            // ingresosDescuentoFebrero
             // 
-            this.textBox5.Location = new System.Drawing.Point(653, 71);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 32;
+            this.ingresosDescuentoFebrero.Location = new System.Drawing.Point(653, 71);
+            this.ingresosDescuentoFebrero.Name = "ingresosDescuentoFebrero";
+            this.ingresosDescuentoFebrero.Size = new System.Drawing.Size(100, 20);
+            this.ingresosDescuentoFebrero.TabIndex = 32;
             // 
-            // textBox6
+            // ingresosEstimadosFebrero
             // 
-            this.textBox6.Location = new System.Drawing.Point(554, 71);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 31;
+            this.ingresosEstimadosFebrero.Location = new System.Drawing.Point(554, 71);
+            this.ingresosEstimadosFebrero.Name = "ingresosEstimadosFebrero";
+            this.ingresosEstimadosFebrero.Size = new System.Drawing.Size(100, 20);
+            this.ingresosEstimadosFebrero.TabIndex = 31;
             // 
             // label7
             // 
@@ -273,9 +272,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1007, 450);
             this.Controls.Add(this.areasIngresosFebrero);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.ingresosRealFebrero);
+            this.Controls.Add(this.ingresosDescuentoFebrero);
+            this.Controls.Add(this.ingresosEstimadosFebrero);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
@@ -311,9 +310,9 @@
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label año;
         public System.Windows.Forms.DataGridView areasIngresosEnero;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox ingresosRealFebrero;
+        private System.Windows.Forms.TextBox ingresosDescuentoFebrero;
+        private System.Windows.Forms.TextBox ingresosEstimadosFebrero;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;

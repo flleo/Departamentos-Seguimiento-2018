@@ -28,19 +28,21 @@ namespace Departamentos_Seguimiento_2018
             "SELECT sum(a.estimado),sum(a.descuento),sum(a.real) FROM asiento AS a "+
 "INNER JOIN ELEMENTO AS E ON E.Id=A.IDELEMENTO "+
 "WHERE E.IdConcepto =  @idconcepto AND MONTH(a.fecha) like @mes AND Year(a.fecha) LIKE @año";
-        internal string qTotalesConceptoMesAñoArea = "" +
+
+         internal string qTotalesConceptoMesAñoArea = "" +
            "SELECT sum(a.estimado),sum(a.descuento),sum(a.real) FROM asiento AS a " +
 "INNER JOIN ELEMENTO AS E ON E.Id=A.IDELEMENTO " +
 "INNER JOIN AREA AS AR ON AR.Id=A.IDAREA " +
 "WHERE E.IdConcepto =  @idconcepto AND MONTH(a.fecha) like @mes AND Year(a.fecha) LIKE @año AND a.IdArea=@idarea";
+
         internal string qAreasConceptoMesAño = "" +
            "SELECT aR.id, ar.area, sum(a.estimado),sum(a.descuento),sum(a.real) FROM asiento AS a " +
 "INNER JOIN ELEMENTO AS E ON E.Id=A.IDELEMENTO " +
 "INNER JOIN AREA AS AR ON AR.Id=A.IDAREA " +
 "WHERE E.IdConcepto =  @idconcepto AND MONTH(a.fecha) like @mes AND Year(a.fecha) LIKE @año GROUP BY AR.ID,aR.AREA ";
-       
+
         internal string qElementosConceptoMesAñoArea = "" +
-           "SELECT e.id, e.elemento, ce.estimado,ce.descuento,ce.real, ce.fecha FROM asiento as ce "+
+           "SELECT e.id, e.elemento, ce.estimado,ce.descuento,ce.real, ce.fecha ,ce.id FROM asiento as ce "+
 "INNER JOIN Elemento AS e ON e.Id=ce.IdElemento "+
 "INNER JOIN Concepto AS c ON c.Id=e.IdConcepto "+
 "WHERE c.Id = @idconcepto AND Month(ce.fecha) LIKE @mes  AND Year(ce.fecha) LIKE @año AND ce.idarea= @idarea";
@@ -127,6 +129,33 @@ namespace Departamentos_Seguimiento_2018
             }
          }
 
+        internal int eliminarArea(string idarea)
+        {
+            int r = eliminarAsientoIdArea(idarea);
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "DELETE area WHERE id=@idarea";
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                cmd.Parameters.Add("@idarea", SqlDbType.Int).Value = Int32.Parse(idarea);
+
+                cmd.CommandType = CommandType.Text;
+                try
+                {
+                    r = cmd.ExecuteNonQuery();
+                    return r;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Se ha producido un error");
+                    return 0;
+                }
+            }
+        }
+
+        
+
         internal int insertarAsiento(string idelemento,string idarea,DateTime fecha,string estimado, string descuento, string real)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -153,6 +182,86 @@ namespace Departamentos_Seguimiento_2018
                 catch (SqlException ex)
                 {
                     MessageBox.Show("Asiento ya existe.");
+                    return 0;
+                }
+            }
+        }
+
+        internal int eliminarAsiento(string idasiento)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "DELETE asiento WHERE id=@idasiento";
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                cmd.Parameters.Add("@idasiento", SqlDbType.Int).Value = Int32.Parse(idasiento);
+               
+
+                cmd.CommandType = CommandType.Text;
+
+                try
+                {
+                    int r = cmd.ExecuteNonQuery();                  
+                    return r;
+
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Se ha producido un error");
+                    return 0;
+                }
+            }
+        }
+
+        private int eliminarAsientoIdArea(string idarea)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "DELETE asiento WHERE idArea=@idarea";
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                cmd.Parameters.Add("@idarea", SqlDbType.Int).Value = Int32.Parse(idarea);
+
+                cmd.CommandType = CommandType.Text;
+
+                try
+                {
+                    int r = cmd.ExecuteNonQuery();
+                    return r;
+
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Se ha producido un error");
+                    return 0;
+                }
+            }
+        }
+
+        internal int actualizarAsiento(string idasiento, string idarea, DateTime fecha, string estimado, string descuento, string real)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "UPDATE asiento SET idArea=@idarea, fecha=@fecha, estimado=@estimado, descuento=@descuento, real=@real WHERE id=@idasiento";
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                cmd.Parameters.Add("@idasiento", SqlDbType.Int).Value = Int32.Parse(idasiento);
+                cmd.Parameters.Add("@idarea", SqlDbType.Int).Value = Int32.Parse(idarea);
+                cmd.Parameters.Add("@fecha", SqlDbType.Date).Value = fecha.Date;
+                cmd.Parameters.Add("@estimado", SqlDbType.Money).Value = Double.Parse(estimado);
+                cmd.Parameters.Add("@descuento", SqlDbType.Money).Value = Double.Parse(descuento);
+                cmd.Parameters.Add("@real", SqlDbType.Money).Value = Double.Parse(real);
+
+                cmd.CommandType = CommandType.Text;
+
+                try
+                {
+                    int r = cmd.ExecuteNonQuery();
+                    return r;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Se ha producido un error");
                     return 0;
                 }
             }

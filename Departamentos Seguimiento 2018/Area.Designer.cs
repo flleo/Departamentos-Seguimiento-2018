@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.areasIngresosFebrero = new System.Windows.Forms.DataGridView();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.elementosIngresoFebrero = new System.Windows.Forms.DataGridView();
+            this.ingresosRealFebrero = new System.Windows.Forms.TextBox();
+            this.ingresosDescuentoFebrero = new System.Windows.Forms.TextBox();
+            this.ingresosEstimadosFebrero = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -49,44 +49,45 @@
             this.acumulado_ingresos = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.areaTop = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.areasIngresosFebrero)).BeginInit();
+            this.eliminar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.elementosIngresoFebrero)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elementosIngresoEnero)).BeginInit();
             this.SuspendLayout();
             // 
-            // areasIngresosFebrero
+            // elementosIngresoFebrero
             // 
-            this.areasIngresosFebrero.AllowUserToResizeColumns = false;
-            this.areasIngresosFebrero.AllowUserToResizeRows = false;
-            this.areasIngresosFebrero.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.areasIngresosFebrero.ColumnHeadersVisible = false;
-            this.areasIngresosFebrero.Location = new System.Drawing.Point(557, 126);
-            this.areasIngresosFebrero.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.areasIngresosFebrero.Name = "areasIngresosFebrero";
-            this.areasIngresosFebrero.RowHeadersVisible = false;
-            this.areasIngresosFebrero.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.areasIngresosFebrero.Size = new System.Drawing.Size(298, 150);
-            this.areasIngresosFebrero.TabIndex = 53;
+            this.elementosIngresoFebrero.AllowUserToResizeColumns = false;
+            this.elementosIngresoFebrero.AllowUserToResizeRows = false;
+            this.elementosIngresoFebrero.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.elementosIngresoFebrero.ColumnHeadersVisible = false;
+            this.elementosIngresoFebrero.Location = new System.Drawing.Point(557, 126);
+            this.elementosIngresoFebrero.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.elementosIngresoFebrero.Name = "elementosIngresoFebrero";
+            this.elementosIngresoFebrero.RowHeadersVisible = false;
+            this.elementosIngresoFebrero.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.elementosIngresoFebrero.Size = new System.Drawing.Size(298, 150);
+            this.elementosIngresoFebrero.TabIndex = 53;
             // 
-            // textBox4
+            // ingresosRealFebrero
             // 
-            this.textBox4.Location = new System.Drawing.Point(755, 106);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 52;
+            this.ingresosRealFebrero.Location = new System.Drawing.Point(755, 106);
+            this.ingresosRealFebrero.Name = "ingresosRealFebrero";
+            this.ingresosRealFebrero.Size = new System.Drawing.Size(100, 20);
+            this.ingresosRealFebrero.TabIndex = 52;
             // 
-            // textBox5
+            // ingresosDescuentoFebrero
             // 
-            this.textBox5.Location = new System.Drawing.Point(656, 106);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 51;
+            this.ingresosDescuentoFebrero.Location = new System.Drawing.Point(656, 106);
+            this.ingresosDescuentoFebrero.Name = "ingresosDescuentoFebrero";
+            this.ingresosDescuentoFebrero.Size = new System.Drawing.Size(100, 20);
+            this.ingresosDescuentoFebrero.TabIndex = 51;
             // 
-            // textBox6
+            // ingresosEstimadosFebrero
             // 
-            this.textBox6.Location = new System.Drawing.Point(557, 106);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 50;
+            this.ingresosEstimadosFebrero.Location = new System.Drawing.Point(557, 106);
+            this.ingresosEstimadosFebrero.Name = "ingresosEstimadosFebrero";
+            this.ingresosEstimadosFebrero.Size = new System.Drawing.Size(100, 20);
+            this.ingresosEstimadosFebrero.TabIndex = 50;
             // 
             // label7
             // 
@@ -278,17 +279,28 @@
             this.areaTop.Size = new System.Drawing.Size(100, 20);
             this.areaTop.TabIndex = 55;
             // 
+            // eliminar
+            // 
+            this.eliminar.Location = new System.Drawing.Point(292, 37);
+            this.eliminar.Name = "eliminar";
+            this.eliminar.Size = new System.Drawing.Size(66, 20);
+            this.eliminar.TabIndex = 56;
+            this.eliminar.Text = "ELIMINAR";
+            this.eliminar.UseVisualStyleBackColor = true;
+            this.eliminar.Click += new System.EventHandler(this.eliminar_Click);
+            // 
             // Area
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 450);
+            this.Controls.Add(this.eliminar);
             this.Controls.Add(this.areaTop);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.areasIngresosFebrero);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.elementosIngresoFebrero);
+            this.Controls.Add(this.ingresosRealFebrero);
+            this.Controls.Add(this.ingresosDescuentoFebrero);
+            this.Controls.Add(this.ingresosEstimadosFebrero);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
@@ -307,7 +319,7 @@
             this.Name = "Area";
             this.Text = "Departamentos Seguimiento 2018 - Area";
             this.Load += new System.EventHandler(this.area_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.areasIngresosFebrero)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elementosIngresoFebrero)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elementosIngresoEnero)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -316,10 +328,10 @@
 
         #endregion
 
-        public System.Windows.Forms.DataGridView areasIngresosFebrero;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        public System.Windows.Forms.DataGridView elementosIngresoFebrero;
+        private System.Windows.Forms.TextBox ingresosRealFebrero;
+        private System.Windows.Forms.TextBox ingresosDescuentoFebrero;
+        private System.Windows.Forms.TextBox ingresosEstimadosFebrero;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -337,5 +349,6 @@
         private System.Windows.Forms.TextBox acumulado_ingresos;
         private System.Windows.Forms.Label label11;
         public System.Windows.Forms.TextBox areaTop;
+        private System.Windows.Forms.Button eliminar;
     }
 }

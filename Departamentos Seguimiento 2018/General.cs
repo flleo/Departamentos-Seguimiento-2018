@@ -14,7 +14,6 @@ namespace Departamentos_Seguimiento_2018
     {
         public Conexion con;
         public string idConcepto_ingresos, idConcepto_gastos, idConcepto_beneficio, idConcepto_cobros, idConcepto_pagos, idConcepto_diferencia;
-        DataTable totalesIngresosEneroAño,acumuladoIngresosAño;
         public DateTime fecha;
        
 
@@ -31,32 +30,78 @@ namespace Departamentos_Seguimiento_2018
         private void General_Load(object sender, EventArgs e)
         {
             año.Text = fecha.Year.ToString();
-            
-            //Tabla acumulado ingresos por año
-            acumuladoIngresosAño = con.tablaAcumuladoAño(idConcepto_ingresos, año.Text);
-            if (acumuladoIngresosAño.Rows.Count != 0)
-                acumuladoIngresos.Text = acumuladoIngresosAño.Rows[0][0].ToString();
-            //Tabla totales ingresos enero año
-            totalesIngresosEneroAño = con.tablaTotalesConceptoMesAño(idConcepto_ingresos, "1", año.Text);
-            if (totalesIngresosEneroAño.Rows.Count != 0)
-            {
-                ingresosEstimadosEnero.Text = totalesIngresosEneroAño.Rows[0][0].ToString();
-                ingresosDescuentoEnero.Text = totalesIngresosEneroAño.Rows[0][1].ToString();
-                ingresosRealEnero.Text = totalesIngresosEneroAño.Rows[0][2].ToString();
-            }
+
+            acumuladoIngresosG();
+            ingresosEnero();
+            ingresosFebrero();
+            areasIngresosEneroG();
+            areasIngresosFebreroG();
+
+
+
+        }
+
+       
+
+        private void areasIngresosEneroG()
+        {
             //Tabla areas ingresos enero año
             DataTable t = con.tablaAreasConceptoMesAño(idConcepto_ingresos, "1", año.Text);
             if (t.Rows.Count != 0)
-            {               
+            {
                 areasIngresosEnero.DataSource = t;
                 areasIngresosEnero.Columns[0].Visible = false;
                 areasIngresosEnero.Columns[1].DefaultCellStyle.BackColor = Color.LightGray;
             }
         }
 
+        private void areasIngresosFebreroG()
+        {
+            //Tabla areas ingresos febrero año
+            DataTable t = con.tablaAreasConceptoMesAño(idConcepto_ingresos, "2", año.Text);
+            if (t.Rows.Count != 0)
+            {
+                areasIngresosFebrero.DataSource = t;
+                areasIngresosFebrero.Columns[0].Visible = false;
+                areasIngresosFebrero.Columns[1].Visible = false;
+            }
+        }
+
+        private void ingresosEnero()
+        {
+            //Tabla totales ingresos enero año
+            DataTable t = con.tablaTotalesConceptoMesAño(idConcepto_ingresos, "1", año.Text);
+            if (t.Rows.Count != 0)
+            {
+                ingresosEstimadosEnero.Text = t.Rows[0][0].ToString();
+                ingresosDescuentoEnero.Text = t.Rows[0][1].ToString();
+                ingresosRealEnero.Text = t.Rows[0][2].ToString();
+            }
+        }
+
+        private void ingresosFebrero()
+        {
+            //Tabla totales ingresos febrero año
+            DataTable t = con.tablaTotalesConceptoMesAño(idConcepto_ingresos, "2", año.Text);
+            if (t.Rows.Count != 0)
+            {
+                ingresosEstimadosFebrero.Text = t.Rows[0][0].ToString();
+                ingresosDescuentoFebrero.Text = t.Rows[0][1].ToString();
+                ingresosRealFebrero.Text = t.Rows[0][2].ToString();
+            }
+        }
+
+        private void acumuladoIngresosG()
+        {
+            //Tabla acumulado ingresos por año
+            DataTable a = con.tablaAcumuladoAño(idConcepto_ingresos, año.Text);
+            if (a.Rows.Count != 0)
+                acumuladoIngresos.Text = a.Rows[0][0].ToString();
+        }
+
         private void areasIngresosEnero_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Area area = new Area();
+            Area area = new Area(this);
             area.con = con;
 
             area.idConcepto_ingresos = idConcepto_ingresos;
@@ -76,6 +121,8 @@ namespace Departamentos_Seguimiento_2018
 
         }
 
-      
+       
+
+
     }
 }

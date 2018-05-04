@@ -113,6 +113,7 @@
             this.actualizar.TabIndex = 45;
             this.actualizar.Text = "ACTUALIZAR";
             this.actualizar.UseVisualStyleBackColor = true;
+            this.actualizar.Click += new System.EventHandler(this.actualizar_Click);
             // 
             // elemento_label
             // 
@@ -165,11 +166,13 @@
             this.eliminar.TabIndex = 55;
             this.eliminar.Text = "ELIMINAR";
             this.eliminar.UseVisualStyleBackColor = true;
+            this.eliminar.Click += new System.EventHandler(this.eliminar_Click);
             // 
             // elementoText
             // 
             this.elementoText.Location = new System.Drawing.Point(200, 148);
             this.elementoText.Name = "elementoText";
+            this.elementoText.ReadOnly = true;
             this.elementoText.Size = new System.Drawing.Size(100, 20);
             this.elementoText.TabIndex = 56;
             this.elementoText.Text = "0";
@@ -178,6 +181,7 @@
             // 
             this.concepto.Location = new System.Drawing.Point(201, 112);
             this.concepto.Name = "concepto";
+            this.concepto.ReadOnly = true;
             this.concepto.Size = new System.Drawing.Size(100, 20);
             this.concepto.TabIndex = 57;
             this.concepto.Text = "0";

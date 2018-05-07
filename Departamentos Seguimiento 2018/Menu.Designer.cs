@@ -34,9 +34,6 @@
             this.nuevoAsiento = new System.Windows.Forms.Button();
             this.grabarAsiento = new System.Windows.Forms.Button();
             this.elemento_label = new System.Windows.Forms.Label();
-            this.concepto_label = new System.Windows.Forms.Label();
-            this.area_label = new System.Windows.Forms.Label();
-            this.comboConcepto = new System.Windows.Forms.ComboBox();
             this.nuevoElemento = new System.Windows.Forms.Button();
             this.nuevaArea = new System.Windows.Forms.Button();
             this.comboConceptoE = new System.Windows.Forms.ComboBox();
@@ -47,7 +44,6 @@
             this.area = new System.Windows.Forms.TextBox();
             this.area_labelA = new System.Windows.Forms.Label();
             this.comboElemento = new System.Windows.Forms.ComboBox();
-            this.comboArea = new System.Windows.Forms.ComboBox();
             this.grabarArea = new System.Windows.Forms.Button();
             this.estimado_label = new System.Windows.Forms.Label();
             this.estimado = new System.Windows.Forms.TextBox();
@@ -55,6 +51,12 @@
             this.descuento_label = new System.Windows.Forms.Label();
             this.real = new System.Windows.Forms.TextBox();
             this.real_label = new System.Windows.Forms.Label();
+            this.area_labelE = new System.Windows.Forms.Label();
+            this.comboAreaE = new System.Windows.Forms.ComboBox();
+            this.comboConcepto = new System.Windows.Forms.ComboBox();
+            this.concepto_label = new System.Windows.Forms.Label();
+            this.comboArea = new System.Windows.Forms.ComboBox();
+            this.area_label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // abrir
@@ -70,7 +72,7 @@
             // 
             // fecha
             // 
-            this.fecha.Location = new System.Drawing.Point(148, 81);
+            this.fecha.Location = new System.Drawing.Point(149, 81);
             this.fecha.Name = "fecha";
             this.fecha.Size = new System.Drawing.Size(200, 20);
             this.fecha.TabIndex = 3;
@@ -78,7 +80,7 @@
             // introduzcaFecha
             // 
             this.introduzcaFecha.AutoSize = true;
-            this.introduzcaFecha.Location = new System.Drawing.Point(46, 87);
+            this.introduzcaFecha.Location = new System.Drawing.Point(48, 85);
             this.introduzcaFecha.Name = "introduzcaFecha";
             this.introduzcaFecha.Size = new System.Drawing.Size(93, 13);
             this.introduzcaFecha.TabIndex = 2;
@@ -108,42 +110,12 @@
             // elemento_label
             // 
             this.elemento_label.AutoSize = true;
-            this.elemento_label.Location = new System.Drawing.Point(46, 161);
+            this.elemento_label.Location = new System.Drawing.Point(47, 202);
             this.elemento_label.Name = "elemento_label";
             this.elemento_label.Size = new System.Drawing.Size(54, 13);
             this.elemento_label.TabIndex = 17;
             this.elemento_label.Text = "Elemento:";
             this.elemento_label.Visible = false;
-            // 
-            // concepto_label
-            // 
-            this.concepto_label.AutoSize = true;
-            this.concepto_label.Location = new System.Drawing.Point(46, 125);
-            this.concepto_label.Name = "concepto_label";
-            this.concepto_label.Size = new System.Drawing.Size(56, 13);
-            this.concepto_label.TabIndex = 15;
-            this.concepto_label.Text = "Concepto:";
-            this.concepto_label.Visible = false;
-            // 
-            // area_label
-            // 
-            this.area_label.AutoSize = true;
-            this.area_label.Location = new System.Drawing.Point(46, 202);
-            this.area_label.Name = "area_label";
-            this.area_label.Size = new System.Drawing.Size(35, 13);
-            this.area_label.TabIndex = 13;
-            this.area_label.Text = "Area: ";
-            this.area_label.Visible = false;
-            // 
-            // comboConcepto
-            // 
-            this.comboConcepto.FormattingEnabled = true;
-            this.comboConcepto.Location = new System.Drawing.Point(148, 122);
-            this.comboConcepto.Name = "comboConcepto";
-            this.comboConcepto.Size = new System.Drawing.Size(121, 21);
-            this.comboConcepto.TabIndex = 21;
-            this.comboConcepto.Visible = false;
-            this.comboConcepto.SelectedIndexChanged += new System.EventHandler(this.comboConcepto_SelectedIndexChanged);
             // 
             // nuevoElemento
             // 
@@ -234,20 +206,11 @@
             // comboElemento
             // 
             this.comboElemento.FormattingEnabled = true;
-            this.comboElemento.Location = new System.Drawing.Point(148, 161);
+            this.comboElemento.Location = new System.Drawing.Point(149, 202);
             this.comboElemento.Name = "comboElemento";
             this.comboElemento.Size = new System.Drawing.Size(121, 21);
             this.comboElemento.TabIndex = 31;
             this.comboElemento.Visible = false;
-            // 
-            // comboArea
-            // 
-            this.comboArea.FormattingEnabled = true;
-            this.comboArea.Location = new System.Drawing.Point(148, 199);
-            this.comboArea.Name = "comboArea";
-            this.comboArea.Size = new System.Drawing.Size(121, 21);
-            this.comboArea.TabIndex = 32;
-            this.comboArea.Visible = false;
             // 
             // grabarArea
             // 
@@ -317,11 +280,75 @@
             this.real_label.Text = "Real:";
             this.real_label.Visible = false;
             // 
+            // area_labelE
+            // 
+            this.area_labelE.AutoSize = true;
+            this.area_labelE.Location = new System.Drawing.Point(388, 124);
+            this.area_labelE.Name = "area_labelE";
+            this.area_labelE.Size = new System.Drawing.Size(32, 13);
+            this.area_labelE.TabIndex = 40;
+            this.area_labelE.Text = "Area:";
+            this.area_labelE.Visible = false;
+            // 
+            // comboAreaE
+            // 
+            this.comboAreaE.FormattingEnabled = true;
+            this.comboAreaE.Location = new System.Drawing.Point(450, 121);
+            this.comboAreaE.Name = "comboAreaE";
+            this.comboAreaE.Size = new System.Drawing.Size(121, 21);
+            this.comboAreaE.TabIndex = 41;
+            this.comboAreaE.Visible = false;
+            // 
+            // comboConcepto
+            // 
+            this.comboConcepto.FormattingEnabled = true;
+            this.comboConcepto.Location = new System.Drawing.Point(149, 162);
+            this.comboConcepto.Name = "comboConcepto";
+            this.comboConcepto.Size = new System.Drawing.Size(121, 21);
+            this.comboConcepto.TabIndex = 43;
+            this.comboConcepto.Visible = false;
+            this.comboConcepto.SelectedIndexChanged += new System.EventHandler(this.comboConcepto_SelectedIndexChanged_1);
+            // 
+            // concepto_label
+            // 
+            this.concepto_label.AutoSize = true;
+            this.concepto_label.Location = new System.Drawing.Point(48, 164);
+            this.concepto_label.Name = "concepto_label";
+            this.concepto_label.Size = new System.Drawing.Size(56, 13);
+            this.concepto_label.TabIndex = 42;
+            this.concepto_label.Text = "Concepto:";
+            this.concepto_label.Visible = false;
+            // 
+            // comboArea
+            // 
+            this.comboArea.FormattingEnabled = true;
+            this.comboArea.Location = new System.Drawing.Point(149, 121);
+            this.comboArea.Name = "comboArea";
+            this.comboArea.Size = new System.Drawing.Size(121, 21);
+            this.comboArea.TabIndex = 45;
+            this.comboArea.Visible = false;
+            // 
+            // area_label
+            // 
+            this.area_label.AutoSize = true;
+            this.area_label.Location = new System.Drawing.Point(47, 124);
+            this.area_label.Name = "area_label";
+            this.area_label.Size = new System.Drawing.Size(32, 13);
+            this.area_label.TabIndex = 44;
+            this.area_label.Text = "Area:";
+            this.area_label.Visible = false;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 465);
+            this.Controls.Add(this.comboArea);
+            this.Controls.Add(this.area_label);
+            this.Controls.Add(this.comboConcepto);
+            this.Controls.Add(this.concepto_label);
+            this.Controls.Add(this.comboAreaE);
+            this.Controls.Add(this.area_labelE);
             this.Controls.Add(this.real);
             this.Controls.Add(this.real_label);
             this.Controls.Add(this.descuento);
@@ -329,7 +356,6 @@
             this.Controls.Add(this.estimado);
             this.Controls.Add(this.estimado_label);
             this.Controls.Add(this.grabarArea);
-            this.Controls.Add(this.comboArea);
             this.Controls.Add(this.comboElemento);
             this.Controls.Add(this.grabarElemento);
             this.Controls.Add(this.area);
@@ -340,11 +366,8 @@
             this.Controls.Add(this.concepto_labelE);
             this.Controls.Add(this.nuevaArea);
             this.Controls.Add(this.nuevoElemento);
-            this.Controls.Add(this.comboConcepto);
             this.Controls.Add(this.grabarAsiento);
             this.Controls.Add(this.elemento_label);
-            this.Controls.Add(this.concepto_label);
-            this.Controls.Add(this.area_label);
             this.Controls.Add(this.nuevoAsiento);
             this.Controls.Add(this.fecha);
             this.Controls.Add(this.introduzcaFecha);
@@ -364,9 +387,6 @@
         private System.Windows.Forms.Button nuevoAsiento;
         private System.Windows.Forms.Button grabarAsiento;
         private System.Windows.Forms.Label elemento_label;
-        private System.Windows.Forms.Label concepto_label;
-        private System.Windows.Forms.Label area_label;
-        private System.Windows.Forms.ComboBox comboConcepto;
         private System.Windows.Forms.Button nuevoElemento;
         private System.Windows.Forms.Button nuevaArea;
         private System.Windows.Forms.ComboBox comboConceptoE;
@@ -377,7 +397,6 @@
         private System.Windows.Forms.TextBox area;
         private System.Windows.Forms.Label area_labelA;
         private System.Windows.Forms.ComboBox comboElemento;
-        private System.Windows.Forms.ComboBox comboArea;
         private System.Windows.Forms.Button grabarArea;
         private System.Windows.Forms.Label estimado_label;
         private System.Windows.Forms.TextBox estimado;
@@ -385,6 +404,12 @@
         private System.Windows.Forms.Label descuento_label;
         private System.Windows.Forms.TextBox real;
         private System.Windows.Forms.Label real_label;
+        private System.Windows.Forms.Label area_labelE;
+        private System.Windows.Forms.ComboBox comboAreaE;
+        private System.Windows.Forms.ComboBox comboConcepto;
+        private System.Windows.Forms.Label concepto_label;
+        private System.Windows.Forms.ComboBox comboArea;
+        private System.Windows.Forms.Label area_label;
     }
 }
 

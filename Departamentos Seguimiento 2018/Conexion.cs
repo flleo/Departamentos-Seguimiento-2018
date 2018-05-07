@@ -22,8 +22,8 @@ namespace Departamentos_Seguimiento_2018
         internal string qAcumuladoAñoArea = "" +
         "SELECT sum(a.real) FROM asiento AS a " +
 "INNER JOIN Elemento AS e ON E.Id=a.IdElemento " +
-"INNER JOIN Area AS ar ON ar.Id=a.IdArea " +
-"WHERE e.IdConcepto = @idconcepto  AND Year(a.fecha) LIKE @año AND a.IdArea=@idarea";
+"INNER JOIN Area AS ar ON ar.Id=e.IdArea " +
+"WHERE e.IdConcepto = @idconcepto  AND Year(a.fecha) LIKE @año AND e.IdArea=@idarea";
         internal string qTotalesConceptoMesAño = "" +
             "SELECT sum(a.estimado),sum(a.descuento),sum(a.real) FROM asiento AS a "+
 "INNER JOIN ELEMENTO AS E ON E.Id=A.IDELEMENTO "+
@@ -32,23 +32,27 @@ namespace Departamentos_Seguimiento_2018
          internal string qTotalesConceptoMesAñoArea = "" +
            "SELECT sum(a.estimado),sum(a.descuento),sum(a.real) FROM asiento AS a " +
 "INNER JOIN ELEMENTO AS E ON E.Id=A.IDELEMENTO " +
-"INNER JOIN AREA AS AR ON AR.Id=A.IDAREA " +
-"WHERE E.IdConcepto =  @idconcepto AND MONTH(a.fecha) like @mes AND Year(a.fecha) LIKE @año AND a.IdArea=@idarea";
+"INNER JOIN AREA AS AR ON AR.Id=e.IDAREA " +
+"WHERE E.IdConcepto =  @idconcepto AND MONTH(a.fecha) like @mes AND Year(a.fecha) LIKE @año AND e.IdArea=@idarea";
 
         internal string qAreasConceptoMesAño = "" +
            "SELECT aR.id, ar.area, sum(a.estimado),sum(a.descuento),sum(a.real) FROM asiento AS a " +
 "INNER JOIN ELEMENTO AS E ON E.Id=A.IDELEMENTO " +
-"INNER JOIN AREA AS AR ON AR.Id=A.IDAREA " +
+"INNER JOIN AREA AS AR ON AR.Id=e.IDAREA " +
 "WHERE E.IdConcepto =  @idconcepto AND MONTH(a.fecha) like @mes AND Year(a.fecha) LIKE @año GROUP BY AR.ID,aR.AREA ";
 
-        internal string qElementosConceptoMesAñoArea = "" +
-           "SELECT e.id, e.elemento, ce.estimado,ce.descuento,ce.real, ce.fecha ,ce.id FROM asiento as ce "+
+        internal string qElementosConceptoMesesAñoArea = "" +
+            "SELECT e.id, e.elemento, ce.estimado ,ce.descuento,ce.real, Month(ce.fecha), Day(ce.fecha) ,ce.id FROM asiento as ce " +
 "INNER JOIN Elemento AS e ON e.Id=ce.IdElemento "+
 "INNER JOIN Concepto AS c ON c.Id=e.IdConcepto "+
-"WHERE c.Id = @idconcepto AND Month(ce.fecha) LIKE @mes  AND Year(ce.fecha) LIKE @año AND ce.idarea= @idarea";
-       
+"WHERE e.IdConcepto = 1  AND Year(ce.fecha) LIKE '2018' AND e.idarea= 1  order by e.id, Month(ce.fecha)";
+           /*"SELECT e.id, e.elemento, ce.estimado,ce.descuento,ce.real, ce.fecha ,ce.id FROM asiento as ce "+
+"INNER JOIN Elemento AS e ON e.Id=ce.IdElemento "+
+"INNER JOIN Concepto AS c ON c.Id=e.IdConcepto "+
+"WHERE e.IdConcepto = @idconcepto AND Month(ce.fecha) LIKE @mes  AND Year(ce.fecha) LIKE @año AND e.idarea= @idarea";*/
+
         internal string qElementosIdConcepto = "" +
-            "SELECT * FROM ELEMENTO WHERE IdConcepto=@idconcepto";
+            "SELECT * FROM ELEMENTO WHERE IdConcepto=@idconcepto AND IdArea=@idarea";
         
         
         // Tablas//////////////////////
@@ -75,14 +79,15 @@ namespace Departamentos_Seguimiento_2018
 
        
 
-        internal int insertarElemento(string idconcepto, string elemento)
+        internal int insertarElemento(string idconcepto, string idarea, string elemento)
         {
               using (SqlConnection connection = new SqlConnection(connectionString))
               {
                   connection.Open();
-                  string sql = "INSERT INTO elemento VALUES(@idconcepto,@elemento)";
+                  string sql = "INSERT INTO elemento VALUES(@idconcepto, @idarea, @elemento)";
                   SqlCommand cmd = new SqlCommand(sql, connection);
                   cmd.Parameters.Add("@idconcepto", SqlDbType.Int).Value = Int32.Parse(idconcepto);
+                  cmd.Parameters.Add("@idarea", SqlDbType.Int).Value = Int32.Parse(idarea);
                   cmd.Parameters.Add("@elemento", SqlDbType.VarChar).Value = elemento;
       
                   cmd.CommandType = CommandType.Text;
@@ -156,15 +161,14 @@ namespace Departamentos_Seguimiento_2018
 
         
 
-        internal int insertarAsiento(string idelemento,string idarea,DateTime fecha,string estimado, string descuento, string real)
+        internal int insertarAsiento(string idelemento,DateTime fecha,string estimado, string descuento, string real)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = "INSERT INTO asiento VALUES(@idelemento, @idarea, @fecha,@estimado,@descuento,@real)";
+                string sql = "INSERT INTO asiento VALUES(@idelemento, @fecha,@estimado,@descuento,@real)";
                 SqlCommand cmd = new SqlCommand(sql, connection);
-                cmd.Parameters.Add("@idelemento", SqlDbType.Int).Value = Int32.Parse(idelemento);
-                cmd.Parameters.Add("@idarea", SqlDbType.Int).Value = Int32.Parse(idarea);
+                cmd.Parameters.Add("@idelemento", SqlDbType.Int).Value = Int32.Parse(idelemento);       
                 cmd.Parameters.Add("@fecha", SqlDbType.Date).Value = fecha;
                 cmd.Parameters.Add("@estimado", SqlDbType.Money).Value = estimado;
                 cmd.Parameters.Add("@descuento", SqlDbType.Money).Value = descuento;
@@ -396,34 +400,43 @@ namespace Departamentos_Seguimiento_2018
             }
         }
 
-        internal DataTable tablaElementosConceptoMesAñoArea(string idconcepto, string mes, string año, string idarea)
+        internal void tablaElementosConceptoMesesAñoArea(string idconcepto, string año, string idarea)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                if (dataSet.Tables["dtElementos" + idconcepto + idarea] != null)
+                    dataSet.Tables["dtElementos" + idconcepto + idarea].Clear();
 
-                SqlCommand command = new SqlCommand(qElementosConceptoMesAñoArea, connection);
+                SqlDataAdapter sda = new SqlDataAdapter(qElementosConceptoMesesAñoArea, connection);
+                sda.SelectCommand.Parameters.AddWithValue("@idconcepto", "%" + idconcepto + "%");
+                sda.SelectCommand.Parameters.AddWithValue("@idarea", "%" + idarea + "%");
+                sda.SelectCommand.Parameters.AddWithValue("@año", "%" + año + "%");
+                
+                connection.Open();
+                sda.Fill(dataSet, "dtElementos" + idconcepto + idarea);
+                connection.Close();
+
+                /*SqlCommand command = new SqlCommand(qElementosConceptoMesesAñoArea, connection);
                 command.Parameters.Add("@idconcepto", SqlDbType.Int);
                 command.Parameters["@idconcepto"].Value = idconcepto;
                 command.Parameters.Add("@idarea", SqlDbType.Int);
                 command.Parameters["@idarea"].Value = idarea;
-                command.Parameters.AddWithValue("@mes", "%" + mes + "%");
                 command.Parameters.AddWithValue("@año", "%" + año + "%");
                 DataTable dt = new DataTable();
                 try
-                {
+                {                  
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();                  
                     dt.Load(reader);
-                    connection.Close();
-
+                    connection.Close();                  
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message+"#########");
+                    Console.WriteLine(ex.Message+"ERROR tablaElementosconcetpmedesañosarea");
                 }
 
                 return dt;
-               
+               */
             }
         }
 
@@ -449,7 +462,7 @@ namespace Departamentos_Seguimiento_2018
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message+"######");
+                    Console.WriteLine(ex.Message+"ERROR no se pudieron cargar las AREAs");
                 }
 
                 return dt;
@@ -492,13 +505,13 @@ namespace Departamentos_Seguimiento_2018
             }
         }
 
-        internal DataTable tablaId(string query, string idconcepto)
+        internal DataTable tablaId(string query, string idconcepto, string idarea)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.Add("@idconcepto", SqlDbType.Int);
-                command.Parameters["@idconcepto"].Value = idconcepto;
+                command.Parameters.Add("@idconcepto", SqlDbType.Int).Value = idconcepto;
+                command.Parameters.Add("@idarea", SqlDbType.Int).Value = idarea;
 
                 DataTable dt = new DataTable();
                 try
@@ -511,7 +524,7 @@ namespace Departamentos_Seguimiento_2018
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message + "######");
+                    Console.WriteLine(ex.Message + "ERROR consulta elemento ID");
                 }
 
                 return dt;

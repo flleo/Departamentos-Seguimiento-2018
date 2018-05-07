@@ -67,6 +67,7 @@
             this.elementosIngresoFebrero.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.elementosIngresoFebrero.Size = new System.Drawing.Size(298, 150);
             this.elementosIngresoFebrero.TabIndex = 53;
+            this.elementosIngresoFebrero.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.elementosIngresoFebrero_CellContentClick);
             // 
             // ingresosRealFebrero
             // 

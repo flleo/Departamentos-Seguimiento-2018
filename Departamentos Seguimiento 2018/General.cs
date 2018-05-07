@@ -16,16 +16,12 @@ namespace Departamentos_Seguimiento_2018
         public string idConcepto_ingresos, idConcepto_gastos, idConcepto_beneficio, idConcepto_cobros, idConcepto_pagos, idConcepto_diferencia;
         public DateTime fecha;
        
-
-
-
+        
 
         public General()
         {
             InitializeComponent();
         }
-
-       
 
         private void General_Load(object sender, EventArgs e)
         {
@@ -36,7 +32,6 @@ namespace Departamentos_Seguimiento_2018
             ingresosFebrero();
             areasIngresosEneroG();
             areasIngresosFebreroG();
-
 
 
         }
@@ -54,6 +49,8 @@ namespace Departamentos_Seguimiento_2018
                 areasIngresosEnero.Columns[1].DefaultCellStyle.BackColor = Color.LightGray;
             }
         }
+
+       
 
         private void areasIngresosFebreroG()
         {
@@ -112,8 +109,8 @@ namespace Departamentos_Seguimiento_2018
             area.idConcepto_diferencia = idConcepto_diferencia;
 
             int numeroFila = Convert.ToInt16(e.RowIndex.ToString());
-            area.areaTop.Text =  areasIngresosEnero.Rows[numeroFila].Cells[1].Value.ToString();
             area.areaId = areasIngresosEnero.Rows[numeroFila].Cells[0].Value.ToString();
+            area.areaTop.Text =  areasIngresosEnero.Rows[numeroFila].Cells[1].Value.ToString();           
             area.fecha = fecha;
            
             area.Show();

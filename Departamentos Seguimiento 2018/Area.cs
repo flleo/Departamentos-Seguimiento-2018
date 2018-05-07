@@ -19,6 +19,10 @@ namespace Departamentos_Seguimiento_2018
         public string idConcepto_ingresos, idConcepto_gastos, idConcepto_beneficio, idConcepto_cobros, idConcepto_pagos, idConcepto_diferencia;
         string concepto_ingresos, concepto_gastos, concepto_beneficio, concepto_cobros, concepto_pagos, concepto_diferencia;
         DataTable todosconceptos;
+        DataTable tablaElementosIngresos;
+
+
+
         Elemento el;
 
 
@@ -63,33 +67,14 @@ namespace Departamentos_Seguimiento_2018
 
         private void reloadArea()
         {
-            acumuladoIngresos();
-            reloadAreaIngresosEnero();
-            reloadAreaIngresosFebrero();
-        }
-
-        private void acumuladoIngresos()
-        {
-            //Tabla acumulado ingresos por año area
-            DataTable acumuladoIngresosAñoArea = con.tablaAcumuladoAñoArea(idConcepto_ingresos, fecha.Year.ToString(), areaId);
-            if (acumuladoIngresosAñoArea.Rows.Count != 0)
-                acumulado_ingresos.Text = acumuladoIngresosAñoArea.Rows[0][0].ToString();
-        }
-
-        public void reloadArea(string mes,string concepto)
-        {
-
-           if (mes.Equals("1") && concepto.Equals(concepto_ingresos))
-            {
-                reloadAreaIngresosEnero();
-            }
+            acumuladoIngresos();          
+            reloadAreaIngresos();
+            totales();
            
-     
-
         }
 
-        private void reloadAreaIngresosEnero()
-        {        
+        private void totales()
+        {
             //Tabla totales ingresos enero año area
             DataTable totalesIngresosEneroAñoArea = con.tablaTotalesConceptoMesAñoArea(idConcepto_ingresos, "1", fecha.Year.ToString(), areaId);
             if (totalesIngresosEneroAñoArea.Rows.Count != 0)
@@ -98,49 +83,101 @@ namespace Departamentos_Seguimiento_2018
                 ingresosDescuentoEnero.Text = totalesIngresosEneroAñoArea.Rows[0][1].ToString();
                 ingresosRealEnero.Text = totalesIngresosEneroAñoArea.Rows[0][2].ToString();
             }
-            //Tabla elementos ingresos enero año area
-            
-            DataTable t = con.tablaElementosConceptoMesAñoArea(idConcepto_ingresos, "1", fecha.Year.ToString(), areaId);
-            if (t.Rows.Count != 0)
-            {
-                elementosIngresoEnero.DataSource = t;
-                elementosIngresoEnero.Columns[0].Visible = false;
-                elementosIngresoEnero.Columns[1].DefaultCellStyle.BackColor = Color.LightGray;
-            }
-            else
-            {
-                gen.Close();
-                this.Close();
-            }
-                
-
-        }
-
-        private void reloadAreaIngresosFebrero()
-        {
             //Tabla totales ingresos febr año area
             DataTable t = con.tablaTotalesConceptoMesAñoArea(idConcepto_ingresos, "2", fecha.Year.ToString(), areaId);
             if (t.Rows.Count != 0)
             {
                 ingresosEstimadosFebrero.Text = t.Rows[0][0].ToString();
-                ingresosDescuentoEnero.Text = t.Rows[0][1].ToString();
-                ingresosRealEnero.Text = t.Rows[0][2].ToString();
-            }
-            //Tabla elementos ingreso febr año area
-
-            DataTable t1 = con.tablaElementosConceptoMesAñoArea(idConcepto_ingresos, "2", fecha.Year.ToString(), areaId);
-            if (t1.Rows.Count != 0)
-            {
-                elementosIngresoFebrero.DataSource = t1;
-                elementosIngresoFebrero.Columns[0].Visible = false;
-                elementosIngresoFebrero.Columns[1].Visible = false;
-            }
-            else
-            {
-                gen.Close();
-                this.Close();
+                ingresosDescuentoFebrero.Text = t.Rows[0][1].ToString();
+                ingresosRealFebrero.Text = t.Rows[0][2].ToString();
             }
         }
+
+        private void reloadTablaElementosMesesAñoArea()
+        {
+            con.tablaElementosConceptoMesesAñoArea(idConcepto_ingresos, fecha.Year.ToString(), areaId);
+            tablaElementosIngresos = con.dataSet.Tables["dtElementos" + idConcepto_ingresos + areaId];
+        }
+
+        private void acumuladoIngresos()
+        {
+            
+            //Tabla acumulado ingresos por año area
+            DataTable acumuladoIngresosAñoArea = con.tablaAcumuladoAñoArea(idConcepto_ingresos, fecha.Year.ToString(), areaId);
+            if (acumuladoIngresosAñoArea.Rows.Count != 0)
+            {
+                acumulado_ingresos.Text = acumuladoIngresosAñoArea.Rows[0][0].ToString();
+              
+            }
+        }
+
+        public void reloadArea(string mes,string concepto)
+        {
+
+           if (mes.Equals("1") && concepto.Equals(concepto_ingresos))
+            {
+                reloadAreaIngresos();
+            }
+           
+     
+
+        }
+
+        private void reloadAreaIngresos()
+        {
+            reloadTablaElementosMesesAñoArea();
+
+            DataTable tablaIngresosEnero = new DataTable();
+            DataTable tablaIngresosFebrero = new DataTable();
+
+            if (tablaElementosIngresos.Rows.Count != 0)
+            {
+                string idp ="",id="",mes="";
+                for (int i=0; i< tablaElementosIngresos.Rows.Count; i++)
+                {
+                    id = tablaElementosIngresos.Rows[i][0].ToString();
+                    mes = tablaElementosIngresos.Rows[i][5].ToString();
+                    if (!id.Equals(idp))
+                    {
+                       
+                        if (mes.Equals("1"))
+                        {
+                            
+                            tablaIngresosEnero.Rows.Add(con.dataSet.Tables["dtElementos" + idConcepto_ingresos + areaId].Rows[i]);
+                        }
+                        else if (mes.Equals("2"))
+                        {
+                            tablaIngresosEnero.Rows.Add();
+                            tablaIngresosFebrero.Rows.Add(con.dataSet.Tables["dtElementos" + idConcepto_ingresos + areaId].Rows[i]);
+                        }
+                            
+
+                    }
+                    else if (mes.Equals("2"))
+                    {
+                        tablaIngresosFebrero.Rows.Add(con.dataSet.Tables["dtElementos" + idConcepto_ingresos + areaId].Rows[i]);
+                    }
+                    idp = id;
+
+                }
+
+                elementosIngresoEnero.DataSource = tablaIngresosEnero;
+                elementosIngresoEnero.Columns[0].Visible = false;
+                elementosIngresoEnero.Columns[1].DefaultCellStyle.BackColor = Color.LightGray;
+
+                elementosIngresoFebrero.DataSource = tablaIngresosFebrero;
+                elementosIngresoFebrero.Columns[0].Visible = false;
+                elementosIngresoFebrero.Columns[1].Visible = false;
+                elementosIngresoFebrero.Columns[1].DefaultCellStyle.BackColor = Color.LightGray;
+
+
+            }
+
+           
+
+        }
+
+      
 
         private void elementosIngresoEnero_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -156,6 +193,23 @@ namespace Departamentos_Seguimiento_2018
 
 
             el = new Elemento(this,idasiento,this.fecha.Year,1, Int32.Parse(fecha.Substring(0,2)), concepto_ingresos, idelemento, elemento, areaId,estimado,descuento,real);
+            el.con = con;
+
+            el.Show();
+        }
+
+        private void elementosIngresoFebrero_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int numeroFila = Convert.ToInt16(e.RowIndex.ToString());
+            string idelemento = elementosIngresoEnero.Rows[numeroFila].Cells[0].Value.ToString();
+            string elemento = elementosIngresoEnero.Rows[numeroFila].Cells[1].Value.ToString();
+            string estimado = elementosIngresoFebrero.Rows[numeroFila].Cells[2].Value.ToString();
+            string descuento = elementosIngresoFebrero.Rows[numeroFila].Cells[3].Value.ToString();
+            string real = elementosIngresoFebrero.Rows[numeroFila].Cells[4].Value.ToString();
+            string fecha = elementosIngresoFebrero.Rows[numeroFila].Cells[5].Value.ToString();
+            string idasiento = elementosIngresoFebrero.Rows[numeroFila].Cells[6].Value.ToString();
+
+            el = new Elemento(this, idasiento, this.fecha.Year, 2, Int32.Parse(fecha.Substring(0, 2)), concepto_ingresos, idelemento, elemento, areaId, estimado, descuento, real);
             el.con = con;
 
             el.Show();

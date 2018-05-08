@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.abrir = new System.Windows.Forms.Button();
             this.fecha = new System.Windows.Forms.DateTimePicker();
             this.introduzcaFecha = new System.Windows.Forms.Label();
@@ -372,6 +373,7 @@
             this.Controls.Add(this.fecha);
             this.Controls.Add(this.introduzcaFecha);
             this.Controls.Add(this.abrir);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu";
             this.Text = "Departamentos Seguimiento 2018 - Menu";
             this.Load += new System.EventHandler(this.Menu_Load);

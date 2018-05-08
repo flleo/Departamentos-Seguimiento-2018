@@ -34,6 +34,8 @@ namespace Departamentos_Seguimiento_2018
             this.gen = gen;
         }
 
+       
+
         private void area_Load(object sender, EventArgs e)
         {
             todosconceptos = con.dataSet.Tables["dtTodosConceptos"];
@@ -95,8 +97,8 @@ namespace Departamentos_Seguimiento_2018
 
         private void reloadTablaElementosMesesAñoArea()
         {
-            con.tablaElementosConceptoMesesAñoArea(idConcepto_ingresos, fecha.Year.ToString(), areaId);
-            tablaElementosIngresos = con.dataSet.Tables["dtElementos" + idConcepto_ingresos + areaId];
+            
+            tablaElementosIngresos = con.tablaElementosConceptoMesesAñoArea(idConcepto_ingresos, fecha.Year.ToString(), areaId);
         }
 
         private void acumuladoIngresos()
@@ -111,65 +113,99 @@ namespace Departamentos_Seguimiento_2018
             }
         }
 
-        public void reloadArea(string mes,string concepto)
+        public void reloadArea(string concepto)
         {
 
-           if (mes.Equals("1") && concepto.Equals(concepto_ingresos))
-            {
+          
                 reloadAreaIngresos();
-            }
-           
-     
-
+          
+  
         }
 
         private void reloadAreaIngresos()
         {
-            reloadTablaElementosMesesAñoArea();
+            reloadTablaElementosMesesAñoArea();        
 
-            DataTable tablaIngresosEnero = new DataTable();
-            DataTable tablaIngresosFebrero = new DataTable();
+            elementosIngresoEnero.DataSource = con.tablaElementosConceptoMesesAñoArea(idConcepto_ingresos, fecha.Year.ToString(), areaId);
+            elementosIngresoFebrero.DataSource = con.tablaElementosConceptoMesesAñoArea(idConcepto_ingresos, fecha.Year.ToString(), areaId);
 
             if (tablaElementosIngresos.Rows.Count != 0)
-            {
+            {               
                 string idp ="",id="",mes="";
+                int ie=0;int ife=0;
                 for (int i=0; i< tablaElementosIngresos.Rows.Count; i++)
                 {
-                    id = tablaElementosIngresos.Rows[i][0].ToString();
-                    mes = tablaElementosIngresos.Rows[i][5].ToString();
-                    if (!id.Equals(idp))
+                    try
                     {
-                       
+                        id = tablaElementosIngresos.Rows[i][0].ToString();
+                        mes = tablaElementosIngresos.Rows[i][5].ToString();
+                    }
+                    catch (DeletedRowInaccessibleException) { }
+
+                    if (!id.Equals(idp))
+                    {                      
                         if (mes.Equals("1"))
                         {
-                            
-                            tablaIngresosEnero.Rows.Add(con.dataSet.Tables["dtElementos" + idConcepto_ingresos + areaId].Rows[i]);
+                            try
+                            {
+                                elementosIngresoFebrero.Rows.Remove(elementosIngresoFebrero.Rows[i-ife]);
+                                ife++;
+                            }
+                            catch (InvalidOperationException) { }
                         }
                         else if (mes.Equals("2"))
                         {
-                            tablaIngresosEnero.Rows.Add();
-                            tablaIngresosFebrero.Rows.Add(con.dataSet.Tables["dtElementos" + idConcepto_ingresos + areaId].Rows[i]);
+                            try
+                            {
+                                elementosIngresoEnero.Rows.Remove(elementosIngresoEnero.Rows[i-ie]);
+                                ie++;
+                            }
+                            catch (InvalidOperationException) { }
                         }
                             
 
                     }
                     else if (mes.Equals("2"))
                     {
-                        tablaIngresosFebrero.Rows.Add(con.dataSet.Tables["dtElementos" + idConcepto_ingresos + areaId].Rows[i]);
+                        try
+                        {
+                            elementosIngresoEnero.Rows.Remove(elementosIngresoEnero.Rows[i-ie]);
+                            ie++;
+                        }
+                        catch (InvalidOperationException) { }
                     }
+                    else if (mes.Equals("1"))
+                    {
+                        try
+                        {                           
+                            elementosIngresoFebrero.Rows.Remove(elementosIngresoFebrero.Rows[i-ife]);
+                            ife++;
+                        }
+                        catch (InvalidOperationException) { }
+                    }
+
                     idp = id;
 
+                   
+
+                }
+                
+              
+
+              
+                if (elementosIngresoEnero.ColumnCount != 0)
+                {                          
+                    elementosIngresoEnero.Columns[0].Visible = false;
+                    elementosIngresoEnero.Columns[1].DefaultCellStyle.BackColor = Color.LightGray;
                 }
 
-                elementosIngresoEnero.DataSource = tablaIngresosEnero;
-                elementosIngresoEnero.Columns[0].Visible = false;
-                elementosIngresoEnero.Columns[1].DefaultCellStyle.BackColor = Color.LightGray;
-
-                elementosIngresoFebrero.DataSource = tablaIngresosFebrero;
-                elementosIngresoFebrero.Columns[0].Visible = false;
-                elementosIngresoFebrero.Columns[1].Visible = false;
-                elementosIngresoFebrero.Columns[1].DefaultCellStyle.BackColor = Color.LightGray;
-
+                
+                if (elementosIngresoFebrero.ColumnCount != 0)
+                {
+                    elementosIngresoFebrero.Columns[0].Visible = false;
+                    elementosIngresoFebrero.Columns[1].Visible = false;
+                    elementosIngresoFebrero.Columns[1].DefaultCellStyle.BackColor = Color.LightGray;
+                }
 
             }
 
@@ -177,9 +213,7 @@ namespace Departamentos_Seguimiento_2018
 
         }
 
-      
-
-        private void elementosIngresoEnero_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void elementosIngresoEnero_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             int numeroFila = Convert.ToInt16(e.RowIndex.ToString());
             string idelemento = elementosIngresoEnero.Rows[numeroFila].Cells[0].Value.ToString();
@@ -187,29 +221,34 @@ namespace Departamentos_Seguimiento_2018
             string estimado = elementosIngresoEnero.Rows[numeroFila].Cells[2].Value.ToString();
             string descuento = elementosIngresoEnero.Rows[numeroFila].Cells[3].Value.ToString();
             string real = elementosIngresoEnero.Rows[numeroFila].Cells[4].Value.ToString();
-            string fecha = elementosIngresoEnero.Rows[numeroFila].Cells[5].Value.ToString();
-            string idasiento = elementosIngresoEnero.Rows[numeroFila].Cells[6].Value.ToString();
+            string mes = elementosIngresoEnero.Rows[numeroFila].Cells[5].Value.ToString();
+            string dia = elementosIngresoEnero.Rows[numeroFila].Cells[6].Value.ToString();
+            string idasiento = elementosIngresoEnero.Rows[numeroFila].Cells[7].Value.ToString();
 
 
 
-            el = new Elemento(this,idasiento,this.fecha.Year,1, Int32.Parse(fecha.Substring(0,2)), concepto_ingresos, idelemento, elemento, areaId,estimado,descuento,real);
+            el = new Elemento(this, idasiento, this.fecha.Year, mes, dia, concepto_ingresos, idelemento, elemento, areaId, estimado, descuento, real);
             el.con = con;
 
             el.Show();
         }
 
+
         private void elementosIngresoFebrero_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int numeroFila = Convert.ToInt16(e.RowIndex.ToString());
-            string idelemento = elementosIngresoEnero.Rows[numeroFila].Cells[0].Value.ToString();
-            string elemento = elementosIngresoEnero.Rows[numeroFila].Cells[1].Value.ToString();
+            string idelemento = elementosIngresoFebrero.Rows[numeroFila].Cells[0].Value.ToString();
+            string elemento = elementosIngresoFebrero.Rows[numeroFila].Cells[1].Value.ToString();
             string estimado = elementosIngresoFebrero.Rows[numeroFila].Cells[2].Value.ToString();
             string descuento = elementosIngresoFebrero.Rows[numeroFila].Cells[3].Value.ToString();
             string real = elementosIngresoFebrero.Rows[numeroFila].Cells[4].Value.ToString();
-            string fecha = elementosIngresoFebrero.Rows[numeroFila].Cells[5].Value.ToString();
-            string idasiento = elementosIngresoFebrero.Rows[numeroFila].Cells[6].Value.ToString();
+            string mes = elementosIngresoFebrero.Rows[numeroFila].Cells[5].Value.ToString();
+            string dia = elementosIngresoFebrero.Rows[numeroFila].Cells[6].Value.ToString();
+            string idasiento = elementosIngresoFebrero.Rows[numeroFila].Cells[7].Value.ToString();
 
-            el = new Elemento(this, idasiento, this.fecha.Year, 2, Int32.Parse(fecha.Substring(0, 2)), concepto_ingresos, idelemento, elemento, areaId, estimado, descuento, real);
+
+
+            el = new Elemento(this, idasiento, this.fecha.Year, mes, dia, concepto_ingresos, idelemento, elemento, areaId, estimado, descuento, real);
             el.con = con;
 
             el.Show();

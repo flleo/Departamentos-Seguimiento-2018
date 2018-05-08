@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(General));
             this.ingresosRealEnero = new System.Windows.Forms.TextBox();
             this.ingresosDescuentoEnero = new System.Windows.Forms.TextBox();
             this.ingresosEstimadosEnero = new System.Windows.Forms.TextBox();
@@ -291,6 +292,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.acumuladoIngresos);
             this.Controls.Add(this.año);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "General";
             this.Text = "Departamentos Seguimiento 2018 - General";
             this.Load += new System.EventHandler(this.General_Load);

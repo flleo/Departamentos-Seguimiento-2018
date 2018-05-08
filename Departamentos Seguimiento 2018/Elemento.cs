@@ -18,14 +18,15 @@ namespace Departamentos_Seguimiento_2018
         string idelemento, idarea;
         string idasiento,mes;
         Area area;
+        
 
-        public Elemento(Area area,string idasiento,int año,int mes, int dia, string concepto, string idelemento, string elemento, string idarea, string estimado, string descuento, string real)
+        public Elemento(Area area,string idasiento,int año,string mes, string dia, string concepto, string idelemento, string elemento, string idarea, string estimado, string descuento, string real)
         {
             InitializeComponent();
 
             this.idasiento = idasiento;
             this.mes = mes.ToString();
-            fecha.Value = new DateTime(año,mes,dia);
+            fecha.Value = new DateTime(año,Int32.Parse(mes),Int32.Parse(dia));
             this.idelemento = idelemento;
             elementoText.Text = elemento;
             this.concepto.Text = concepto;
@@ -34,6 +35,7 @@ namespace Departamentos_Seguimiento_2018
             this.descuento.Text = descuento;
             this.real.Text = real;
             this.area = area;
+            area_text.Text = area.areaTop.Text;
             
 
         }
@@ -47,7 +49,7 @@ namespace Departamentos_Seguimiento_2018
                 int r = con.eliminarAsiento(idasiento);
                 if (r != 0)
                 {
-                    area.reloadArea(mes,concepto.Text);
+                    area.reloadArea(concepto.Text);
                     this.Close();
                 }
             }
@@ -55,19 +57,17 @@ namespace Departamentos_Seguimiento_2018
 
         private void actualizar_Click(object sender, EventArgs e)
         {
-            int r = con.actualizarAsiento(idasiento,comboArea.SelectedValue.ToString(),fecha.Value,estimado.Text,descuento.Text,real.Text);
+            int r = con.actualizarAsiento(idasiento,fecha.Value,estimado.Text,descuento.Text,real.Text);
             if (r != 0)
             {
-                area.reloadArea(mes, concepto.Text);
+                area.reloadArea(concepto.Text);
                 this.Close();
             }
         }
 
         private void Elemento_Load(object sender, EventArgs e)
         {
-            comboArea.DataSource = con.dataSet.Tables["dtArea"];
-            comboArea.DisplayMember = "Area";
-            comboArea.ValueMember = "Id";
+           
 
         }
     }

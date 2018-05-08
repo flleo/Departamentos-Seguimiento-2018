@@ -13,7 +13,7 @@ namespace Departamentos_Seguimiento_2018
     public partial class Menu : Form
     {
         public Conexion con = new Conexion();  
-        public DataTable conceptos, todosconceptos;
+        public DataTable  conceptos,todosconceptos;
         string idConcepto_ingresos,idConcepto_gastos,idConcepto_beneficio,idConcepto_cobros,idConcepto_pagos,idConcepto_diferencia;
         int i = 0;
 
@@ -23,27 +23,27 @@ namespace Departamentos_Seguimiento_2018
         }
 
         private void Menu_Load(object sender, EventArgs e)
-        {           
+        {
             //Tabla conceptos
-            con.tablaDataSet("select * from concepto where id !=3 and id!=6", "dtConceptos");
-            conceptos = con.dataSet.Tables["dtConceptos"];
-            //Inicializamos idconcepto
+            conceptos = con.tabla("select * from concepto where id !=3 and id!=6");
+
+            //Inicializamos idconcepto    
             con.tablaDataSet("select * from concepto", "dtTodosConceptos");
             todosconceptos = con.dataSet.Tables["dtTodosConceptos"];
-
+     
             idConcepto_ingresos = todosconceptos.Rows[0][0].ToString();
             idConcepto_gastos = todosconceptos.Rows[1][0].ToString();
             idConcepto_beneficio = todosconceptos.Rows[2][0].ToString();
             idConcepto_cobros = todosconceptos.Rows[3][0].ToString();
             idConcepto_pagos = todosconceptos.Rows[4][0].ToString();
             idConcepto_diferencia = todosconceptos.Rows[5][0].ToString();
-            
+
             //Inicializamos combos
 
             comboConcepto.DataSource = conceptos;
             comboConcepto.DisplayMember = "Concepto"; //columna a visualizar
             comboConcepto.ValueMember = "Id"; //columna a recordar   
-            comboConceptoE.DataSource = conceptos;
+            comboConceptoE.DataSource = conceptos ;
             comboConceptoE.DisplayMember = "Concepto"; //columna a visualizar
             comboConceptoE.ValueMember = "Id"; //columna a recordar           
             cargaComboAreas();

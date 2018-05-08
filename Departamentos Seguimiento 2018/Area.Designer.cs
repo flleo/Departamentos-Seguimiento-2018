@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Area));
             this.elementosIngresoFebrero = new System.Windows.Forms.DataGridView();
             this.ingresosRealFebrero = new System.Windows.Forms.TextBox();
             this.ingresosDescuentoFebrero = new System.Windows.Forms.TextBox();
@@ -36,7 +37,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.elementosIngresoEnero = new System.Windows.Forms.DataGridView();
             this.ingresosRealEnero = new System.Windows.Forms.TextBox();
             this.ingresosDescuentoEnero = new System.Windows.Forms.TextBox();
             this.ingresosEstimadosEnero = new System.Windows.Forms.TextBox();
@@ -50,6 +50,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.areaTop = new System.Windows.Forms.TextBox();
             this.eliminar = new System.Windows.Forms.Button();
+            this.elementosIngresoEnero = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.elementosIngresoFebrero)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elementosIngresoEnero)).BeginInit();
             this.SuspendLayout();
@@ -142,21 +143,6 @@
             this.label10.TabIndex = 46;
             this.label10.Text = "ESTIMADO";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // elementosIngresoEnero
-            // 
-            this.elementosIngresoEnero.AllowUserToResizeColumns = false;
-            this.elementosIngresoEnero.AllowUserToResizeRows = false;
-            this.elementosIngresoEnero.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.elementosIngresoEnero.ColumnHeadersVisible = false;
-            this.elementosIngresoEnero.Location = new System.Drawing.Point(156, 126);
-            this.elementosIngresoEnero.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.elementosIngresoEnero.Name = "elementosIngresoEnero";
-            this.elementosIngresoEnero.RowHeadersVisible = false;
-            this.elementosIngresoEnero.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.elementosIngresoEnero.Size = new System.Drawing.Size(402, 150);
-            this.elementosIngresoEnero.TabIndex = 45;
-            this.elementosIngresoEnero.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.elementosIngresoEnero_CellContentClick);
             // 
             // ingresosRealEnero
             // 
@@ -290,11 +276,29 @@
             this.eliminar.UseVisualStyleBackColor = true;
             this.eliminar.Click += new System.EventHandler(this.eliminar_Click);
             // 
+            // elementosIngresoEnero
+            // 
+            this.elementosIngresoEnero.AllowUserToAddRows = false;
+            this.elementosIngresoEnero.AllowUserToDeleteRows = false;
+            this.elementosIngresoEnero.AllowUserToResizeColumns = false;
+            this.elementosIngresoEnero.AllowUserToResizeRows = false;
+            this.elementosIngresoEnero.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.elementosIngresoEnero.ColumnHeadersVisible = false;
+            this.elementosIngresoEnero.Location = new System.Drawing.Point(156, 126);
+            this.elementosIngresoEnero.Name = "elementosIngresoEnero";
+            this.elementosIngresoEnero.ReadOnly = true;
+            this.elementosIngresoEnero.RowHeadersVisible = false;
+            this.elementosIngresoEnero.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.elementosIngresoEnero.Size = new System.Drawing.Size(400, 150);
+            this.elementosIngresoEnero.TabIndex = 57;
+            this.elementosIngresoEnero.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.elementosIngresoEnero_CellContentClick_1);
+            // 
             // Area
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 450);
+            this.Controls.Add(this.elementosIngresoEnero);
             this.Controls.Add(this.eliminar);
             this.Controls.Add(this.areaTop);
             this.Controls.Add(this.label11);
@@ -306,7 +310,6 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.elementosIngresoEnero);
             this.Controls.Add(this.ingresosRealEnero);
             this.Controls.Add(this.ingresosDescuentoEnero);
             this.Controls.Add(this.ingresosEstimadosEnero);
@@ -317,6 +320,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.acumulado_ingresos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Area";
             this.Text = "Departamentos Seguimiento 2018 - Area";
             this.Load += new System.EventHandler(this.area_Load);
@@ -337,7 +341,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        public System.Windows.Forms.DataGridView elementosIngresoEnero;
         private System.Windows.Forms.TextBox ingresosRealEnero;
         private System.Windows.Forms.TextBox ingresosDescuentoEnero;
         private System.Windows.Forms.TextBox ingresosEstimadosEnero;
@@ -351,5 +354,6 @@
         private System.Windows.Forms.Label label11;
         public System.Windows.Forms.TextBox areaTop;
         private System.Windows.Forms.Button eliminar;
+        private System.Windows.Forms.DataGridView elementosIngresoEnero;
     }
 }

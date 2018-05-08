@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Elemento));
             this.real = new System.Windows.Forms.TextBox();
             this.real_label = new System.Windows.Forms.Label();
             this.descuento = new System.Windows.Forms.TextBox();
             this.descuento_label = new System.Windows.Forms.Label();
             this.estimado = new System.Windows.Forms.TextBox();
             this.estimado_label = new System.Windows.Forms.Label();
-            this.comboArea = new System.Windows.Forms.ComboBox();
             this.actualizar = new System.Windows.Forms.Button();
             this.elemento_label = new System.Windows.Forms.Label();
             this.concepto_label = new System.Windows.Forms.Label();
@@ -44,6 +44,7 @@
             this.eliminar = new System.Windows.Forms.Button();
             this.elementoText = new System.Windows.Forms.TextBox();
             this.concepto = new System.Windows.Forms.TextBox();
+            this.area_text = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // real
@@ -96,14 +97,6 @@
             this.estimado_label.Size = new System.Drawing.Size(53, 13);
             this.estimado_label.TabIndex = 49;
             this.estimado_label.Text = "Estimado:";
-            // 
-            // comboArea
-            // 
-            this.comboArea.FormattingEnabled = true;
-            this.comboArea.Location = new System.Drawing.Point(200, 189);
-            this.comboArea.Name = "comboArea";
-            this.comboArea.Size = new System.Drawing.Size(121, 21);
-            this.comboArea.TabIndex = 48;
             // 
             // actualizar
             // 
@@ -186,11 +179,21 @@
             this.concepto.TabIndex = 57;
             this.concepto.Text = "0";
             // 
+            // area_text
+            // 
+            this.area_text.Location = new System.Drawing.Point(200, 189);
+            this.area_text.Name = "area_text";
+            this.area_text.ReadOnly = true;
+            this.area_text.Size = new System.Drawing.Size(100, 20);
+            this.area_text.TabIndex = 58;
+            this.area_text.Text = "0";
+            // 
             // Elemento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 450);
+            this.Controls.Add(this.area_text);
             this.Controls.Add(this.concepto);
             this.Controls.Add(this.elementoText);
             this.Controls.Add(this.eliminar);
@@ -200,13 +203,13 @@
             this.Controls.Add(this.descuento_label);
             this.Controls.Add(this.estimado);
             this.Controls.Add(this.estimado_label);
-            this.Controls.Add(this.comboArea);
             this.Controls.Add(this.actualizar);
             this.Controls.Add(this.elemento_label);
             this.Controls.Add(this.concepto_label);
             this.Controls.Add(this.area_label);
             this.Controls.Add(this.fecha);
             this.Controls.Add(this.introduzcaFecha);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Elemento";
             this.Text = "Departamentos Seguimiento 2018  - Elemento";
             this.Load += new System.EventHandler(this.Elemento_Load);
@@ -223,7 +226,6 @@
         private System.Windows.Forms.Label descuento_label;
         private System.Windows.Forms.TextBox estimado;
         private System.Windows.Forms.Label estimado_label;
-        private System.Windows.Forms.ComboBox comboArea;
         private System.Windows.Forms.Button actualizar;
         private System.Windows.Forms.Label elemento_label;
         private System.Windows.Forms.Label concepto_label;
@@ -233,5 +235,6 @@
         private System.Windows.Forms.Button eliminar;
         private System.Windows.Forms.TextBox elementoText;
         private System.Windows.Forms.TextBox concepto;
+        private System.Windows.Forms.TextBox area_text;
     }
 }

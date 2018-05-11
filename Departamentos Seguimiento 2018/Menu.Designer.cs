@@ -52,54 +52,61 @@
             this.descuento_label = new System.Windows.Forms.Label();
             this.real = new System.Windows.Forms.TextBox();
             this.real_label = new System.Windows.Forms.Label();
-            this.area_labelE = new System.Windows.Forms.Label();
-            this.comboAreaE = new System.Windows.Forms.ComboBox();
-            this.comboConcepto = new System.Windows.Forms.ComboBox();
             this.concepto_label = new System.Windows.Forms.Label();
             this.comboArea = new System.Windows.Forms.ComboBox();
             this.area_label = new System.Windows.Forms.Label();
+            this.area_labelE = new System.Windows.Forms.Label();
+            this.comboAreaA = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboElementoA = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.grabarEA = new System.Windows.Forms.Button();
+            this.concepto = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // abrir
             // 
             this.abrir.Cursor = System.Windows.Forms.Cursors.Default;
-            this.abrir.Location = new System.Drawing.Point(173, 26);
+            this.abrir.Location = new System.Drawing.Point(79, 31);
             this.abrir.Name = "abrir";
-            this.abrir.Size = new System.Drawing.Size(75, 23);
+            this.abrir.Size = new System.Drawing.Size(117, 23);
             this.abrir.TabIndex = 1;
-            this.abrir.Text = "ABRIR";
+            this.abrir.Text = "ABRIR AREAS";
             this.abrir.UseVisualStyleBackColor = true;
             this.abrir.Click += new System.EventHandler(this.abrir_Click);
             // 
             // fecha
             // 
-            this.fecha.Location = new System.Drawing.Point(149, 81);
+            this.fecha.Location = new System.Drawing.Point(451, 473);
             this.fecha.Name = "fecha";
             this.fecha.Size = new System.Drawing.Size(200, 20);
             this.fecha.TabIndex = 3;
+            this.fecha.Visible = false;
             // 
             // introduzcaFecha
             // 
             this.introduzcaFecha.AutoSize = true;
-            this.introduzcaFecha.Location = new System.Drawing.Point(48, 85);
+            this.introduzcaFecha.Location = new System.Drawing.Point(350, 477);
             this.introduzcaFecha.Name = "introduzcaFecha";
             this.introduzcaFecha.Size = new System.Drawing.Size(93, 13);
             this.introduzcaFecha.TabIndex = 2;
             this.introduzcaFecha.Text = "Introduzca fecha: ";
+            this.introduzcaFecha.Visible = false;
             // 
             // nuevoAsiento
             // 
-            this.nuevoAsiento.Location = new System.Drawing.Point(49, 26);
+            this.nuevoAsiento.Location = new System.Drawing.Point(351, 418);
             this.nuevoAsiento.Name = "nuevoAsiento";
             this.nuevoAsiento.Size = new System.Drawing.Size(105, 23);
             this.nuevoAsiento.TabIndex = 4;
             this.nuevoAsiento.Text = "NUEVO ASIENTO";
             this.nuevoAsiento.UseVisualStyleBackColor = true;
+            this.nuevoAsiento.Visible = false;
             this.nuevoAsiento.Click += new System.EventHandler(this.nuevoAsiento_Click);
             // 
             // grabarAsiento
             // 
-            this.grabarAsiento.Location = new System.Drawing.Point(294, 316);
+            this.grabarAsiento.Location = new System.Drawing.Point(351, 750);
             this.grabarAsiento.Name = "grabarAsiento";
             this.grabarAsiento.Size = new System.Drawing.Size(75, 23);
             this.grabarAsiento.TabIndex = 19;
@@ -111,7 +118,7 @@
             // elemento_label
             // 
             this.elemento_label.AutoSize = true;
-            this.elemento_label.Location = new System.Drawing.Point(47, 202);
+            this.elemento_label.Location = new System.Drawing.Point(348, 554);
             this.elemento_label.Name = "elemento_label";
             this.elemento_label.Size = new System.Drawing.Size(54, 13);
             this.elemento_label.TabIndex = 17;
@@ -120,7 +127,7 @@
             // 
             // nuevoElemento
             // 
-            this.nuevoElemento.Location = new System.Drawing.Point(391, 26);
+            this.nuevoElemento.Location = new System.Drawing.Point(79, 69);
             this.nuevoElemento.Name = "nuevoElemento";
             this.nuevoElemento.Size = new System.Drawing.Size(117, 23);
             this.nuevoElemento.TabIndex = 22;
@@ -130,7 +137,7 @@
             // 
             // nuevaArea
             // 
-            this.nuevaArea.Location = new System.Drawing.Point(612, 26);
+            this.nuevaArea.Location = new System.Drawing.Point(300, 69);
             this.nuevaArea.Name = "nuevaArea";
             this.nuevaArea.Size = new System.Drawing.Size(87, 23);
             this.nuevaArea.TabIndex = 23;
@@ -140,94 +147,93 @@
             // 
             // comboConceptoE
             // 
+            this.comboConceptoE.Enabled = false;
             this.comboConceptoE.FormattingEnabled = true;
-            this.comboConceptoE.Location = new System.Drawing.Point(450, 79);
+            this.comboConceptoE.Location = new System.Drawing.Point(138, 122);
             this.comboConceptoE.Name = "comboConceptoE";
             this.comboConceptoE.Size = new System.Drawing.Size(121, 21);
             this.comboConceptoE.TabIndex = 27;
-            this.comboConceptoE.Visible = false;
             // 
             // elemento
             // 
-            this.elemento.Location = new System.Drawing.Point(450, 161);
+            this.elemento.Enabled = false;
+            this.elemento.Location = new System.Drawing.Point(138, 160);
             this.elemento.Name = "elemento";
             this.elemento.Size = new System.Drawing.Size(100, 20);
             this.elemento.TabIndex = 26;
-            this.elemento.Visible = false;
             // 
             // elemento_labelE
             // 
             this.elemento_labelE.AutoSize = true;
-            this.elemento_labelE.Location = new System.Drawing.Point(388, 163);
+            this.elemento_labelE.Location = new System.Drawing.Point(76, 162);
             this.elemento_labelE.Name = "elemento_labelE";
             this.elemento_labelE.Size = new System.Drawing.Size(54, 13);
             this.elemento_labelE.TabIndex = 25;
             this.elemento_labelE.Text = "Elemento:";
-            this.elemento_labelE.Visible = false;
             // 
             // concepto_labelE
             // 
             this.concepto_labelE.AutoSize = true;
-            this.concepto_labelE.Location = new System.Drawing.Point(388, 81);
+            this.concepto_labelE.Location = new System.Drawing.Point(76, 124);
             this.concepto_labelE.Name = "concepto_labelE";
             this.concepto_labelE.Size = new System.Drawing.Size(56, 13);
             this.concepto_labelE.TabIndex = 24;
             this.concepto_labelE.Text = "Concepto:";
-            this.concepto_labelE.Visible = false;
             // 
             // grabarElemento
             // 
-            this.grabarElemento.Location = new System.Drawing.Point(391, 201);
+            this.grabarElemento.Enabled = false;
+            this.grabarElemento.Location = new System.Drawing.Point(79, 200);
             this.grabarElemento.Name = "grabarElemento";
             this.grabarElemento.Size = new System.Drawing.Size(75, 23);
             this.grabarElemento.TabIndex = 30;
             this.grabarElemento.Text = "GRABAR";
             this.grabarElemento.UseVisualStyleBackColor = true;
-            this.grabarElemento.Visible = false;
             this.grabarElemento.Click += new System.EventHandler(this.grabarElemento_Click);
             // 
             // area
             // 
-            this.area.Location = new System.Drawing.Point(650, 78);
+            this.area.Location = new System.Drawing.Point(338, 121);
             this.area.Name = "area";
+            this.area.ShortcutsEnabled = false;
             this.area.Size = new System.Drawing.Size(100, 20);
             this.area.TabIndex = 29;
-            this.area.Visible = false;
             // 
             // area_labelA
             // 
             this.area_labelA.AutoSize = true;
-            this.area_labelA.Location = new System.Drawing.Point(609, 81);
+            this.area_labelA.Location = new System.Drawing.Point(297, 124);
             this.area_labelA.Name = "area_labelA";
             this.area_labelA.Size = new System.Drawing.Size(35, 13);
             this.area_labelA.TabIndex = 28;
             this.area_labelA.Text = "Area: ";
-            this.area_labelA.Visible = false;
             // 
             // comboElemento
             // 
+            this.comboElemento.Enabled = false;
             this.comboElemento.FormattingEnabled = true;
-            this.comboElemento.Location = new System.Drawing.Point(149, 202);
+            this.comboElemento.Location = new System.Drawing.Point(450, 551);
             this.comboElemento.Name = "comboElemento";
             this.comboElemento.Size = new System.Drawing.Size(121, 21);
             this.comboElemento.TabIndex = 31;
             this.comboElemento.Visible = false;
+            this.comboElemento.SelectedIndexChanged += new System.EventHandler(this.comboElemento_SelectedIndexChanged);
             // 
             // grabarArea
             // 
-            this.grabarArea.Location = new System.Drawing.Point(612, 113);
+            this.grabarArea.Enabled = false;
+            this.grabarArea.Location = new System.Drawing.Point(300, 156);
             this.grabarArea.Name = "grabarArea";
             this.grabarArea.Size = new System.Drawing.Size(75, 23);
             this.grabarArea.TabIndex = 33;
             this.grabarArea.Text = "GRABAR";
             this.grabarArea.UseVisualStyleBackColor = true;
-            this.grabarArea.Visible = false;
             this.grabarArea.Click += new System.EventHandler(this.grabarArea_Click);
             // 
             // estimado_label
             // 
             this.estimado_label.AutoSize = true;
-            this.estimado_label.Location = new System.Drawing.Point(46, 247);
+            this.estimado_label.Location = new System.Drawing.Point(348, 639);
             this.estimado_label.Name = "estimado_label";
             this.estimado_label.Size = new System.Drawing.Size(53, 13);
             this.estimado_label.TabIndex = 34;
@@ -236,7 +242,8 @@
             // 
             // estimado
             // 
-            this.estimado.Location = new System.Drawing.Point(148, 244);
+            this.estimado.Enabled = false;
+            this.estimado.Location = new System.Drawing.Point(450, 636);
             this.estimado.Name = "estimado";
             this.estimado.Size = new System.Drawing.Size(100, 20);
             this.estimado.TabIndex = 35;
@@ -245,7 +252,8 @@
             // 
             // descuento
             // 
-            this.descuento.Location = new System.Drawing.Point(148, 279);
+            this.descuento.Enabled = false;
+            this.descuento.Location = new System.Drawing.Point(450, 671);
             this.descuento.Name = "descuento";
             this.descuento.Size = new System.Drawing.Size(100, 20);
             this.descuento.TabIndex = 37;
@@ -255,7 +263,7 @@
             // descuento_label
             // 
             this.descuento_label.AutoSize = true;
-            this.descuento_label.Location = new System.Drawing.Point(47, 282);
+            this.descuento_label.Location = new System.Drawing.Point(349, 674);
             this.descuento_label.Name = "descuento_label";
             this.descuento_label.Size = new System.Drawing.Size(62, 13);
             this.descuento_label.TabIndex = 36;
@@ -264,7 +272,8 @@
             // 
             // real
             // 
-            this.real.Location = new System.Drawing.Point(149, 316);
+            this.real.Enabled = false;
+            this.real.Location = new System.Drawing.Point(451, 708);
             this.real.Name = "real";
             this.real.Size = new System.Drawing.Size(100, 20);
             this.real.TabIndex = 39;
@@ -274,46 +283,17 @@
             // real_label
             // 
             this.real_label.AutoSize = true;
-            this.real_label.Location = new System.Drawing.Point(47, 319);
+            this.real_label.Location = new System.Drawing.Point(349, 711);
             this.real_label.Name = "real_label";
             this.real_label.Size = new System.Drawing.Size(32, 13);
             this.real_label.TabIndex = 38;
             this.real_label.Text = "Real:";
             this.real_label.Visible = false;
             // 
-            // area_labelE
-            // 
-            this.area_labelE.AutoSize = true;
-            this.area_labelE.Location = new System.Drawing.Point(388, 124);
-            this.area_labelE.Name = "area_labelE";
-            this.area_labelE.Size = new System.Drawing.Size(32, 13);
-            this.area_labelE.TabIndex = 40;
-            this.area_labelE.Text = "Area:";
-            this.area_labelE.Visible = false;
-            // 
-            // comboAreaE
-            // 
-            this.comboAreaE.FormattingEnabled = true;
-            this.comboAreaE.Location = new System.Drawing.Point(450, 121);
-            this.comboAreaE.Name = "comboAreaE";
-            this.comboAreaE.Size = new System.Drawing.Size(121, 21);
-            this.comboAreaE.TabIndex = 41;
-            this.comboAreaE.Visible = false;
-            // 
-            // comboConcepto
-            // 
-            this.comboConcepto.FormattingEnabled = true;
-            this.comboConcepto.Location = new System.Drawing.Point(149, 162);
-            this.comboConcepto.Name = "comboConcepto";
-            this.comboConcepto.Size = new System.Drawing.Size(121, 21);
-            this.comboConcepto.TabIndex = 43;
-            this.comboConcepto.Visible = false;
-            this.comboConcepto.SelectedIndexChanged += new System.EventHandler(this.comboConcepto_SelectedIndexChanged_1);
-            // 
             // concepto_label
             // 
             this.concepto_label.AutoSize = true;
-            this.concepto_label.Location = new System.Drawing.Point(48, 164);
+            this.concepto_label.Location = new System.Drawing.Point(349, 598);
             this.concepto_label.Name = "concepto_label";
             this.concepto_label.Size = new System.Drawing.Size(56, 13);
             this.concepto_label.TabIndex = 42;
@@ -322,8 +302,9 @@
             // 
             // comboArea
             // 
+            this.comboArea.Enabled = false;
             this.comboArea.FormattingEnabled = true;
-            this.comboArea.Location = new System.Drawing.Point(149, 121);
+            this.comboArea.Location = new System.Drawing.Point(450, 513);
             this.comboArea.Name = "comboArea";
             this.comboArea.Size = new System.Drawing.Size(121, 21);
             this.comboArea.TabIndex = 45;
@@ -332,24 +313,94 @@
             // area_label
             // 
             this.area_label.AutoSize = true;
-            this.area_label.Location = new System.Drawing.Point(47, 124);
+            this.area_label.Location = new System.Drawing.Point(349, 516);
             this.area_label.Name = "area_label";
             this.area_label.Size = new System.Drawing.Size(32, 13);
             this.area_label.TabIndex = 44;
             this.area_label.Text = "Area:";
             this.area_label.Visible = false;
             // 
+            // area_labelE
+            // 
+            this.area_labelE.AutoSize = true;
+            this.area_labelE.Location = new System.Drawing.Point(487, 145);
+            this.area_labelE.Name = "area_labelE";
+            this.area_labelE.Size = new System.Drawing.Size(35, 13);
+            this.area_labelE.TabIndex = 46;
+            this.area_labelE.Text = "Area: ";
+            // 
+            // comboAreaA
+            // 
+            this.comboAreaA.Enabled = false;
+            this.comboAreaA.FormattingEnabled = true;
+            this.comboAreaA.Location = new System.Drawing.Point(547, 142);
+            this.comboAreaA.Name = "comboAreaA";
+            this.comboAreaA.Size = new System.Drawing.Size(121, 21);
+            this.comboAreaA.TabIndex = 47;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(487, 114);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 48;
+            this.label1.Text = "Elemento:";
+            // 
+            // comboElementoA
+            // 
+            this.comboElementoA.Enabled = false;
+            this.comboElementoA.FormattingEnabled = true;
+            this.comboElementoA.Location = new System.Drawing.Point(547, 111);
+            this.comboElementoA.Name = "comboElementoA";
+            this.comboElementoA.Size = new System.Drawing.Size(121, 21);
+            this.comboElementoA.TabIndex = 49;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(488, 69);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 23);
+            this.button1.TabIndex = 50;
+            this.button1.Text = "ELEMENTO-AREA";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // grabarEA
+            // 
+            this.grabarEA.Enabled = false;
+            this.grabarEA.Location = new System.Drawing.Point(488, 181);
+            this.grabarEA.Name = "grabarEA";
+            this.grabarEA.Size = new System.Drawing.Size(75, 23);
+            this.grabarEA.TabIndex = 51;
+            this.grabarEA.Text = "GRABAR";
+            this.grabarEA.UseVisualStyleBackColor = true;
+            this.grabarEA.Click += new System.EventHandler(this.grabarEA_Click);
+            // 
+            // concepto
+            // 
+            this.concepto.Enabled = false;
+            this.concepto.Location = new System.Drawing.Point(450, 595);
+            this.concepto.Name = "concepto";
+            this.concepto.Size = new System.Drawing.Size(100, 20);
+            this.concepto.TabIndex = 52;
+            this.concepto.Visible = false;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 465);
+            this.Controls.Add(this.concepto);
+            this.Controls.Add(this.grabarEA);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.comboElementoA);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboAreaA);
+            this.Controls.Add(this.area_labelE);
             this.Controls.Add(this.comboArea);
             this.Controls.Add(this.area_label);
-            this.Controls.Add(this.comboConcepto);
             this.Controls.Add(this.concepto_label);
-            this.Controls.Add(this.comboAreaE);
-            this.Controls.Add(this.area_labelE);
             this.Controls.Add(this.real);
             this.Controls.Add(this.real_label);
             this.Controls.Add(this.descuento);
@@ -406,12 +457,16 @@
         private System.Windows.Forms.Label descuento_label;
         private System.Windows.Forms.TextBox real;
         private System.Windows.Forms.Label real_label;
-        private System.Windows.Forms.Label area_labelE;
-        private System.Windows.Forms.ComboBox comboAreaE;
-        private System.Windows.Forms.ComboBox comboConcepto;
         private System.Windows.Forms.Label concepto_label;
         private System.Windows.Forms.ComboBox comboArea;
         private System.Windows.Forms.Label area_label;
+        private System.Windows.Forms.Label area_labelE;
+        private System.Windows.Forms.ComboBox comboAreaA;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboElementoA;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button grabarEA;
+        private System.Windows.Forms.TextBox concepto;
     }
 }
 

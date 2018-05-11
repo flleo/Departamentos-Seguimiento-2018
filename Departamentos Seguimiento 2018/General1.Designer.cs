@@ -1,6 +1,6 @@
 ﻿namespace Departamentos_Seguimiento_2018
 {
-    partial class Area
+    partial class General1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Area));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(General1));
+            this.siguiente = new System.Windows.Forms.Button();
+            this.excel = new System.Windows.Forms.Button();
             this.diferenciaReal3 = new System.Windows.Forms.TextBox();
             this.diferenciaDescuento3 = new System.Windows.Forms.TextBox();
             this.diferenciaEstimado3 = new System.Windows.Forms.TextBox();
@@ -40,15 +42,15 @@
             this.diferenciaEstimado1 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.acumuladoDiferencia = new System.Windows.Forms.TextBox();
-            this.pagos3 = new System.Windows.Forms.DataGridView();
+            this.areasPagos3 = new System.Windows.Forms.DataGridView();
             this.pagosReal3 = new System.Windows.Forms.TextBox();
             this.pagosDescuento3 = new System.Windows.Forms.TextBox();
             this.pagosEstimado3 = new System.Windows.Forms.TextBox();
-            this.pagos2 = new System.Windows.Forms.DataGridView();
+            this.areasPagos2 = new System.Windows.Forms.DataGridView();
             this.pagosReal2 = new System.Windows.Forms.TextBox();
             this.pagosDescuento2 = new System.Windows.Forms.TextBox();
             this.pagosEstimado2 = new System.Windows.Forms.TextBox();
-            this.pagos1 = new System.Windows.Forms.DataGridView();
+            this.areasPagos1 = new System.Windows.Forms.DataGridView();
             this.pagosReal1 = new System.Windows.Forms.TextBox();
             this.pagosDescuento1 = new System.Windows.Forms.TextBox();
             this.pagosEstimado1 = new System.Windows.Forms.TextBox();
@@ -119,13 +121,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.siguiente = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.areaText = new System.Windows.Forms.TextBox();
-            this.acumuladoIngreso = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pagos3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pagos2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pagos1)).BeginInit();
+            this.acumuladoIngresos = new System.Windows.Forms.TextBox();
+            this.label_año = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.areasPagos3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areasPagos2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areasPagos1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cobros3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cobros2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cobros1)).BeginInit();
@@ -136,6 +136,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.ingresos2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ingresos1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // siguiente
+            // 
+            this.siguiente.Location = new System.Drawing.Point(1181, 21);
+            this.siguiente.Name = "siguiente";
+            this.siguiente.Size = new System.Drawing.Size(75, 23);
+            this.siguiente.TabIndex = 43;
+            this.siguiente.Text = "SIGUIENTE";
+            this.siguiente.UseVisualStyleBackColor = true;
+            this.siguiente.Click += new System.EventHandler(this.siguiente_Click);
+            // 
+            // excel
+            // 
+            this.excel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.excel.Location = new System.Drawing.Point(1021, 21);
+            this.excel.Name = "excel";
+            this.excel.Size = new System.Drawing.Size(75, 23);
+            this.excel.TabIndex = 44;
+            this.excel.Text = "EXCEL";
+            this.excel.UseVisualStyleBackColor = false;
+            this.excel.Click += new System.EventHandler(this.excel_Click);
             // 
             // diferenciaReal3
             // 
@@ -229,20 +250,19 @@
             this.acumuladoDiferencia.Size = new System.Drawing.Size(100, 20);
             this.acumuladoDiferencia.TabIndex = 474;
             // 
-            // pagos3
+            // areasPagos3
             // 
-            this.pagos3.AllowUserToResizeColumns = false;
-            this.pagos3.AllowUserToResizeRows = false;
-            this.pagos3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.pagos3.ColumnHeadersVisible = false;
-            this.pagos3.Location = new System.Drawing.Point(964, 654);
-            this.pagos3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.pagos3.Name = "pagos3";
-            this.pagos3.RowHeadersVisible = false;
-            this.pagos3.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.pagos3.Size = new System.Drawing.Size(298, 150);
-            this.pagos3.TabIndex = 473;
-            this.pagos3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pagos3_CellContentClick);
+            this.areasPagos3.AllowUserToResizeColumns = false;
+            this.areasPagos3.AllowUserToResizeRows = false;
+            this.areasPagos3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.areasPagos3.ColumnHeadersVisible = false;
+            this.areasPagos3.Location = new System.Drawing.Point(964, 654);
+            this.areasPagos3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.areasPagos3.Name = "areasPagos3";
+            this.areasPagos3.RowHeadersVisible = false;
+            this.areasPagos3.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.areasPagos3.Size = new System.Drawing.Size(298, 150);
+            this.areasPagos3.TabIndex = 473;
             // 
             // pagosReal3
             // 
@@ -268,20 +288,19 @@
             this.pagosEstimado3.Size = new System.Drawing.Size(100, 20);
             this.pagosEstimado3.TabIndex = 470;
             // 
-            // pagos2
+            // areasPagos2
             // 
-            this.pagos2.AllowUserToResizeColumns = false;
-            this.pagos2.AllowUserToResizeRows = false;
-            this.pagos2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.pagos2.ColumnHeadersVisible = false;
-            this.pagos2.Location = new System.Drawing.Point(672, 654);
-            this.pagos2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.pagos2.Name = "pagos2";
-            this.pagos2.RowHeadersVisible = false;
-            this.pagos2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.pagos2.Size = new System.Drawing.Size(298, 150);
-            this.pagos2.TabIndex = 469;
-            this.pagos2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pagos2_CellContentClick);
+            this.areasPagos2.AllowUserToResizeColumns = false;
+            this.areasPagos2.AllowUserToResizeRows = false;
+            this.areasPagos2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.areasPagos2.ColumnHeadersVisible = false;
+            this.areasPagos2.Location = new System.Drawing.Point(672, 654);
+            this.areasPagos2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.areasPagos2.Name = "areasPagos2";
+            this.areasPagos2.RowHeadersVisible = false;
+            this.areasPagos2.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.areasPagos2.Size = new System.Drawing.Size(298, 150);
+            this.areasPagos2.TabIndex = 469;
             // 
             // pagosReal2
             // 
@@ -307,20 +326,19 @@
             this.pagosEstimado2.Size = new System.Drawing.Size(100, 20);
             this.pagosEstimado2.TabIndex = 466;
             // 
-            // pagos1
+            // areasPagos1
             // 
-            this.pagos1.AllowUserToResizeColumns = false;
-            this.pagos1.AllowUserToResizeRows = false;
-            this.pagos1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.pagos1.ColumnHeadersVisible = false;
-            this.pagos1.Location = new System.Drawing.Point(278, 654);
-            this.pagos1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.pagos1.Name = "pagos1";
-            this.pagos1.RowHeadersVisible = false;
-            this.pagos1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.pagos1.Size = new System.Drawing.Size(400, 150);
-            this.pagos1.TabIndex = 465;
-            this.pagos1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pagos1_CellContentClick);
+            this.areasPagos1.AllowUserToResizeColumns = false;
+            this.areasPagos1.AllowUserToResizeRows = false;
+            this.areasPagos1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.areasPagos1.ColumnHeadersVisible = false;
+            this.areasPagos1.Location = new System.Drawing.Point(278, 654);
+            this.areasPagos1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.areasPagos1.Name = "areasPagos1";
+            this.areasPagos1.RowHeadersVisible = false;
+            this.areasPagos1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.areasPagos1.Size = new System.Drawing.Size(400, 150);
+            this.areasPagos1.TabIndex = 465;
             // 
             // pagosReal1
             // 
@@ -379,7 +397,6 @@
             this.cobros3.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.cobros3.Size = new System.Drawing.Size(298, 150);
             this.cobros3.TabIndex = 459;
-            this.cobros3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cobros3_CellContentClick);
             // 
             // cobrosReal3
             // 
@@ -418,7 +435,6 @@
             this.cobros2.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.cobros2.Size = new System.Drawing.Size(298, 150);
             this.cobros2.TabIndex = 455;
-            this.cobros2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cobros2_CellContentClick);
             // 
             // cobrosReal2
             // 
@@ -457,7 +473,6 @@
             this.cobros1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.cobros1.Size = new System.Drawing.Size(400, 150);
             this.cobros1.TabIndex = 451;
-            this.cobros1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cobros1_CellContentClick);
             // 
             // cobrosReal1
             // 
@@ -608,7 +623,6 @@
             this.gastos3.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.gastos3.Size = new System.Drawing.Size(298, 150);
             this.gastos3.TabIndex = 434;
-            this.gastos3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gastos3_CellContentClick);
             // 
             // gastosReal3
             // 
@@ -647,7 +661,6 @@
             this.gastos2.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.gastos2.Size = new System.Drawing.Size(298, 150);
             this.gastos2.TabIndex = 430;
-            this.gastos2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gastos2_CellContentClick);
             // 
             // gastosReal2
             // 
@@ -686,7 +699,6 @@
             this.gastos1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.gastos1.Size = new System.Drawing.Size(400, 150);
             this.gastos1.TabIndex = 426;
-            this.gastos1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gastos1_CellContentClick);
             // 
             // gastosReal1
             // 
@@ -745,7 +757,6 @@
             this.ingresos3.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ingresos3.Size = new System.Drawing.Size(298, 150);
             this.ingresos3.TabIndex = 420;
-            this.ingresos3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ingresos3_CellContentClick);
             // 
             // ingresosReal3
             // 
@@ -837,7 +848,6 @@
             this.ingresos2.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ingresos2.Size = new System.Drawing.Size(298, 150);
             this.ingresos2.TabIndex = 412;
-            this.ingresos2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ingresos2_CellContentClick);
             // 
             // ingresosReal2
             // 
@@ -929,7 +939,7 @@
             this.ingresos1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ingresos1.Size = new System.Drawing.Size(400, 150);
             this.ingresos1.TabIndex = 404;
-            this.ingresos1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ingresos1_CellContentClick);
+            this.ingresos1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ingresos1_CellContentClick_1);
             // 
             // ingresosReal1
             // 
@@ -1013,7 +1023,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(272, 90);
+            this.label2.Location = new System.Drawing.Point(272, 91);
             this.label2.MinimumSize = new System.Drawing.Size(100, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 13);
@@ -1030,54 +1040,28 @@
             this.label1.TabIndex = 395;
             this.label1.Text = "ACUMULADO";
             // 
-            // siguiente
+            // acumuladoIngresos
             // 
-            this.siguiente.Location = new System.Drawing.Point(1181, 12);
-            this.siguiente.Name = "siguiente";
-            this.siguiente.Size = new System.Drawing.Size(75, 23);
-            this.siguiente.TabIndex = 485;
-            this.siguiente.Text = "SIGUIENTE";
-            this.siguiente.UseVisualStyleBackColor = true;
-            this.siguiente.Click += new System.EventHandler(this.siguiente_Click);
+            this.acumuladoIngresos.Location = new System.Drawing.Point(166, 88);
+            this.acumuladoIngresos.Name = "acumuladoIngresos";
+            this.acumuladoIngresos.ReadOnly = true;
+            this.acumuladoIngresos.Size = new System.Drawing.Size(100, 20);
+            this.acumuladoIngresos.TabIndex = 394;
             // 
-            // label20
+            // label_año
             // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(163, 33);
-            this.label20.MinimumSize = new System.Drawing.Size(100, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(100, 13);
-            this.label20.TabIndex = 487;
-            this.label20.Text = "AREA";
+            this.label_año.AutoSize = true;
+            this.label_año.Location = new System.Drawing.Point(166, 40);
+            this.label_año.Name = "label_año";
+            this.label_año.Size = new System.Drawing.Size(26, 13);
+            this.label_año.TabIndex = 393;
+            this.label_año.Text = "Año";
             // 
-            // areaText
-            // 
-            this.areaText.Enabled = false;
-            this.areaText.Location = new System.Drawing.Point(269, 30);
-            this.areaText.Name = "areaText";
-            this.areaText.ReadOnly = true;
-            this.areaText.Size = new System.Drawing.Size(100, 20);
-            this.areaText.TabIndex = 488;
-            // 
-            // acumuladoIngreso
-            // 
-            this.acumuladoIngreso.Location = new System.Drawing.Point(166, 87);
-            this.acumuladoIngreso.Name = "acumuladoIngreso";
-            this.acumuladoIngreso.ReadOnly = true;
-            this.acumuladoIngreso.Size = new System.Drawing.Size(100, 20);
-            this.acumuladoIngreso.TabIndex = 489;
-            // 
-            // Area
+            // General1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1428, 865);
-            this.Controls.Add(this.acumuladoIngreso);
-            this.Controls.Add(this.areaText);
-            this.Controls.Add(this.label20);
-            this.Controls.Add(this.siguiente);
             this.Controls.Add(this.diferenciaReal3);
             this.Controls.Add(this.diferenciaDescuento3);
             this.Controls.Add(this.diferenciaEstimado3);
@@ -1089,15 +1073,15 @@
             this.Controls.Add(this.diferenciaEstimado1);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.acumuladoDiferencia);
-            this.Controls.Add(this.pagos3);
+            this.Controls.Add(this.areasPagos3);
             this.Controls.Add(this.pagosReal3);
             this.Controls.Add(this.pagosDescuento3);
             this.Controls.Add(this.pagosEstimado3);
-            this.Controls.Add(this.pagos2);
+            this.Controls.Add(this.areasPagos2);
             this.Controls.Add(this.pagosReal2);
             this.Controls.Add(this.pagosDescuento2);
             this.Controls.Add(this.pagosEstimado2);
-            this.Controls.Add(this.pagos1);
+            this.Controls.Add(this.areasPagos1);
             this.Controls.Add(this.pagosReal1);
             this.Controls.Add(this.pagosDescuento1);
             this.Controls.Add(this.pagosEstimado1);
@@ -1168,13 +1152,17 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.acumuladoIngresos);
+            this.Controls.Add(this.label_año);
+            this.Controls.Add(this.excel);
+            this.Controls.Add(this.siguiente);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Area";
-            this.Text = "Departamentos Seguimiento 2018 - Area Enero Febrero Marzo";
-            this.Load += new System.EventHandler(this.Area_Load_1);
-            ((System.ComponentModel.ISupportInitialize)(this.pagos3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pagos2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pagos1)).EndInit();
+            this.Name = "General1";
+            this.Text = "Departamentos Seguimiento 2018 - General Enero Febrero Marzo";
+            this.Load += new System.EventHandler(this.General_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.areasPagos3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areasPagos2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areasPagos1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cobros3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cobros2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cobros1)).EndInit();
@@ -1190,7 +1178,8 @@
         }
 
         #endregion
-
+        private System.Windows.Forms.Button siguiente;
+        private System.Windows.Forms.Button excel;
         private System.Windows.Forms.TextBox diferenciaReal3;
         private System.Windows.Forms.TextBox diferenciaDescuento3;
         private System.Windows.Forms.TextBox diferenciaEstimado3;
@@ -1202,15 +1191,15 @@
         public System.Windows.Forms.TextBox diferenciaEstimado1;
         private System.Windows.Forms.Label label16;
         public System.Windows.Forms.TextBox acumuladoDiferencia;
-        public System.Windows.Forms.DataGridView pagos3;
+        public System.Windows.Forms.DataGridView areasPagos3;
         private System.Windows.Forms.TextBox pagosReal3;
         private System.Windows.Forms.TextBox pagosDescuento3;
         private System.Windows.Forms.TextBox pagosEstimado3;
-        public System.Windows.Forms.DataGridView pagos2;
+        public System.Windows.Forms.DataGridView areasPagos2;
         private System.Windows.Forms.TextBox pagosReal2;
         private System.Windows.Forms.TextBox pagosDescuento2;
         private System.Windows.Forms.TextBox pagosEstimado2;
-        public System.Windows.Forms.DataGridView pagos1;
+        public System.Windows.Forms.DataGridView areasPagos1;
         public System.Windows.Forms.TextBox pagosReal1;
         public System.Windows.Forms.TextBox pagosDescuento1;
         public System.Windows.Forms.TextBox pagosEstimado1;
@@ -1281,10 +1270,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.TextBox acumuladoIngreso;
-        private System.Windows.Forms.Button siguiente;
-        private System.Windows.Forms.Label label20;
-        public System.Windows.Forms.TextBox areaText;
-   
+        public System.Windows.Forms.TextBox acumuladoIngresos;
+        public System.Windows.Forms.Label label_año;
     }
 }

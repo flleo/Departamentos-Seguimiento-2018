@@ -48,18 +48,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conexion.cs" />
     <Compile Include="Area.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Area.Designer.cs">
       <DependentUpon>Area.cs</DependentUpon>
     </Compile>
+    <Compile Include="Area2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Area2.Designer.cs">
+      <DependentUpon>Area2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Area3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Area3.Designer.cs">
+      <DependentUpon>Area3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Area4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Area4.Designer.cs">
+      <DependentUpon>Area4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Conexion.cs" />
     <Compile Include="Elemento.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Elemento.Designer.cs">
       <DependentUpon>Elemento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="General2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="General2.Designer.cs">
+      <DependentUpon>General2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="General3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="General3.Designer.cs">
+      <DependentUpon>General3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="General4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="General4.Designer.cs">
+      <DependentUpon>General4.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -67,25 +103,43 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="General.cs">
+    <Compile Include="General1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="General.Designer.cs">
-      <DependentUpon>General.cs</DependentUpon>
+    <Compile Include="General1.Designer.cs">
+      <DependentUpon>General1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Area.resx">
       <DependentUpon>Area.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Area2.resx">
+      <DependentUpon>Area2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Area3.resx">
+      <DependentUpon>Area3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Area4.resx">
+      <DependentUpon>Area4.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elemento.resx">
       <DependentUpon>Elemento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General2.resx">
+      <DependentUpon>General2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General3.resx">
+      <DependentUpon>General3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General4.resx">
+      <DependentUpon>General4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="General.resx">
-      <DependentUpon>General.cs</DependentUpon>
+    <EmbeddedResource Include="General1.resx">
+      <DependentUpon>General1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -111,6 +165,35 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Antialiasfactory-Enterprise-Resource-Planning-Balance.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

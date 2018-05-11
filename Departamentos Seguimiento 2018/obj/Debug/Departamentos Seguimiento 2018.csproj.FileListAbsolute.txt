@@ -3,7 +3,6 @@ C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Se
 C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\bin\Debug\Departamentos Seguimiento 2018.pdb
 C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos Seguimiento 2018.csprojResolveAssemblyReference.cache
 C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.Menu.resources
-C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.General.resources
 C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.Properties.Resources.resources
 C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos Seguimiento 2018.csproj.GenerateResource.cache
 C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos Seguimiento 2018.csproj.CoreCompileInputs.cache
@@ -11,3 +10,11 @@ C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Se
 C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos Seguimiento 2018.pdb
 C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.Area.resources
 C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.Elemento.resources
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos Seguimiento 2018.csproj.ResolveComReference.cache
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.Area2.resources
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.Area3.resources
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.Area4.resources
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.General2.resources
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.General3.resources
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.General1.resources
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.General4.resources

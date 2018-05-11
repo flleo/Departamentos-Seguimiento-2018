@@ -1,6 +1,6 @@
 ﻿namespace Departamentos_Seguimiento_2018
 {
-    partial class Area
+    partial class Area2
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Area));
+            this.acumuladoIngreso = new System.Windows.Forms.TextBox();
+            this.areaText = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.siguiente = new System.Windows.Forms.Button();
             this.diferenciaReal3 = new System.Windows.Forms.TextBox();
             this.diferenciaDescuento3 = new System.Windows.Forms.TextBox();
             this.diferenciaEstimado3 = new System.Windows.Forms.TextBox();
@@ -119,10 +122,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.siguiente = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.areaText = new System.Windows.Forms.TextBox();
-            this.acumuladoIngreso = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pagos3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pagos2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pagos1)).BeginInit();
@@ -137,97 +136,135 @@
             ((System.ComponentModel.ISupportInitialize)(this.ingresos1)).BeginInit();
             this.SuspendLayout();
             // 
+            // acumuladoIngreso
+            // 
+            this.acumuladoIngreso.Location = new System.Drawing.Point(168, 101);
+            this.acumuladoIngreso.Name = "acumuladoIngreso";
+            this.acumuladoIngreso.ReadOnly = true;
+            this.acumuladoIngreso.Size = new System.Drawing.Size(100, 20);
+            this.acumuladoIngreso.TabIndex = 583;
+            // 
+            // areaText
+            // 
+            this.areaText.Enabled = false;
+            this.areaText.Location = new System.Drawing.Point(271, 44);
+            this.areaText.Name = "areaText";
+            this.areaText.ReadOnly = true;
+            this.areaText.Size = new System.Drawing.Size(100, 20);
+            this.areaText.TabIndex = 582;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(165, 47);
+            this.label20.MinimumSize = new System.Drawing.Size(100, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(100, 13);
+            this.label20.TabIndex = 581;
+            this.label20.Text = "AREA";
+            // 
+            // siguiente
+            // 
+            this.siguiente.Location = new System.Drawing.Point(1183, 26);
+            this.siguiente.Name = "siguiente";
+            this.siguiente.Size = new System.Drawing.Size(75, 23);
+            this.siguiente.TabIndex = 580;
+            this.siguiente.Text = "SIGUIENTE";
+            this.siguiente.UseVisualStyleBackColor = true;
+            // 
             // diferenciaReal3
             // 
-            this.diferenciaReal3.Location = new System.Drawing.Point(1162, 803);
+            this.diferenciaReal3.Location = new System.Drawing.Point(1164, 817);
             this.diferenciaReal3.Name = "diferenciaReal3";
             this.diferenciaReal3.ReadOnly = true;
             this.diferenciaReal3.Size = new System.Drawing.Size(100, 20);
-            this.diferenciaReal3.TabIndex = 484;
+            this.diferenciaReal3.TabIndex = 579;
             // 
             // diferenciaDescuento3
             // 
-            this.diferenciaDescuento3.Location = new System.Drawing.Point(1063, 803);
+            this.diferenciaDescuento3.Location = new System.Drawing.Point(1065, 817);
             this.diferenciaDescuento3.Name = "diferenciaDescuento3";
             this.diferenciaDescuento3.ReadOnly = true;
             this.diferenciaDescuento3.Size = new System.Drawing.Size(100, 20);
-            this.diferenciaDescuento3.TabIndex = 483;
+            this.diferenciaDescuento3.TabIndex = 578;
             // 
             // diferenciaEstimado3
             // 
-            this.diferenciaEstimado3.Location = new System.Drawing.Point(964, 803);
+            this.diferenciaEstimado3.Location = new System.Drawing.Point(966, 817);
             this.diferenciaEstimado3.Name = "diferenciaEstimado3";
             this.diferenciaEstimado3.ReadOnly = true;
             this.diferenciaEstimado3.Size = new System.Drawing.Size(100, 20);
-            this.diferenciaEstimado3.TabIndex = 482;
+            this.diferenciaEstimado3.TabIndex = 577;
             // 
             // diferenciaReal2
             // 
-            this.diferenciaReal2.Location = new System.Drawing.Point(867, 803);
+            this.diferenciaReal2.Location = new System.Drawing.Point(869, 817);
             this.diferenciaReal2.Name = "diferenciaReal2";
             this.diferenciaReal2.ReadOnly = true;
             this.diferenciaReal2.Size = new System.Drawing.Size(100, 20);
-            this.diferenciaReal2.TabIndex = 481;
+            this.diferenciaReal2.TabIndex = 576;
             // 
             // diferenciaDescuento2
             // 
-            this.diferenciaDescuento2.Location = new System.Drawing.Point(768, 803);
+            this.diferenciaDescuento2.Location = new System.Drawing.Point(770, 817);
             this.diferenciaDescuento2.Name = "diferenciaDescuento2";
             this.diferenciaDescuento2.ReadOnly = true;
             this.diferenciaDescuento2.Size = new System.Drawing.Size(100, 20);
-            this.diferenciaDescuento2.TabIndex = 480;
+            this.diferenciaDescuento2.TabIndex = 575;
             // 
             // diferenciaEstimado2
             // 
-            this.diferenciaEstimado2.Location = new System.Drawing.Point(669, 803);
+            this.diferenciaEstimado2.Location = new System.Drawing.Point(671, 817);
             this.diferenciaEstimado2.Name = "diferenciaEstimado2";
             this.diferenciaEstimado2.ReadOnly = true;
             this.diferenciaEstimado2.Size = new System.Drawing.Size(100, 20);
-            this.diferenciaEstimado2.TabIndex = 479;
+            this.diferenciaEstimado2.TabIndex = 574;
             // 
             // diferenciaReal1
             // 
-            this.diferenciaReal1.Location = new System.Drawing.Point(578, 803);
+            this.diferenciaReal1.Location = new System.Drawing.Point(580, 817);
             this.diferenciaReal1.Name = "diferenciaReal1";
             this.diferenciaReal1.ReadOnly = true;
             this.diferenciaReal1.Size = new System.Drawing.Size(100, 20);
-            this.diferenciaReal1.TabIndex = 478;
+            this.diferenciaReal1.TabIndex = 573;
             // 
             // diferenciaDescuento1
             // 
-            this.diferenciaDescuento1.Location = new System.Drawing.Point(479, 803);
+            this.diferenciaDescuento1.Location = new System.Drawing.Point(481, 817);
             this.diferenciaDescuento1.Name = "diferenciaDescuento1";
             this.diferenciaDescuento1.ReadOnly = true;
             this.diferenciaDescuento1.Size = new System.Drawing.Size(100, 20);
-            this.diferenciaDescuento1.TabIndex = 477;
+            this.diferenciaDescuento1.TabIndex = 572;
             // 
             // diferenciaEstimado1
             // 
-            this.diferenciaEstimado1.Location = new System.Drawing.Point(380, 803);
+            this.diferenciaEstimado1.Location = new System.Drawing.Point(382, 817);
             this.diferenciaEstimado1.Name = "diferenciaEstimado1";
             this.diferenciaEstimado1.ReadOnly = true;
             this.diferenciaEstimado1.Size = new System.Drawing.Size(100, 20);
-            this.diferenciaEstimado1.TabIndex = 476;
+            this.diferenciaEstimado1.TabIndex = 571;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(278, 807);
+            this.label16.Location = new System.Drawing.Point(280, 821);
             this.label16.MinimumSize = new System.Drawing.Size(100, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(100, 13);
-            this.label16.TabIndex = 475;
+            this.label16.TabIndex = 570;
             this.label16.Text = "DIFERENCIA";
             // 
             // acumuladoDiferencia
             // 
-            this.acumuladoDiferencia.Location = new System.Drawing.Point(172, 804);
+            this.acumuladoDiferencia.Location = new System.Drawing.Point(174, 818);
             this.acumuladoDiferencia.Name = "acumuladoDiferencia";
             this.acumuladoDiferencia.ReadOnly = true;
             this.acumuladoDiferencia.Size = new System.Drawing.Size(100, 20);
-            this.acumuladoDiferencia.TabIndex = 474;
+            this.acumuladoDiferencia.TabIndex = 569;
             // 
             // pagos3
             // 
@@ -235,38 +272,37 @@
             this.pagos3.AllowUserToResizeRows = false;
             this.pagos3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.pagos3.ColumnHeadersVisible = false;
-            this.pagos3.Location = new System.Drawing.Point(964, 654);
+            this.pagos3.Location = new System.Drawing.Point(966, 668);
             this.pagos3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.pagos3.Name = "pagos3";
             this.pagos3.RowHeadersVisible = false;
             this.pagos3.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.pagos3.Size = new System.Drawing.Size(298, 150);
-            this.pagos3.TabIndex = 473;
-            this.pagos3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pagos3_CellContentClick);
+            this.pagos3.TabIndex = 568;
             // 
             // pagosReal3
             // 
-            this.pagosReal3.Location = new System.Drawing.Point(1162, 634);
+            this.pagosReal3.Location = new System.Drawing.Point(1164, 648);
             this.pagosReal3.Name = "pagosReal3";
             this.pagosReal3.ReadOnly = true;
             this.pagosReal3.Size = new System.Drawing.Size(100, 20);
-            this.pagosReal3.TabIndex = 472;
+            this.pagosReal3.TabIndex = 567;
             // 
             // pagosDescuento3
             // 
-            this.pagosDescuento3.Location = new System.Drawing.Point(1063, 634);
+            this.pagosDescuento3.Location = new System.Drawing.Point(1065, 648);
             this.pagosDescuento3.Name = "pagosDescuento3";
             this.pagosDescuento3.ReadOnly = true;
             this.pagosDescuento3.Size = new System.Drawing.Size(100, 20);
-            this.pagosDescuento3.TabIndex = 471;
+            this.pagosDescuento3.TabIndex = 566;
             // 
             // pagosEstimado3
             // 
-            this.pagosEstimado3.Location = new System.Drawing.Point(964, 634);
+            this.pagosEstimado3.Location = new System.Drawing.Point(966, 648);
             this.pagosEstimado3.Name = "pagosEstimado3";
             this.pagosEstimado3.ReadOnly = true;
             this.pagosEstimado3.Size = new System.Drawing.Size(100, 20);
-            this.pagosEstimado3.TabIndex = 470;
+            this.pagosEstimado3.TabIndex = 565;
             // 
             // pagos2
             // 
@@ -274,38 +310,37 @@
             this.pagos2.AllowUserToResizeRows = false;
             this.pagos2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.pagos2.ColumnHeadersVisible = false;
-            this.pagos2.Location = new System.Drawing.Point(672, 654);
+            this.pagos2.Location = new System.Drawing.Point(674, 668);
             this.pagos2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.pagos2.Name = "pagos2";
             this.pagos2.RowHeadersVisible = false;
             this.pagos2.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.pagos2.Size = new System.Drawing.Size(298, 150);
-            this.pagos2.TabIndex = 469;
-            this.pagos2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pagos2_CellContentClick);
+            this.pagos2.TabIndex = 564;
             // 
             // pagosReal2
             // 
-            this.pagosReal2.Location = new System.Drawing.Point(867, 634);
+            this.pagosReal2.Location = new System.Drawing.Point(869, 648);
             this.pagosReal2.Name = "pagosReal2";
             this.pagosReal2.ReadOnly = true;
             this.pagosReal2.Size = new System.Drawing.Size(100, 20);
-            this.pagosReal2.TabIndex = 468;
+            this.pagosReal2.TabIndex = 563;
             // 
             // pagosDescuento2
             // 
-            this.pagosDescuento2.Location = new System.Drawing.Point(768, 634);
+            this.pagosDescuento2.Location = new System.Drawing.Point(770, 648);
             this.pagosDescuento2.Name = "pagosDescuento2";
             this.pagosDescuento2.ReadOnly = true;
             this.pagosDescuento2.Size = new System.Drawing.Size(100, 20);
-            this.pagosDescuento2.TabIndex = 467;
+            this.pagosDescuento2.TabIndex = 562;
             // 
             // pagosEstimado2
             // 
-            this.pagosEstimado2.Location = new System.Drawing.Point(669, 634);
+            this.pagosEstimado2.Location = new System.Drawing.Point(671, 648);
             this.pagosEstimado2.Name = "pagosEstimado2";
             this.pagosEstimado2.ReadOnly = true;
             this.pagosEstimado2.Size = new System.Drawing.Size(100, 20);
-            this.pagosEstimado2.TabIndex = 466;
+            this.pagosEstimado2.TabIndex = 561;
             // 
             // pagos1
             // 
@@ -313,58 +348,57 @@
             this.pagos1.AllowUserToResizeRows = false;
             this.pagos1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.pagos1.ColumnHeadersVisible = false;
-            this.pagos1.Location = new System.Drawing.Point(278, 654);
+            this.pagos1.Location = new System.Drawing.Point(280, 668);
             this.pagos1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.pagos1.Name = "pagos1";
             this.pagos1.RowHeadersVisible = false;
             this.pagos1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.pagos1.Size = new System.Drawing.Size(400, 150);
-            this.pagos1.TabIndex = 465;
-            this.pagos1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pagos1_CellContentClick);
+            this.pagos1.TabIndex = 560;
             // 
             // pagosReal1
             // 
-            this.pagosReal1.Location = new System.Drawing.Point(578, 634);
+            this.pagosReal1.Location = new System.Drawing.Point(580, 648);
             this.pagosReal1.Name = "pagosReal1";
             this.pagosReal1.ReadOnly = true;
             this.pagosReal1.Size = new System.Drawing.Size(100, 20);
-            this.pagosReal1.TabIndex = 464;
+            this.pagosReal1.TabIndex = 559;
             // 
             // pagosDescuento1
             // 
-            this.pagosDescuento1.Location = new System.Drawing.Point(479, 634);
+            this.pagosDescuento1.Location = new System.Drawing.Point(481, 648);
             this.pagosDescuento1.Name = "pagosDescuento1";
             this.pagosDescuento1.ReadOnly = true;
             this.pagosDescuento1.Size = new System.Drawing.Size(100, 20);
-            this.pagosDescuento1.TabIndex = 463;
+            this.pagosDescuento1.TabIndex = 558;
             // 
             // pagosEstimado1
             // 
-            this.pagosEstimado1.Location = new System.Drawing.Point(380, 634);
+            this.pagosEstimado1.Location = new System.Drawing.Point(382, 648);
             this.pagosEstimado1.Name = "pagosEstimado1";
             this.pagosEstimado1.ReadOnly = true;
             this.pagosEstimado1.Size = new System.Drawing.Size(100, 20);
-            this.pagosEstimado1.TabIndex = 462;
+            this.pagosEstimado1.TabIndex = 557;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(278, 638);
+            this.label18.Location = new System.Drawing.Point(280, 652);
             this.label18.MinimumSize = new System.Drawing.Size(100, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(100, 13);
-            this.label18.TabIndex = 461;
+            this.label18.TabIndex = 556;
             this.label18.Text = "PAGOS";
             // 
             // acumuladoPagos
             // 
-            this.acumuladoPagos.Location = new System.Drawing.Point(172, 635);
+            this.acumuladoPagos.Location = new System.Drawing.Point(174, 649);
             this.acumuladoPagos.Name = "acumuladoPagos";
             this.acumuladoPagos.ReadOnly = true;
             this.acumuladoPagos.Size = new System.Drawing.Size(100, 20);
-            this.acumuladoPagos.TabIndex = 460;
+            this.acumuladoPagos.TabIndex = 555;
             // 
             // cobros3
             // 
@@ -372,38 +406,37 @@
             this.cobros3.AllowUserToResizeRows = false;
             this.cobros3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cobros3.ColumnHeadersVisible = false;
-            this.cobros3.Location = new System.Drawing.Point(961, 484);
+            this.cobros3.Location = new System.Drawing.Point(963, 498);
             this.cobros3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.cobros3.Name = "cobros3";
             this.cobros3.RowHeadersVisible = false;
             this.cobros3.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.cobros3.Size = new System.Drawing.Size(298, 150);
-            this.cobros3.TabIndex = 459;
-            this.cobros3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cobros3_CellContentClick);
+            this.cobros3.TabIndex = 554;
             // 
             // cobrosReal3
             // 
-            this.cobrosReal3.Location = new System.Drawing.Point(1159, 464);
+            this.cobrosReal3.Location = new System.Drawing.Point(1161, 478);
             this.cobrosReal3.Name = "cobrosReal3";
             this.cobrosReal3.ReadOnly = true;
             this.cobrosReal3.Size = new System.Drawing.Size(100, 20);
-            this.cobrosReal3.TabIndex = 458;
+            this.cobrosReal3.TabIndex = 553;
             // 
             // cobrosDescuento3
             // 
-            this.cobrosDescuento3.Location = new System.Drawing.Point(1060, 464);
+            this.cobrosDescuento3.Location = new System.Drawing.Point(1062, 478);
             this.cobrosDescuento3.Name = "cobrosDescuento3";
             this.cobrosDescuento3.ReadOnly = true;
             this.cobrosDescuento3.Size = new System.Drawing.Size(100, 20);
-            this.cobrosDescuento3.TabIndex = 457;
+            this.cobrosDescuento3.TabIndex = 552;
             // 
             // cobrosEstimado3
             // 
-            this.cobrosEstimado3.Location = new System.Drawing.Point(961, 464);
+            this.cobrosEstimado3.Location = new System.Drawing.Point(963, 478);
             this.cobrosEstimado3.Name = "cobrosEstimado3";
             this.cobrosEstimado3.ReadOnly = true;
             this.cobrosEstimado3.Size = new System.Drawing.Size(100, 20);
-            this.cobrosEstimado3.TabIndex = 456;
+            this.cobrosEstimado3.TabIndex = 551;
             // 
             // cobros2
             // 
@@ -411,38 +444,37 @@
             this.cobros2.AllowUserToResizeRows = false;
             this.cobros2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cobros2.ColumnHeadersVisible = false;
-            this.cobros2.Location = new System.Drawing.Point(669, 484);
+            this.cobros2.Location = new System.Drawing.Point(671, 498);
             this.cobros2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.cobros2.Name = "cobros2";
             this.cobros2.RowHeadersVisible = false;
             this.cobros2.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.cobros2.Size = new System.Drawing.Size(298, 150);
-            this.cobros2.TabIndex = 455;
-            this.cobros2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cobros2_CellContentClick);
+            this.cobros2.TabIndex = 550;
             // 
             // cobrosReal2
             // 
-            this.cobrosReal2.Location = new System.Drawing.Point(864, 464);
+            this.cobrosReal2.Location = new System.Drawing.Point(866, 478);
             this.cobrosReal2.Name = "cobrosReal2";
             this.cobrosReal2.ReadOnly = true;
             this.cobrosReal2.Size = new System.Drawing.Size(100, 20);
-            this.cobrosReal2.TabIndex = 454;
+            this.cobrosReal2.TabIndex = 549;
             // 
             // cobrosDescuento2
             // 
-            this.cobrosDescuento2.Location = new System.Drawing.Point(765, 464);
+            this.cobrosDescuento2.Location = new System.Drawing.Point(767, 478);
             this.cobrosDescuento2.Name = "cobrosDescuento2";
             this.cobrosDescuento2.ReadOnly = true;
             this.cobrosDescuento2.Size = new System.Drawing.Size(100, 20);
-            this.cobrosDescuento2.TabIndex = 453;
+            this.cobrosDescuento2.TabIndex = 548;
             // 
             // cobrosEstimado2
             // 
-            this.cobrosEstimado2.Location = new System.Drawing.Point(666, 464);
+            this.cobrosEstimado2.Location = new System.Drawing.Point(668, 478);
             this.cobrosEstimado2.Name = "cobrosEstimado2";
             this.cobrosEstimado2.ReadOnly = true;
             this.cobrosEstimado2.Size = new System.Drawing.Size(100, 20);
-            this.cobrosEstimado2.TabIndex = 452;
+            this.cobrosEstimado2.TabIndex = 547;
             // 
             // cobros1
             // 
@@ -450,150 +482,149 @@
             this.cobros1.AllowUserToResizeRows = false;
             this.cobros1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cobros1.ColumnHeadersVisible = false;
-            this.cobros1.Location = new System.Drawing.Point(275, 484);
+            this.cobros1.Location = new System.Drawing.Point(277, 498);
             this.cobros1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.cobros1.Name = "cobros1";
             this.cobros1.RowHeadersVisible = false;
             this.cobros1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.cobros1.Size = new System.Drawing.Size(400, 150);
-            this.cobros1.TabIndex = 451;
-            this.cobros1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cobros1_CellContentClick);
+            this.cobros1.TabIndex = 546;
             // 
             // cobrosReal1
             // 
-            this.cobrosReal1.Location = new System.Drawing.Point(575, 464);
+            this.cobrosReal1.Location = new System.Drawing.Point(577, 478);
             this.cobrosReal1.Name = "cobrosReal1";
             this.cobrosReal1.ReadOnly = true;
             this.cobrosReal1.Size = new System.Drawing.Size(100, 20);
-            this.cobrosReal1.TabIndex = 450;
+            this.cobrosReal1.TabIndex = 545;
             // 
             // cobrosDescuento1
             // 
-            this.cobrosDescuento1.Location = new System.Drawing.Point(476, 464);
+            this.cobrosDescuento1.Location = new System.Drawing.Point(478, 478);
             this.cobrosDescuento1.Name = "cobrosDescuento1";
             this.cobrosDescuento1.ReadOnly = true;
             this.cobrosDescuento1.Size = new System.Drawing.Size(100, 20);
-            this.cobrosDescuento1.TabIndex = 449;
+            this.cobrosDescuento1.TabIndex = 544;
             // 
             // cobrosEstimado1
             // 
-            this.cobrosEstimado1.Location = new System.Drawing.Point(377, 464);
+            this.cobrosEstimado1.Location = new System.Drawing.Point(379, 478);
             this.cobrosEstimado1.Name = "cobrosEstimado1";
             this.cobrosEstimado1.ReadOnly = true;
             this.cobrosEstimado1.Size = new System.Drawing.Size(100, 20);
-            this.cobrosEstimado1.TabIndex = 448;
+            this.cobrosEstimado1.TabIndex = 543;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(275, 468);
+            this.label19.Location = new System.Drawing.Point(277, 482);
             this.label19.MinimumSize = new System.Drawing.Size(100, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(100, 13);
-            this.label19.TabIndex = 447;
+            this.label19.TabIndex = 542;
             this.label19.Text = "COBROS";
             // 
             // acumuladoCobros
             // 
-            this.acumuladoCobros.Location = new System.Drawing.Point(169, 465);
+            this.acumuladoCobros.Location = new System.Drawing.Point(171, 479);
             this.acumuladoCobros.Name = "acumuladoCobros";
             this.acumuladoCobros.ReadOnly = true;
             this.acumuladoCobros.Size = new System.Drawing.Size(100, 20);
-            this.acumuladoCobros.TabIndex = 446;
+            this.acumuladoCobros.TabIndex = 541;
             // 
             // beneficioReal3
             // 
-            this.beneficioReal3.Location = new System.Drawing.Point(1159, 426);
+            this.beneficioReal3.Location = new System.Drawing.Point(1161, 440);
             this.beneficioReal3.Name = "beneficioReal3";
             this.beneficioReal3.ReadOnly = true;
             this.beneficioReal3.Size = new System.Drawing.Size(100, 20);
-            this.beneficioReal3.TabIndex = 445;
+            this.beneficioReal3.TabIndex = 540;
             // 
             // benificioDescuento3
             // 
-            this.benificioDescuento3.Location = new System.Drawing.Point(1060, 426);
+            this.benificioDescuento3.Location = new System.Drawing.Point(1062, 440);
             this.benificioDescuento3.Name = "benificioDescuento3";
             this.benificioDescuento3.ReadOnly = true;
             this.benificioDescuento3.Size = new System.Drawing.Size(100, 20);
-            this.benificioDescuento3.TabIndex = 444;
+            this.benificioDescuento3.TabIndex = 539;
             // 
             // beneficioEstimado3
             // 
-            this.beneficioEstimado3.Location = new System.Drawing.Point(961, 426);
+            this.beneficioEstimado3.Location = new System.Drawing.Point(963, 440);
             this.beneficioEstimado3.Name = "beneficioEstimado3";
             this.beneficioEstimado3.ReadOnly = true;
             this.beneficioEstimado3.Size = new System.Drawing.Size(100, 20);
-            this.beneficioEstimado3.TabIndex = 443;
+            this.beneficioEstimado3.TabIndex = 538;
             // 
             // beneficioReal2
             // 
-            this.beneficioReal2.Location = new System.Drawing.Point(864, 426);
+            this.beneficioReal2.Location = new System.Drawing.Point(866, 440);
             this.beneficioReal2.Name = "beneficioReal2";
             this.beneficioReal2.ReadOnly = true;
             this.beneficioReal2.Size = new System.Drawing.Size(100, 20);
-            this.beneficioReal2.TabIndex = 442;
+            this.beneficioReal2.TabIndex = 537;
             // 
             // beneficioDescuento2
             // 
-            this.beneficioDescuento2.Location = new System.Drawing.Point(765, 426);
+            this.beneficioDescuento2.Location = new System.Drawing.Point(767, 440);
             this.beneficioDescuento2.Name = "beneficioDescuento2";
             this.beneficioDescuento2.ReadOnly = true;
             this.beneficioDescuento2.Size = new System.Drawing.Size(100, 20);
-            this.beneficioDescuento2.TabIndex = 441;
+            this.beneficioDescuento2.TabIndex = 536;
             // 
             // beneficioEstimado2
             // 
-            this.beneficioEstimado2.Location = new System.Drawing.Point(666, 426);
+            this.beneficioEstimado2.Location = new System.Drawing.Point(668, 440);
             this.beneficioEstimado2.Name = "beneficioEstimado2";
             this.beneficioEstimado2.ReadOnly = true;
             this.beneficioEstimado2.Size = new System.Drawing.Size(100, 20);
-            this.beneficioEstimado2.TabIndex = 440;
+            this.beneficioEstimado2.TabIndex = 535;
             // 
             // beneficioReal1
             // 
-            this.beneficioReal1.Location = new System.Drawing.Point(575, 426);
+            this.beneficioReal1.Location = new System.Drawing.Point(577, 440);
             this.beneficioReal1.Name = "beneficioReal1";
             this.beneficioReal1.ReadOnly = true;
             this.beneficioReal1.Size = new System.Drawing.Size(100, 20);
-            this.beneficioReal1.TabIndex = 439;
+            this.beneficioReal1.TabIndex = 534;
             // 
             // beneficioDescuento1
             // 
-            this.beneficioDescuento1.Location = new System.Drawing.Point(476, 426);
+            this.beneficioDescuento1.Location = new System.Drawing.Point(478, 440);
             this.beneficioDescuento1.Name = "beneficioDescuento1";
             this.beneficioDescuento1.ReadOnly = true;
             this.beneficioDescuento1.Size = new System.Drawing.Size(100, 20);
-            this.beneficioDescuento1.TabIndex = 438;
+            this.beneficioDescuento1.TabIndex = 533;
             // 
             // beneficioEstimado1
             // 
-            this.beneficioEstimado1.Location = new System.Drawing.Point(377, 426);
+            this.beneficioEstimado1.Location = new System.Drawing.Point(379, 440);
             this.beneficioEstimado1.Name = "beneficioEstimado1";
             this.beneficioEstimado1.ReadOnly = true;
             this.beneficioEstimado1.Size = new System.Drawing.Size(100, 20);
-            this.beneficioEstimado1.TabIndex = 437;
+            this.beneficioEstimado1.TabIndex = 532;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(275, 430);
+            this.label17.Location = new System.Drawing.Point(277, 444);
             this.label17.MinimumSize = new System.Drawing.Size(100, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(100, 13);
-            this.label17.TabIndex = 436;
+            this.label17.TabIndex = 531;
             this.label17.Text = "BENEFICIO";
             // 
             // acumuladoBeneficio
             // 
-            this.acumuladoBeneficio.Location = new System.Drawing.Point(169, 427);
+            this.acumuladoBeneficio.Location = new System.Drawing.Point(171, 441);
             this.acumuladoBeneficio.Name = "acumuladoBeneficio";
             this.acumuladoBeneficio.ReadOnly = true;
             this.acumuladoBeneficio.Size = new System.Drawing.Size(100, 20);
-            this.acumuladoBeneficio.TabIndex = 435;
+            this.acumuladoBeneficio.TabIndex = 530;
             // 
             // gastos3
             // 
@@ -601,38 +632,37 @@
             this.gastos3.AllowUserToResizeRows = false;
             this.gastos3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gastos3.ColumnHeadersVisible = false;
-            this.gastos3.Location = new System.Drawing.Point(961, 277);
+            this.gastos3.Location = new System.Drawing.Point(963, 291);
             this.gastos3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.gastos3.Name = "gastos3";
             this.gastos3.RowHeadersVisible = false;
             this.gastos3.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.gastos3.Size = new System.Drawing.Size(298, 150);
-            this.gastos3.TabIndex = 434;
-            this.gastos3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gastos3_CellContentClick);
+            this.gastos3.TabIndex = 529;
             // 
             // gastosReal3
             // 
-            this.gastosReal3.Location = new System.Drawing.Point(1159, 257);
+            this.gastosReal3.Location = new System.Drawing.Point(1161, 271);
             this.gastosReal3.Name = "gastosReal3";
             this.gastosReal3.ReadOnly = true;
             this.gastosReal3.Size = new System.Drawing.Size(100, 20);
-            this.gastosReal3.TabIndex = 433;
+            this.gastosReal3.TabIndex = 528;
             // 
             // gastosDescuento3
             // 
-            this.gastosDescuento3.Location = new System.Drawing.Point(1060, 257);
+            this.gastosDescuento3.Location = new System.Drawing.Point(1062, 271);
             this.gastosDescuento3.Name = "gastosDescuento3";
             this.gastosDescuento3.ReadOnly = true;
             this.gastosDescuento3.Size = new System.Drawing.Size(100, 20);
-            this.gastosDescuento3.TabIndex = 432;
+            this.gastosDescuento3.TabIndex = 527;
             // 
             // gastosEstimado3
             // 
-            this.gastosEstimado3.Location = new System.Drawing.Point(961, 257);
+            this.gastosEstimado3.Location = new System.Drawing.Point(963, 271);
             this.gastosEstimado3.Name = "gastosEstimado3";
             this.gastosEstimado3.ReadOnly = true;
             this.gastosEstimado3.Size = new System.Drawing.Size(100, 20);
-            this.gastosEstimado3.TabIndex = 431;
+            this.gastosEstimado3.TabIndex = 526;
             // 
             // gastos2
             // 
@@ -640,38 +670,37 @@
             this.gastos2.AllowUserToResizeRows = false;
             this.gastos2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gastos2.ColumnHeadersVisible = false;
-            this.gastos2.Location = new System.Drawing.Point(669, 277);
+            this.gastos2.Location = new System.Drawing.Point(671, 291);
             this.gastos2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.gastos2.Name = "gastos2";
             this.gastos2.RowHeadersVisible = false;
             this.gastos2.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.gastos2.Size = new System.Drawing.Size(298, 150);
-            this.gastos2.TabIndex = 430;
-            this.gastos2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gastos2_CellContentClick);
+            this.gastos2.TabIndex = 525;
             // 
             // gastosReal2
             // 
-            this.gastosReal2.Location = new System.Drawing.Point(864, 257);
+            this.gastosReal2.Location = new System.Drawing.Point(866, 271);
             this.gastosReal2.Name = "gastosReal2";
             this.gastosReal2.ReadOnly = true;
             this.gastosReal2.Size = new System.Drawing.Size(100, 20);
-            this.gastosReal2.TabIndex = 429;
+            this.gastosReal2.TabIndex = 524;
             // 
             // gastosDescuento2
             // 
-            this.gastosDescuento2.Location = new System.Drawing.Point(765, 257);
+            this.gastosDescuento2.Location = new System.Drawing.Point(767, 271);
             this.gastosDescuento2.Name = "gastosDescuento2";
             this.gastosDescuento2.ReadOnly = true;
             this.gastosDescuento2.Size = new System.Drawing.Size(100, 20);
-            this.gastosDescuento2.TabIndex = 428;
+            this.gastosDescuento2.TabIndex = 523;
             // 
             // gastosEstimado2
             // 
-            this.gastosEstimado2.Location = new System.Drawing.Point(666, 257);
+            this.gastosEstimado2.Location = new System.Drawing.Point(668, 271);
             this.gastosEstimado2.Name = "gastosEstimado2";
             this.gastosEstimado2.ReadOnly = true;
             this.gastosEstimado2.Size = new System.Drawing.Size(100, 20);
-            this.gastosEstimado2.TabIndex = 427;
+            this.gastosEstimado2.TabIndex = 522;
             // 
             // gastos1
             // 
@@ -679,58 +708,57 @@
             this.gastos1.AllowUserToResizeRows = false;
             this.gastos1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gastos1.ColumnHeadersVisible = false;
-            this.gastos1.Location = new System.Drawing.Point(275, 277);
+            this.gastos1.Location = new System.Drawing.Point(277, 291);
             this.gastos1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.gastos1.Name = "gastos1";
             this.gastos1.RowHeadersVisible = false;
             this.gastos1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.gastos1.Size = new System.Drawing.Size(400, 150);
-            this.gastos1.TabIndex = 426;
-            this.gastos1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gastos1_CellContentClick);
+            this.gastos1.TabIndex = 521;
             // 
             // gastosReal1
             // 
-            this.gastosReal1.Location = new System.Drawing.Point(575, 257);
+            this.gastosReal1.Location = new System.Drawing.Point(577, 271);
             this.gastosReal1.Name = "gastosReal1";
             this.gastosReal1.ReadOnly = true;
             this.gastosReal1.Size = new System.Drawing.Size(100, 20);
-            this.gastosReal1.TabIndex = 425;
+            this.gastosReal1.TabIndex = 520;
             // 
             // gastosDescuento1
             // 
-            this.gastosDescuento1.Location = new System.Drawing.Point(476, 257);
+            this.gastosDescuento1.Location = new System.Drawing.Point(478, 271);
             this.gastosDescuento1.Name = "gastosDescuento1";
             this.gastosDescuento1.ReadOnly = true;
             this.gastosDescuento1.Size = new System.Drawing.Size(100, 20);
-            this.gastosDescuento1.TabIndex = 424;
+            this.gastosDescuento1.TabIndex = 519;
             // 
             // gastosEstimados1
             // 
-            this.gastosEstimados1.Location = new System.Drawing.Point(377, 257);
+            this.gastosEstimados1.Location = new System.Drawing.Point(379, 271);
             this.gastosEstimados1.Name = "gastosEstimados1";
             this.gastosEstimados1.ReadOnly = true;
             this.gastosEstimados1.Size = new System.Drawing.Size(100, 20);
-            this.gastosEstimados1.TabIndex = 423;
+            this.gastosEstimados1.TabIndex = 518;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(275, 261);
+            this.label15.Location = new System.Drawing.Point(277, 275);
             this.label15.MinimumSize = new System.Drawing.Size(100, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(100, 13);
-            this.label15.TabIndex = 422;
+            this.label15.TabIndex = 517;
             this.label15.Text = "GASTOS";
             // 
             // acumuladoGastos
             // 
-            this.acumuladoGastos.Location = new System.Drawing.Point(169, 258);
+            this.acumuladoGastos.Location = new System.Drawing.Point(171, 272);
             this.acumuladoGastos.Name = "acumuladoGastos";
             this.acumuladoGastos.ReadOnly = true;
             this.acumuladoGastos.Size = new System.Drawing.Size(100, 20);
-            this.acumuladoGastos.TabIndex = 421;
+            this.acumuladoGastos.TabIndex = 516;
             // 
             // ingresos3
             // 
@@ -738,38 +766,37 @@
             this.ingresos3.AllowUserToResizeRows = false;
             this.ingresos3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ingresos3.ColumnHeadersVisible = false;
-            this.ingresos3.Location = new System.Drawing.Point(958, 107);
+            this.ingresos3.Location = new System.Drawing.Point(960, 121);
             this.ingresos3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.ingresos3.Name = "ingresos3";
             this.ingresos3.RowHeadersVisible = false;
             this.ingresos3.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ingresos3.Size = new System.Drawing.Size(298, 150);
-            this.ingresos3.TabIndex = 420;
-            this.ingresos3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ingresos3_CellContentClick);
+            this.ingresos3.TabIndex = 515;
             // 
             // ingresosReal3
             // 
-            this.ingresosReal3.Location = new System.Drawing.Point(1156, 87);
+            this.ingresosReal3.Location = new System.Drawing.Point(1158, 101);
             this.ingresosReal3.Name = "ingresosReal3";
             this.ingresosReal3.ReadOnly = true;
             this.ingresosReal3.Size = new System.Drawing.Size(100, 20);
-            this.ingresosReal3.TabIndex = 419;
+            this.ingresosReal3.TabIndex = 514;
             // 
             // ingresosDescuento3
             // 
-            this.ingresosDescuento3.Location = new System.Drawing.Point(1057, 87);
+            this.ingresosDescuento3.Location = new System.Drawing.Point(1059, 101);
             this.ingresosDescuento3.Name = "ingresosDescuento3";
             this.ingresosDescuento3.ReadOnly = true;
             this.ingresosDescuento3.Size = new System.Drawing.Size(100, 20);
-            this.ingresosDescuento3.TabIndex = 418;
+            this.ingresosDescuento3.TabIndex = 513;
             // 
             // ingresosEstimados3
             // 
-            this.ingresosEstimados3.Location = new System.Drawing.Point(958, 87);
+            this.ingresosEstimados3.Location = new System.Drawing.Point(960, 101);
             this.ingresosEstimados3.Name = "ingresosEstimados3";
             this.ingresosEstimados3.ReadOnly = true;
             this.ingresosEstimados3.Size = new System.Drawing.Size(100, 20);
-            this.ingresosEstimados3.TabIndex = 417;
+            this.ingresosEstimados3.TabIndex = 512;
             // 
             // label11
             // 
@@ -777,12 +804,12 @@
             this.label11.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label11.Location = new System.Drawing.Point(958, 58);
+            this.label11.Location = new System.Drawing.Point(960, 72);
             this.label11.MinimumSize = new System.Drawing.Size(298, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(298, 13);
-            this.label11.TabIndex = 416;
-            this.label11.Text = "MARZO";
+            this.label11.TabIndex = 511;
+            this.label11.Text = "JUNIO";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label12
@@ -790,11 +817,11 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1156, 71);
+            this.label12.Location = new System.Drawing.Point(1158, 85);
             this.label12.MinimumSize = new System.Drawing.Size(100, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(100, 13);
-            this.label12.TabIndex = 415;
+            this.label12.TabIndex = 510;
             this.label12.Text = "REAL";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -803,11 +830,11 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(1057, 71);
+            this.label13.Location = new System.Drawing.Point(1059, 85);
             this.label13.MinimumSize = new System.Drawing.Size(100, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(100, 13);
-            this.label13.TabIndex = 414;
+            this.label13.TabIndex = 509;
             this.label13.Text = "DESCUENTO";
             this.label13.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -816,11 +843,11 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(958, 71);
+            this.label14.Location = new System.Drawing.Point(960, 85);
             this.label14.MinimumSize = new System.Drawing.Size(100, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(100, 13);
-            this.label14.TabIndex = 413;
+            this.label14.TabIndex = 508;
             this.label14.Text = "ESTIMADO";
             this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -830,38 +857,37 @@
             this.ingresos2.AllowUserToResizeRows = false;
             this.ingresos2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ingresos2.ColumnHeadersVisible = false;
-            this.ingresos2.Location = new System.Drawing.Point(666, 107);
+            this.ingresos2.Location = new System.Drawing.Point(668, 121);
             this.ingresos2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.ingresos2.Name = "ingresos2";
             this.ingresos2.RowHeadersVisible = false;
             this.ingresos2.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ingresos2.Size = new System.Drawing.Size(298, 150);
-            this.ingresos2.TabIndex = 412;
-            this.ingresos2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ingresos2_CellContentClick);
+            this.ingresos2.TabIndex = 507;
             // 
             // ingresosReal2
             // 
-            this.ingresosReal2.Location = new System.Drawing.Point(861, 87);
+            this.ingresosReal2.Location = new System.Drawing.Point(863, 101);
             this.ingresosReal2.Name = "ingresosReal2";
             this.ingresosReal2.ReadOnly = true;
             this.ingresosReal2.Size = new System.Drawing.Size(100, 20);
-            this.ingresosReal2.TabIndex = 411;
+            this.ingresosReal2.TabIndex = 506;
             // 
             // ingresosDescuento2
             // 
-            this.ingresosDescuento2.Location = new System.Drawing.Point(762, 87);
+            this.ingresosDescuento2.Location = new System.Drawing.Point(764, 101);
             this.ingresosDescuento2.Name = "ingresosDescuento2";
             this.ingresosDescuento2.ReadOnly = true;
             this.ingresosDescuento2.Size = new System.Drawing.Size(100, 20);
-            this.ingresosDescuento2.TabIndex = 410;
+            this.ingresosDescuento2.TabIndex = 505;
             // 
             // ingresosEstimados2
             // 
-            this.ingresosEstimados2.Location = new System.Drawing.Point(663, 87);
+            this.ingresosEstimados2.Location = new System.Drawing.Point(665, 101);
             this.ingresosEstimados2.Name = "ingresosEstimados2";
             this.ingresosEstimados2.ReadOnly = true;
             this.ingresosEstimados2.Size = new System.Drawing.Size(100, 20);
-            this.ingresosEstimados2.TabIndex = 409;
+            this.ingresosEstimados2.TabIndex = 504;
             // 
             // label7
             // 
@@ -869,12 +895,12 @@
             this.label7.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label7.Location = new System.Drawing.Point(663, 58);
+            this.label7.Location = new System.Drawing.Point(665, 72);
             this.label7.MinimumSize = new System.Drawing.Size(298, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(298, 13);
-            this.label7.TabIndex = 408;
-            this.label7.Text = "FEBRERO";
+            this.label7.TabIndex = 503;
+            this.label7.Text = "MAYO";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label8
@@ -882,11 +908,11 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(861, 71);
+            this.label8.Location = new System.Drawing.Point(863, 85);
             this.label8.MinimumSize = new System.Drawing.Size(100, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 13);
-            this.label8.TabIndex = 407;
+            this.label8.TabIndex = 502;
             this.label8.Text = "REAL";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -895,11 +921,11 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(762, 71);
+            this.label9.Location = new System.Drawing.Point(764, 85);
             this.label9.MinimumSize = new System.Drawing.Size(100, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 13);
-            this.label9.TabIndex = 406;
+            this.label9.TabIndex = 501;
             this.label9.Text = "DESCUENTO";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -908,11 +934,11 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(663, 71);
+            this.label10.Location = new System.Drawing.Point(665, 85);
             this.label10.MinimumSize = new System.Drawing.Size(100, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 13);
-            this.label10.TabIndex = 405;
+            this.label10.TabIndex = 500;
             this.label10.Text = "ESTIMADO";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -922,38 +948,38 @@
             this.ingresos1.AllowUserToResizeRows = false;
             this.ingresos1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ingresos1.ColumnHeadersVisible = false;
-            this.ingresos1.Location = new System.Drawing.Point(272, 107);
+            this.ingresos1.Location = new System.Drawing.Point(274, 121);
             this.ingresos1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.ingresos1.Name = "ingresos1";
             this.ingresos1.RowHeadersVisible = false;
             this.ingresos1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ingresos1.Size = new System.Drawing.Size(400, 150);
-            this.ingresos1.TabIndex = 404;
-            this.ingresos1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ingresos1_CellContentClick);
+            this.ingresos1.TabIndex = 499;
+            this.ingresos1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ingresos1_CellContentClick_1);
             // 
             // ingresosReal1
             // 
-            this.ingresosReal1.Location = new System.Drawing.Point(572, 87);
+            this.ingresosReal1.Location = new System.Drawing.Point(574, 101);
             this.ingresosReal1.Name = "ingresosReal1";
             this.ingresosReal1.ReadOnly = true;
             this.ingresosReal1.Size = new System.Drawing.Size(100, 20);
-            this.ingresosReal1.TabIndex = 403;
+            this.ingresosReal1.TabIndex = 498;
             // 
             // ingresosDescuento1
             // 
-            this.ingresosDescuento1.Location = new System.Drawing.Point(473, 87);
+            this.ingresosDescuento1.Location = new System.Drawing.Point(475, 101);
             this.ingresosDescuento1.Name = "ingresosDescuento1";
             this.ingresosDescuento1.ReadOnly = true;
             this.ingresosDescuento1.Size = new System.Drawing.Size(100, 20);
-            this.ingresosDescuento1.TabIndex = 402;
+            this.ingresosDescuento1.TabIndex = 497;
             // 
             // ingresosEstimados1
             // 
-            this.ingresosEstimados1.Location = new System.Drawing.Point(374, 87);
+            this.ingresosEstimados1.Location = new System.Drawing.Point(376, 101);
             this.ingresosEstimados1.Name = "ingresosEstimados1";
             this.ingresosEstimados1.ReadOnly = true;
             this.ingresosEstimados1.Size = new System.Drawing.Size(100, 20);
-            this.ingresosEstimados1.TabIndex = 401;
+            this.ingresosEstimados1.TabIndex = 496;
             // 
             // label6
             // 
@@ -961,12 +987,12 @@
             this.label6.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label6.Location = new System.Drawing.Point(374, 58);
+            this.label6.Location = new System.Drawing.Point(376, 72);
             this.label6.MinimumSize = new System.Drawing.Size(298, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(298, 13);
-            this.label6.TabIndex = 400;
-            this.label6.Text = "ENERO";
+            this.label6.TabIndex = 495;
+            this.label6.Text = "ABRIL";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label5
@@ -974,11 +1000,11 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(572, 71);
+            this.label5.Location = new System.Drawing.Point(574, 85);
             this.label5.MinimumSize = new System.Drawing.Size(100, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 13);
-            this.label5.TabIndex = 399;
+            this.label5.TabIndex = 494;
             this.label5.Text = "REAL";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -987,11 +1013,11 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(473, 71);
+            this.label4.Location = new System.Drawing.Point(475, 85);
             this.label4.MinimumSize = new System.Drawing.Size(100, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 13);
-            this.label4.TabIndex = 398;
+            this.label4.TabIndex = 493;
             this.label4.Text = "DESCUENTO";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -1000,11 +1026,11 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(374, 71);
+            this.label3.Location = new System.Drawing.Point(376, 85);
             this.label3.MinimumSize = new System.Drawing.Size(100, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 13);
-            this.label3.TabIndex = 397;
+            this.label3.TabIndex = 492;
             this.label3.Text = "ESTIMADO";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -1013,63 +1039,24 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(272, 90);
+            this.label2.Location = new System.Drawing.Point(274, 104);
             this.label2.MinimumSize = new System.Drawing.Size(100, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 13);
-            this.label2.TabIndex = 396;
+            this.label2.TabIndex = 491;
             this.label2.Text = "INGRESOS";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(166, 72);
+            this.label1.Location = new System.Drawing.Point(168, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
-            this.label1.TabIndex = 395;
+            this.label1.TabIndex = 490;
             this.label1.Text = "ACUMULADO";
             // 
-            // siguiente
-            // 
-            this.siguiente.Location = new System.Drawing.Point(1181, 12);
-            this.siguiente.Name = "siguiente";
-            this.siguiente.Size = new System.Drawing.Size(75, 23);
-            this.siguiente.TabIndex = 485;
-            this.siguiente.Text = "SIGUIENTE";
-            this.siguiente.UseVisualStyleBackColor = true;
-            this.siguiente.Click += new System.EventHandler(this.siguiente_Click);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(163, 33);
-            this.label20.MinimumSize = new System.Drawing.Size(100, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(100, 13);
-            this.label20.TabIndex = 487;
-            this.label20.Text = "AREA";
-            // 
-            // areaText
-            // 
-            this.areaText.Enabled = false;
-            this.areaText.Location = new System.Drawing.Point(269, 30);
-            this.areaText.Name = "areaText";
-            this.areaText.ReadOnly = true;
-            this.areaText.Size = new System.Drawing.Size(100, 20);
-            this.areaText.TabIndex = 488;
-            // 
-            // acumuladoIngreso
-            // 
-            this.acumuladoIngreso.Location = new System.Drawing.Point(166, 87);
-            this.acumuladoIngreso.Name = "acumuladoIngreso";
-            this.acumuladoIngreso.ReadOnly = true;
-            this.acumuladoIngreso.Size = new System.Drawing.Size(100, 20);
-            this.acumuladoIngreso.TabIndex = 489;
-            // 
-            // Area
+            // Area2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1168,10 +1155,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Area";
-            this.Text = "Departamentos Seguimiento 2018 - Area Enero Febrero Marzo";
-            this.Load += new System.EventHandler(this.Area_Load_1);
+            this.Name = "Area2";
+            this.Text = "Departamentos Seguimiento 2018 - Area Abril Mayo Junio";
+            this.Load += new System.EventHandler(this.Area2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pagos3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pagos2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pagos1)).EndInit();
@@ -1191,6 +1177,10 @@
 
         #endregion
 
+        public System.Windows.Forms.TextBox acumuladoIngreso;
+        public System.Windows.Forms.TextBox areaText;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button siguiente;
         private System.Windows.Forms.TextBox diferenciaReal3;
         private System.Windows.Forms.TextBox diferenciaDescuento3;
         private System.Windows.Forms.TextBox diferenciaEstimado3;
@@ -1281,10 +1271,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.TextBox acumuladoIngreso;
-        private System.Windows.Forms.Button siguiente;
-        private System.Windows.Forms.Label label20;
-        public System.Windows.Forms.TextBox areaText;
-   
     }
 }

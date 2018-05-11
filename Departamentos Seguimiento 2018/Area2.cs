@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Departamentos_Seguimiento_2018
 {
-    public partial class Area : Form
+    public partial class Area2 : Form
     {
         internal General1 general1;
         internal General2 general2;
@@ -30,14 +30,16 @@ namespace Departamentos_Seguimiento_2018
         private string elementoId;
         private string gen;
 
-        public Area()
+        public Area2()
         {
             InitializeComponent();
 
         }
-        
 
-        private void Area_Load_1(object sender, EventArgs e)
+
+       
+
+        private void Area2_Load(object sender, EventArgs e)
         {
             todosconceptos = con.dataSet.Tables["dtTodosConceptos"];
 
@@ -51,25 +53,26 @@ namespace Departamentos_Seguimiento_2018
             reloadArea();
         }
 
+
         private void ingresos1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             show(ingresos1, e);
         }
-     
+
 
         private void ingresos2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             show(ingresos2, e);
         }
 
-      
+
 
         private void ingresos3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             show(ingresos3, e);
         }
 
-    
+
 
 
         private void gastos1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -77,41 +80,41 @@ namespace Departamentos_Seguimiento_2018
             show(gastos1, e);
         }
 
-       
+
         private void gastos2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             show(gastos2, e);
         }
 
-      
+
 
         private void gastos3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             show(gastos3, e);
         }
 
-       
+
 
         private void cobros1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             show(cobros1, e);
         }
 
-       
+
 
         private void cobros2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             show(cobros2, e);
         }
 
-     
+
 
         private void cobros3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             show(cobros3, e);
         }
 
-       
+
         private void pagos1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             show(pagos1, e);
@@ -119,7 +122,7 @@ namespace Departamentos_Seguimiento_2018
 
         private void siguiente_Click(object sender, EventArgs e)
         {
-            Area2 g = new Area2();
+            Area3 g = new Area3();
             g.con = con;
             g.fecha = fecha;
 
@@ -132,6 +135,8 @@ namespace Departamentos_Seguimiento_2018
 
             g.Show();
         }
+
+      
 
         private void pagos2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -156,7 +161,7 @@ namespace Departamentos_Seguimiento_2018
 
             el = new Elemento(idasiento, this.fecha.Year, concepto_ingresos, elementoId, elemento, areaId, estimado, descuento, real);
             el.con = con;
-            el.area = this;
+            el.area2 = this;
             el.nombreDelArea = areaText.Text;
             el.areaName = this.Name;
 
@@ -179,7 +184,7 @@ namespace Departamentos_Seguimiento_2018
                         case "General2": general2.Close(); break;
                         case "General3": general3.Close(); break;
                         case "General4": general4.Close(); break;
-                    }                
+                    }
                     this.Close();
                 }
             }
@@ -229,7 +234,7 @@ namespace Departamentos_Seguimiento_2018
 
         private void reloadAreaIngresos()
         {
-            
+
             ingresos1.DataSource = con.tablaElementosConceptoMesAñoArea(con.qElementosConceptoEneroAñoArea, idConcepto_ingresos, fecha.Year.ToString(), areaId);
             ingresos2.DataSource = con.tablaElementosConceptoMesAñoArea(con.qElementosConceptoFebreroAñoArea, idConcepto_ingresos, fecha.Year.ToString(), areaId);
             ingresos3.DataSource = con.tablaElementosConceptoMesAñoArea(con.qElementosConceptoMarzoAñoArea, idConcepto_ingresos, fecha.Year.ToString(), areaId);

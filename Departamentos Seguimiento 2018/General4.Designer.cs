@@ -916,7 +916,6 @@
             this.ingresos1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.ingresos1.Size = new System.Drawing.Size(400, 150);
             this.ingresos1.TabIndex = 684;
-            this.ingresos1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ingresos1_CellContentClick);
             // 
             // ingresosReal1
             // 

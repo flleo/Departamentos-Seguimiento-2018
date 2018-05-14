@@ -12,7 +12,7 @@ namespace Departamentos_Seguimiento_2018
 {
     public partial class Elemento : Form
     {
-
+        internal General_Form gf;
         public Conexion con;
         DataTable todosConceptos;
         string idelemento, idarea;
@@ -23,6 +23,7 @@ namespace Departamentos_Seguimiento_2018
         internal Area4 area4;
         internal string areaName;       // Nombre de la clase
         internal string nombreDelArea;  // Como hemos llamado al área
+
 
 
 
@@ -43,21 +44,7 @@ namespace Departamentos_Seguimiento_2018
 
         }
 
-        private void eliminar_Click(object sender, EventArgs e)
-        {
-           
-            if (MessageBox.Show("¿Desea eliminar el elemento \""+elementoText.Text+"\" , del area \""+nombreDelArea+"\"?", "Departamentos Seguimiento 2018 - Eliminar Asiento",
-            MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
-            {              
-                int r = con.eliminarAsientoIdElemento(idelemento,idarea);
-                if (r != 0)
-                {
-                    con.eliminarElementoArea(idelemento, idarea);
-                    reloadArea();                   
-                    this.Close();
-                }
-            }
-        }
+       
 
         private void reloadArea()
         {
@@ -65,9 +52,9 @@ namespace Departamentos_Seguimiento_2018
             {
                 case "Area": area.reloadArea(); break;
                 case "Area2": area2.reloadArea(); break;
-                case "Area3": area3.reloadArea(); break;
+            /*    case "Area3": area3.reloadArea(); break;
                 case "Area4": area4.reloadArea(); break;
-
+                */
             }
         }
 
@@ -77,8 +64,23 @@ namespace Departamentos_Seguimiento_2018
             r = con.actualizarElemento(idelemento,elementoText.Text);
             if (r != 0)
             {
-                reloadArea();              
+                gf.elementosArea();
                 this.Close();
+            }
+        }
+
+        private void eliminar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Desea eliminar el elemento \"" + elementoText.Text + "\" , del area \"" + nombreDelArea + "\"?", "Departamentos Seguimiento 2018 - Eliminar Asiento",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                int r = con.eliminarAsientoIdElemento(idelemento, idarea);
+                r = con.eliminarElementoArea(idelemento, idarea);
+                if (r != 0)
+                {                    
+                    gf.elementosArea();
+                    this.Close();
+                }
             }
         }
 

@@ -26,7 +26,7 @@ namespace Departamentos_Seguimiento_2018
         internal string qTotalesConceptoMesAño = "" +
             "SELECT sum(a.estimado),sum(a.descuento),sum(a.real) FROM asiento AS a "+
 "INNER JOIN ELEMENTO AS E ON E.Id=A.IDELEMENTO "+
-"WHERE E.IdConcepto =  @idconcepto AND MONTH(a.fecha) like @mes AND Year(a.fecha) LIKE @año";
+"WHERE E.IdConcepto =  @idconcepto AND MONTH(a.fecha) = @mes AND Year(a.fecha) = @año";
 
          internal string qTotalesConceptoMesAñoArea = "" +
            "SELECT sum(a.estimado),sum(a.descuento),sum(a.real) FROM asiento AS a " +
@@ -37,7 +37,7 @@ namespace Departamentos_Seguimiento_2018
            "SELECT aR.id, ar.area, sum(a.estimado),sum(a.descuento),sum(a.real) FROM asiento AS a " +
 "INNER JOIN ELEMENTO AS E ON E.Id=A.IDELEMENTO " +
 "INNER JOIN AREA AS AR ON AR.Id=a.IDAREA " +
-"WHERE E.IdConcepto =  @idconcepto AND MONTH(a.fecha) like @mes AND Year(a.fecha) LIKE @año GROUP BY AR.ID,aR.AREA ";
+"WHERE E.IdConcepto =  @idconcepto AND MONTH(a.fecha) = @mes AND Year(a.fecha) = @año GROUP BY AR.ID,aR.AREA ";
 
         internal string qElementosConceptoMesAñoArea = "" +
             "SELECT e.id, e.elemento, ce.estimado,ce.descuento,ce.real, ce.id FROM asiento as ce "+
@@ -63,7 +63,9 @@ namespace Departamentos_Seguimiento_2018
         private string qElementosIdArea = "" +
             "SELECT e.id,e.elemento from elemento as e inner join elemento_area as ea " +
             "on ea.idElemento=e.id WHERE ea.idArea=@id ";
-       
+        private string qElementosIdConcepto = "" +
+            "SELECT e.id,e.elemento from elemento as e WHERE e.idConcepto=@id ";
+ 
 
 
         // Tablas//////////////////////
@@ -111,14 +113,35 @@ namespace Departamentos_Seguimiento_2018
                   }
                   catch (SqlException ex)
                   {
-                      MessageBox.Show("El elemento YA EXISTE.");
+                      
                       return 0;
                   }
               }
            
         }
 
-       
+        internal object tablaElementosIdConcepto(string id)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(qElementosIdConcepto, connection);
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+
+                DataTable dt = new DataTable();
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message + "ERROR no se pudieron cargar los elementos");
+                }
+                return dt;
+            }
+        }
 
         internal DataTable tablaElementosIdArea(string id)
         {
@@ -451,6 +474,30 @@ namespace Departamentos_Seguimiento_2018
             }
         }
 
+        internal DataTable tablaAcumuladoAño_(string idconcepto, int año)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(qAcumuladoAño, connection);
+                command.Parameters.Add("@idconcepto", SqlDbType.Int).Value = idconcepto;
+                command.Parameters.Add("@año", SqlDbType.Int).Value = año;
+                DataTable dt = new DataTable();
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+                return dt;
+            }
+        }
+
         internal DataTable tablaAcumuladoAñoArea(string idconcepto, string año, string idarea)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -502,6 +549,31 @@ namespace Departamentos_Seguimiento_2018
                     Console.WriteLine(ex.Message);
                 }
 
+                return dt;
+            }
+        }
+
+        internal DataTable tablaTotalesConceptoMesAño_(string idconcepto, int mes, int año)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(qTotalesConceptoMesAño, connection);
+                command.Parameters.Add("@idconcepto", SqlDbType.Int).Value = idconcepto;
+                command.Parameters.Add("@mes", SqlDbType.Int).Value = mes;
+                command.Parameters.Add("@año", SqlDbType.Int).Value = año;
+
+                DataTable dt = new DataTable();
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
                 return dt;
             }
         }
@@ -611,6 +683,35 @@ namespace Departamentos_Seguimiento_2018
             }
         }
 
+        internal DataTable tablaElementosConceptoMesAñoArea_( string idconcepto, string mes, string año, string idarea)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(qElementosConceptoMesAñoArea, connection);
+                command.Parameters.AddWithValue("@idconcepto", "%" + idconcepto + "%");
+                command.Parameters.AddWithValue("@mes", "%" + mes + "%");
+                command.Parameters.AddWithValue("@año", "%" + año + "%");
+                command.Parameters.AddWithValue("@idarea", "%" + idarea + "%");
+
+                DataTable dt = new DataTable();
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    connection.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message + "ERROR no se pudieron cargar los elementos del mes ");
+                }
+
+                return dt;
+
+            }
+        }
+
         internal DataTable tablaAreasConceptoMesAño(string idconcepto, string mes, string año)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -621,7 +722,37 @@ namespace Departamentos_Seguimiento_2018
                 command.Parameters.AddWithValue("@mes", "%" + mes + "%");
                 command.Parameters.AddWithValue("@año", "%" + año + "%");
 
-               
+
+                DataTable dt = new DataTable();
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    connection.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message + "ERROR no se pudieron cargar las AREAs");
+                }
+
+                return dt;
+
+
+            }
+        }
+
+        internal DataTable tablaAreasConceptoMesAño_(string idconcepto, int mes, int año)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(qAreasConceptoMesAño, connection);
+                command.Parameters.Add("@idconcepto", SqlDbType.Int).Value = idconcepto;
+                command.Parameters.Add("@mes", SqlDbType.Int).Value = mes;
+                command.Parameters.Add("@año", SqlDbType.Int).Value = año;
+
+
                 DataTable dt = new DataTable();
                 try
                 {

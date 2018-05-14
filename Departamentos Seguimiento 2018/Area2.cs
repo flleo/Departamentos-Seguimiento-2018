@@ -122,7 +122,7 @@ namespace Departamentos_Seguimiento_2018
 
         private void siguiente_Click(object sender, EventArgs e)
         {
-            Area3 g = new Area3();
+          /*  Area3 g = new Area3();
             g.con = con;
             g.fecha = fecha;
 
@@ -133,7 +133,7 @@ namespace Departamentos_Seguimiento_2018
             g.idConcepto_pagos = idConcepto_pagos;
             g.idConcepto_diferencia = idConcepto_diferencia;
 
-            g.Show();
+            g.Show();*/
         }
 
       

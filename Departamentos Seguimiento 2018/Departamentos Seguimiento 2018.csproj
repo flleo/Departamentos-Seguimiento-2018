@@ -97,6 +97,12 @@
     <Compile Include="General4.Designer.cs">
       <DependentUpon>General4.cs</DependentUpon>
     </Compile>
+    <Compile Include="General_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="General_Form.Designer.cs">
+      <DependentUpon>General_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="General4.resx">
       <DependentUpon>General4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="General_Form.resx">
+      <DependentUpon>General_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>

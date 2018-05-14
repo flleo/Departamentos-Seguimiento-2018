@@ -67,9 +67,9 @@ namespace Departamentos_Seguimiento_2018
 
         private void abrir_Click(object sender, EventArgs e)
         {
-            General1 g = new General1();
+            General_Form g = new General_Form();
             g.con = con;
-            g.fecha = fecha.Value;     
+          /*  g.fecha = fecha.Value;     
 
             g.idConcepto_ingresos = idConcepto_ingresos;
             g.idConcepto_gastos = idConcepto_gastos;
@@ -77,7 +77,7 @@ namespace Departamentos_Seguimiento_2018
             g.idConcepto_cobros = idConcepto_cobros;
             g.idConcepto_pagos = idConcepto_pagos;
             g.idConcepto_diferencia = idConcepto_diferencia;
-
+*/
             g.Show();
         }
 
@@ -87,13 +87,18 @@ namespace Departamentos_Seguimiento_2018
             if (elemento.Text != "" && comboConceptoE.SelectedValue.ToString() != "" && comboAreaA.SelectedValue.ToString()!="")
             {
                 
-                con.insertarElemento(comboConceptoE.SelectedValue.ToString(), elemento.Text);
+                int r = con.insertarElemento(comboConceptoE.SelectedValue.ToString(), elemento.Text);
                 cargaComboElementos();
 
+                if (r == 0)
+                {
+                    MessageBox.Show("El elemento "+comboConceptoE.Text.ToString()+"-"+elemento.Text+" YA EXISTE.");
+                }
                 comboConceptoE.Enabled = false;               
                 elemento.Enabled = false;
                 grabarElemento.Enabled = false;
                 comboArea.Enabled = false;
+                comboElementoE.Enabled = false;
 
 
             } else
@@ -116,7 +121,6 @@ namespace Departamentos_Seguimiento_2018
         {
             comboElementoA.Enabled = false;
             comboAreaA.Enabled = false;
-
             int n = con.insertarElementoArea(comboElementoA.SelectedValue.ToString(),comboAreaA.SelectedValue.ToString());
             if (n > 0)
             {
@@ -125,6 +129,27 @@ namespace Departamentos_Seguimiento_2018
                     con.insertarAsientoS(comboElementoA.SelectedValue.ToString(), comboAreaA.SelectedValue.ToString(),new DateTime(fecha.Value.Year,i,fecha.Value.Day),"0","0","0");
                 }
             }
+        }
+
+        private void comboConceptoE_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboElementoE.DataSource = null;
+            comboElementoE.DataSource = con.tablaElementosIdConcepto(comboConceptoE.SelectedValue.ToString());
+            comboElementoE.DisplayMember = "Elemento";
+       
+           
+            
+        }
+
+        private void comboElementoE_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            elemento.Text = comboElementoE.Text.ToString();
+           
+        }
+
+        private void eliminarE_Click(object sender, EventArgs e)
+        {
+            con.actualizarElemento(comboElementoE.SelectedValue.ToString(),elemento.Text);
         }
 
         private void comboElemento_SelectedIndexChanged(object sender, EventArgs e)
@@ -185,7 +210,9 @@ namespace Departamentos_Seguimiento_2018
             comboArea.Enabled = true;
             elemento.Enabled = true;
             grabarElemento.Enabled = true;
-           
+            comboElementoE.Enabled = true;
+            
+
            
         }
 
@@ -210,9 +237,23 @@ namespace Departamentos_Seguimiento_2018
             grabarArea.Enabled = true;
         }
 
-       
-       
-     
-        
+
+
+      /*  private void abrir_Click(object sender, EventArgs e)
+        {
+            General1 g = new General1();
+            g.con = con;
+            g.fecha = fecha.Value;
+
+            g.idConcepto_ingresos = idConcepto_ingresos;
+            g.idConcepto_gastos = idConcepto_gastos;
+            g.idConcepto_beneficio = idConcepto_beneficio;
+            g.idConcepto_cobros = idConcepto_cobros;
+            g.idConcepto_pagos = idConcepto_pagos;
+            g.idConcepto_diferencia = idConcepto_diferencia;
+
+            g.Show();
+        }
+        */
     }
 }

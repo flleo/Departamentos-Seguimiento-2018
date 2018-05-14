@@ -13,7 +13,8 @@ namespace Departamentos_Seguimiento_2018
     public partial class General_Form : Form
     {
         internal Conexion con;
-        private string idarea;
+        private string idarea="";
+        string idconcepto = "";
 
         public General_Form()
         {
@@ -22,30 +23,31 @@ namespace Departamentos_Seguimiento_2018
 
         private void General_Form_Load(object sender, EventArgs e)
         {
-            // Combo Area
-            comboArea.DataSource = con.tabla("SELECT * FROM AREA");
-            comboArea.DisplayMember = "Area";
-            comboArea.ValueMember = "Id";
+        
             // Combo Concepto
             comboConcepto.DataSource = con.tabla("SELECT * FROM CONCEPTO");
             comboConcepto.DisplayMember = "Concepto";
             comboConcepto.ValueMember = "Id";
+            idconcepto = comboConcepto.SelectedValue.ToString();
             //Bindeos
             actualizaMes();
-            areaText.Text = comboArea.Text.ToString();
+           
             label_año.Text = fecha.Value.Year.ToString();
 
         }
 
-        private void comboArea_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            areaText.Text = comboArea.Text.ToString();
-        }
+      
 
         private void comboConcepto_SelectedIndexChanged(object sender, EventArgs e)
         {
+            idconcepto = comboConcepto.SelectedValue.ToString();
             conceptoE.Text = concepto.Text = comboConcepto.Text.ToString();
-         
+            areas();
+            elementosArea();
+            
+            
+
+
         }
 
         private void fecha_ValueChanged(object sender, EventArgs e)
@@ -80,35 +82,35 @@ namespace Departamentos_Seguimiento_2018
             elementosArea();
         }
 
-        private void areaButton_Click(object sender, EventArgs e)
-        {
-            areas();
-           
+       
 
-        }
-
-        private void areas()
+        internal void areas()
         {
             data.DataSource = null;
-            data.DataSource = con.tablaAreasConceptoMesAño_(comboConcepto.SelectedValue.ToString(), fecha.Value.Month, fecha.Value.Year);
-            data.Columns[0].Visible = false;
-
-            acumulado.Text = con.tablaAcumuladoAño_(comboConcepto.SelectedValue.ToString(), fecha.Value.Year).Rows[0][0].ToString();
-            DataTable totales = con.tablaTotalesConceptoMesAño_(comboConcepto.SelectedValue.ToString(), fecha.Value.Month, fecha.Value.Year);
-            estimado.Text = totales.Rows[0][0].ToString();
-            descuento.Text = totales.Rows[0][1].ToString();
-            real.Text = totales.Rows[0][2].ToString();
-
-            if (data.Rows.Count == 1)
+            data.DataSource = con.tablaAreasConceptoMesAño_(idconcepto, fecha.Value.Month, fecha.Value.Year);
+            if (data.Rows.Count > 0)
             {
-                MessageBox.Show("Debes asociar un Elemento a un Area");
-                this.Close();
+                data.Columns[0].Visible = false;
+
+                acumulado.Text = con.tablaAcumuladoAño_(idconcepto, fecha.Value.Year).Rows[0][0].ToString();
+                DataTable totales = con.tablaTotalesConceptoMesAño_(idconcepto, fecha.Value.Month, fecha.Value.Year);
+                estimado.Text = totales.Rows[0][0].ToString();
+                descuento.Text = totales.Rows[0][1].ToString();
+                real.Text = totales.Rows[0][2].ToString();
+
+                if (data.Rows.Count == 1)
+                {
+                    if(!idconcepto.Equals("1"))
+                        MessageBox.Show("No existen elementos para "+concepto.Text);
+                    MessageBox.Show("Debes asociar un Elemento a un Area");
+                    this.Close();
+                }
             }
         }
 
         private void data_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int numeroFila = Convert.ToInt16(e.RowIndex.ToString());
+            int numeroFila = Convert.ToInt16(e.RowIndex.ToString());       
             areaText.Text = data.Rows[numeroFila].Cells[1].Value.ToString();
             idarea = data.Rows[numeroFila].Cells[0].Value.ToString();
             elementosArea();
@@ -117,16 +119,22 @@ namespace Departamentos_Seguimiento_2018
         }
 
         internal void elementosArea()
-        {           
-            elementos.DataSource = null;
-            elementos.DataSource = con.tablaElementosConceptoMesAñoArea_(comboConcepto.SelectedValue.ToString(), fecha.Value.Month.ToString(), fecha.Value.Year.ToString(),idarea);
-            elementos.Columns[0].Visible = false;
+        {
+            if (!idarea.Equals(""))
+            {
+                elementos.DataSource = null;
+                elementos.DataSource = con.tablaElementosConceptoMesAñoArea_(idconcepto, fecha.Value.Month.ToString(), fecha.Value.Year.ToString(), idarea);
+                if (elementos.Rows.Count > 0)
+                {
+                    elementos.Columns[0].Visible = false;
 
-            acumuladoE.Text = con.tablaAcumuladoAñoArea(comboConcepto.SelectedValue.ToString(), fecha.Value.Year.ToString(), comboArea.SelectedValue.ToString()).Rows[0][0].ToString();
-            DataTable totales = con.tablaTotalesConceptoMesAñoArea(comboConcepto.SelectedValue.ToString(), fecha.Value.Month.ToString(), fecha.Value.Year.ToString(), comboArea.SelectedValue.ToString());
-            estimadoE.Text = totales.Rows[0][0].ToString();
-            descuentoE.Text = totales.Rows[0][1].ToString();
-            realE.Text = totales.Rows[0][2].ToString();
+                    acumuladoE.Text = con.tablaAcumuladoAñoArea(idconcepto, fecha.Value.Year.ToString(), idarea).Rows[0][0].ToString();
+                    DataTable totales = con.tablaTotalesConceptoMesAñoArea(idconcepto, fecha.Value.Month.ToString(), fecha.Value.Year.ToString(), idarea);
+                    estimadoE.Text = totales.Rows[0][0].ToString();
+                    descuentoE.Text = totales.Rows[0][1].ToString();
+                    realE.Text = totales.Rows[0][2].ToString();
+                }
+            }
         }
 
         private void elementos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -139,7 +147,7 @@ namespace Departamentos_Seguimiento_2018
             string real = elementos.Rows[numeroFila].Cells[4].Value.ToString();
             string idasiento = elementos.Rows[numeroFila].Cells[5].Value.ToString();
 
-            Elemento el = new Elemento(idasiento, fecha.Value.Year, comboConcepto.SelectedValue.ToString(), elementoId, elemento, comboArea.SelectedValue.ToString(), estimado, descuento, real);
+            Elemento el = new Elemento(idasiento, fecha.Value.Year, idconcepto, elementoId, elemento,idarea, estimado, descuento, real);
             el.con = con;
             el.gf = this;
             el.Show();

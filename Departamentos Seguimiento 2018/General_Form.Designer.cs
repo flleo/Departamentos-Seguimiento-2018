@@ -45,8 +45,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.fecha = new System.Windows.Forms.DateTimePicker();
-            this.comboArea = new System.Windows.Forms.ComboBox();
-            this.areaButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.areaText = new System.Windows.Forms.TextBox();
             this.acumuladoE = new System.Windows.Forms.TextBox();
@@ -234,30 +232,10 @@
             this.fecha.TabIndex = 505;
             this.fecha.ValueChanged += new System.EventHandler(this.fecha_ValueChanged);
             // 
-            // comboArea
-            // 
-            this.comboArea.FormattingEnabled = true;
-            this.comboArea.Location = new System.Drawing.Point(440, 70);
-            this.comboArea.Name = "comboArea";
-            this.comboArea.Size = new System.Drawing.Size(121, 21);
-            this.comboArea.TabIndex = 506;
-            this.comboArea.SelectedIndexChanged += new System.EventHandler(this.comboArea_SelectedIndexChanged);
-            // 
-            // areaButton
-            // 
-            this.areaButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.areaButton.Location = new System.Drawing.Point(341, 68);
-            this.areaButton.Name = "areaButton";
-            this.areaButton.Size = new System.Drawing.Size(75, 23);
-            this.areaButton.TabIndex = 507;
-            this.areaButton.Text = "AREAS";
-            this.areaButton.UseVisualStyleBackColor = false;
-            this.areaButton.Click += new System.EventHandler(this.areaButton_Click);
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.DarkSalmon;
-            this.button2.Location = new System.Drawing.Point(341, 110);
+            this.button2.Location = new System.Drawing.Point(349, 68);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 508;
@@ -411,8 +389,6 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.areaText);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.areaButton);
-            this.Controls.Add(this.comboArea);
             this.Controls.Add(this.fecha);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label20);
@@ -458,8 +434,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker fecha;
-        private System.Windows.Forms.ComboBox comboArea;
-        private System.Windows.Forms.Button areaButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox areaText;
         public System.Windows.Forms.TextBox acumuladoE;

@@ -48,54 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Area.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Area.Designer.cs">
-      <DependentUpon>Area.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Area2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Area2.Designer.cs">
-      <DependentUpon>Area2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Area3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Area3.Designer.cs">
-      <DependentUpon>Area3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Area4.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Area4.Designer.cs">
-      <DependentUpon>Area4.cs</DependentUpon>
-    </Compile>
     <Compile Include="Conexion.cs" />
     <Compile Include="Elemento.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Elemento.Designer.cs">
       <DependentUpon>Elemento.cs</DependentUpon>
-    </Compile>
-    <Compile Include="General2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="General2.Designer.cs">
-      <DependentUpon>General2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="General3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="General3.Designer.cs">
-      <DependentUpon>General3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="General4.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="General4.Designer.cs">
-      <DependentUpon>General4.cs</DependentUpon>
     </Compile>
     <Compile Include="General_Form.cs">
       <SubType>Form</SubType>
@@ -109,46 +67,16 @@
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="General1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="General1.Designer.cs">
-      <DependentUpon>General1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Area.resx">
-      <DependentUpon>Area.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Area2.resx">
-      <DependentUpon>Area2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Area3.resx">
-      <DependentUpon>Area3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Area4.resx">
-      <DependentUpon>Area4.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Elemento.resx">
       <DependentUpon>Elemento.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="General2.resx">
-      <DependentUpon>General2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="General3.resx">
-      <DependentUpon>General3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="General4.resx">
-      <DependentUpon>General4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="General_Form.resx">
       <DependentUpon>General_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="General1.resx">
-      <DependentUpon>General1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

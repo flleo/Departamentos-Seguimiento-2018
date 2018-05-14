@@ -17,10 +17,7 @@ namespace Departamentos_Seguimiento_2018
         DataTable todosConceptos;
         string idelemento, idarea;
         string idasiento;
-        internal Area area;
-        internal Area2 area2;
-        internal Area3 area3;
-        internal Area4 area4;
+        
         internal string areaName;       // Nombre de la clase
         internal string nombreDelArea;  // Como hemos llamado al área
 
@@ -50,7 +47,7 @@ namespace Departamentos_Seguimiento_2018
         {
             switch (areaName)
             {
-                case "Area": area.reloadArea(); break;
+               /* case "Area": area.reloadArea(); break;
                 case "Area2": area2.reloadArea(); break;
             /*    case "Area3": area3.reloadArea(); break;
                 case "Area4": area4.reloadArea(); break;
@@ -65,6 +62,7 @@ namespace Departamentos_Seguimiento_2018
             if (r != 0)
             {
                 gf.elementosArea();
+                gf.areas();
                 this.Close();
             }
         }
@@ -79,6 +77,7 @@ namespace Departamentos_Seguimiento_2018
                 if (r != 0)
                 {                    
                     gf.elementosArea();
+                    gf.areas();
                     this.Close();
                 }
             }

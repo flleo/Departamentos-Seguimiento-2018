@@ -15,6 +15,7 @@ namespace Departamentos_Seguimiento_2018
         public Conexion con = new Conexion();  
         public DataTable  conceptos,todosconceptos;
         string idConcepto_ingresos,idConcepto_gastos,idConcepto_beneficio,idConcepto_cobros,idConcepto_pagos,idConcepto_diferencia;
+        General_Form gf = new General_Form();
         int i = 0;
 
         public Menu()
@@ -25,11 +26,10 @@ namespace Departamentos_Seguimiento_2018
         private void Menu_Load(object sender, EventArgs e)
         {
             //Tabla conceptos
-            conceptos = con.tabla("select * from concepto where id !=3 and id!=6");
+            //conceptos = con.tabla("select * from concepto where id !=3 and id!=6");
 
-            //Inicializamos idconcepto    
-            con.tablaDataSet("select * from concepto", "dtTodosConceptos");
-            todosconceptos = con.dataSet.Tables["dtTodosConceptos"];
+            //Inicializamos idconcepto     
+            todosconceptos = con.tabla("SELECT * FROM concepto");
      
             idConcepto_ingresos = todosconceptos.Rows[0][0].ToString();
             idConcepto_gastos = todosconceptos.Rows[1][0].ToString();
@@ -40,18 +40,18 @@ namespace Departamentos_Seguimiento_2018
 
             //Inicializamos combos
             
-            comboConceptoE.DataSource = conceptos ;
-            comboConceptoE.DisplayMember = "Concepto"; //columna a visualizar
-            comboConceptoE.ValueMember = "Id"; //columna a recordar           
+            comboConcepto.DataSource = todosconceptos ;
+            comboConcepto.DisplayMember = "Concepto"; //columna a visualizar
+            comboConcepto.ValueMember = "Id"; //columna a recordar    
+            
+            
             cargaComboAreas();
             cargaComboElementos();
 
-            estimado.Text = "0";
-            descuento.Text = "0";
-            real.Text = "0";
+           
         }
 
-        private void cargaComboAreas()
+        internal void cargaComboAreas()
         {
             comboAreaA.DataSource = con.tabla("SELECT * FROM AREA");
             comboAreaA.DisplayMember = "Area";
@@ -67,40 +67,35 @@ namespace Departamentos_Seguimiento_2018
 
         private void abrir_Click(object sender, EventArgs e)
         {
-            General_Form g = new General_Form();
-            g.con = con;
-          /*  g.fecha = fecha.Value;     
-
-            g.idConcepto_ingresos = idConcepto_ingresos;
-            g.idConcepto_gastos = idConcepto_gastos;
-            g.idConcepto_beneficio = idConcepto_beneficio;
-            g.idConcepto_cobros = idConcepto_cobros;
-            g.idConcepto_pagos = idConcepto_pagos;
-            g.idConcepto_diferencia = idConcepto_diferencia;
-*/
-            g.Show();
+            gf = new General_Form();
+            gf.con = con;
+            gf.menu = this;
+            gf.Show();
         }
 
 
         private void grabarElemento_Click(object sender, EventArgs e)
         {
-            if (elemento.Text != "" && comboConceptoE.SelectedValue.ToString() != "" && comboAreaA.SelectedValue.ToString()!="")
+            if (elemento.Text != "" && comboConcepto.SelectedValue.ToString() != "")
             {
-                
-                int r = con.insertarElemento(comboConceptoE.SelectedValue.ToString(), elemento.Text);
-                cargaComboElementos();
-
-                if (r == 0)
+                if (comboConcepto.SelectedValue.ToString().Equals("3") || comboConcepto.SelectedValue.ToString().Equals("6"))
                 {
-                    MessageBox.Show("El elemento "+comboConceptoE.Text.ToString()+"-"+elemento.Text+" YA EXISTE.");
+                    MessageBox.Show("No se permiten crear elementos para ese concepto");
                 }
-                comboConceptoE.Enabled = false;               
-                elemento.Enabled = false;
-                grabarElemento.Enabled = false;
-                comboArea.Enabled = false;
-                comboElementoE.Enabled = false;
+                else
+                {
+                    int r = con.insertarElemento(comboConcepto.SelectedValue.ToString(), elemento.Text);
+                    cargaComboElementos();
 
-
+                    if (r == 0)
+                    {
+                        MessageBox.Show("El elemento " + comboConcepto.Text.ToString() + "-" + elemento.Text + " YA EXISTE.");
+                    }
+                    comboConcepto.Enabled = false;
+                    elemento.Enabled = false;
+                    grabarElemento.Enabled = false;
+                    comboElementoE.Enabled = false;
+                }
             } else
             {
                 MessageBox.Show("Debes rellenar todos los campos");
@@ -126,20 +121,26 @@ namespace Departamentos_Seguimiento_2018
             {
                 for(int i = 1; i<=12; i++)
                 {
-                    con.insertarAsientoS(comboElementoA.SelectedValue.ToString(), comboAreaA.SelectedValue.ToString(),new DateTime(fecha.Value.Year,i,fecha.Value.Day),"0","0","0");
+                    con.insertarAsientoS(comboElementoA.SelectedValue.ToString(), comboAreaA.SelectedValue.ToString(),new DateTime(gf.fecha.Value.Year,i,gf.fecha.Value.Day),"0","0","0");
                 }
             }
         }
 
-        private void comboConceptoE_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboConcepto_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboElementoE.DataSource = null;
-            comboElementoE.DataSource = con.tablaElementosIdConcepto(comboConceptoE.SelectedValue.ToString());
-            comboElementoE.DisplayMember = "Elemento";
-       
-           
-            
+            if (!comboConcepto.SelectedValue.ToString().Equals("System.Data.DataRowView"))
+            {
+               // MessageBox.Show(comboConcepto.SelectedValue.ToString());
+                comboElementoE.DataSource = null;
+                comboElementoE.DataSource = con.tablaElementosIdConcepto(comboConcepto.SelectedValue.ToString());
+                comboElementoE.DisplayMember = "Elemento";
+            }
+
         }
+
+       
+
+       
 
         private void comboElementoE_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -152,18 +153,7 @@ namespace Departamentos_Seguimiento_2018
             con.actualizarElemento(comboElementoE.SelectedValue.ToString(),elemento.Text);
         }
 
-        private void comboElemento_SelectedIndexChanged(object sender, EventArgs e)
-        {      
-            if (comboElemento.SelectedValue!=null)
-            {
-                //Combo con los elementos del concepto elegido
-                DataTable dtconcepto = con.tablaConceptoIdElemento(comboElemento.SelectedValue.ToString());
-                if (dtconcepto.Rows.Count != 0)
-                {
-                    concepto.Text = dtconcepto.Rows[0][0].ToString();
-                }
-            }
-        }
+       
 
       
 
@@ -182,52 +172,20 @@ namespace Departamentos_Seguimiento_2018
         }
 
 
-        private void grabarAsiento_Click(object sender, EventArgs e)
-        {
-            if (concepto.Text!="")
-            {               
-                //insertamos asiento
-                int a = con.insertarAsiento(comboElemento.SelectedValue.ToString(),comboArea.SelectedValue.ToString(), fecha.Value, estimado.Text,descuento.Text,real.Text);
-               
-                
-                comboElemento.Enabled = false;     
-                grabarAsiento.Enabled = false;
-                estimado.Enabled = false;
-                descuento.Enabled = false;
-          
-                
-            }   else {
-                MessageBox.Show("Debe seleccionar un elemento");
-            }
-                
-        }
-
+       
    
 
         private void nuevoElemento_Click(object sender, EventArgs e)
         {
-            comboConceptoE.Enabled = true;          
-            comboArea.Enabled = true;
+            comboConcepto.Enabled = true;          
             elemento.Enabled = true;
             grabarElemento.Enabled = true;
             comboElementoE.Enabled = true;
             
-
            
         }
 
-        private void nuevoAsiento_Click(object sender, EventArgs e)
-        {
-          
-            comboArea.Enabled = true;            
-            comboElemento.Enabled = true;
-            estimado.Enabled = true;
-            descuento.Enabled = true;
-            real.Enabled = true;
-            grabarAsiento.Enabled = true;
-
-        }
-
+        
        
 
       

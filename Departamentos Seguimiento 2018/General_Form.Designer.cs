@@ -45,10 +45,9 @@
             this.label20 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.fecha = new System.Windows.Forms.DateTimePicker();
-            this.button2 = new System.Windows.Forms.Button();
+            this.eliminar = new System.Windows.Forms.Button();
             this.areaText = new System.Windows.Forms.TextBox();
             this.acumuladoE = new System.Windows.Forms.TextBox();
-            this.elementos = new System.Windows.Forms.DataGridView();
             this.realE = new System.Windows.Forms.TextBox();
             this.descuentoE = new System.Windows.Forms.TextBox();
             this.estimadoE = new System.Windows.Forms.TextBox();
@@ -58,6 +57,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.conceptoE = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.areasButton = new System.Windows.Forms.Button();
+            this.elementos = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elementos)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +68,7 @@
             // 
             this.data.AllowUserToResizeColumns = false;
             this.data.AllowUserToResizeRows = false;
+            this.data.BackgroundColor = System.Drawing.Color.Silver;
             this.data.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data.ColumnHeadersVisible = false;
             this.data.Location = new System.Drawing.Point(201, 293);
@@ -196,18 +199,17 @@
             // comboConcepto
             // 
             this.comboConcepto.FormattingEnabled = true;
-            this.comboConcepto.Location = new System.Drawing.Point(577, 70);
+            this.comboConcepto.Location = new System.Drawing.Point(532, 70);
             this.comboConcepto.Name = "comboConcepto";
             this.comboConcepto.Size = new System.Drawing.Size(121, 21);
             this.comboConcepto.TabIndex = 478;
-            this.comboConcepto.SelectedIndexChanged += new System.EventHandler(this.comboConcepto_SelectedIndexChanged);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.SystemColors.ControlDark;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(702, 204);
+            this.label20.Location = new System.Drawing.Point(690, 206);
             this.label20.MinimumSize = new System.Drawing.Size(100, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(100, 13);
@@ -217,12 +219,13 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightGreen;
-            this.button1.Location = new System.Drawing.Point(730, 68);
+            this.button1.Location = new System.Drawing.Point(705, 71);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 504;
             this.button1.Text = "EXCEL";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // fecha
             // 
@@ -230,21 +233,22 @@
             this.fecha.Name = "fecha";
             this.fecha.Size = new System.Drawing.Size(200, 20);
             this.fecha.TabIndex = 505;
-            this.fecha.ValueChanged += new System.EventHandler(this.fecha_ValueChanged);
             // 
-            // button2
+            // eliminar
             // 
-            this.button2.BackColor = System.Drawing.Color.DarkSalmon;
-            this.button2.Location = new System.Drawing.Point(349, 68);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 508;
-            this.button2.Text = "ELIMINAR";
-            this.button2.UseVisualStyleBackColor = false;
+            this.eliminar.BackColor = System.Drawing.Color.DarkSalmon;
+            this.eliminar.Enabled = false;
+            this.eliminar.Location = new System.Drawing.Point(418, 194);
+            this.eliminar.Name = "eliminar";
+            this.eliminar.Size = new System.Drawing.Size(75, 23);
+            this.eliminar.TabIndex = 508;
+            this.eliminar.Text = "ELIMINAR";
+            this.eliminar.UseVisualStyleBackColor = false;
+            this.eliminar.Click += new System.EventHandler(this.eliminar_Click);
             // 
             // areaText
             // 
-            this.areaText.Location = new System.Drawing.Point(799, 201);
+            this.areaText.Location = new System.Drawing.Point(787, 203);
             this.areaText.Name = "areaText";
             this.areaText.Size = new System.Drawing.Size(100, 20);
             this.areaText.TabIndex = 509;
@@ -256,21 +260,6 @@
             this.acumuladoE.ReadOnly = true;
             this.acumuladoE.Size = new System.Drawing.Size(100, 20);
             this.acumuladoE.TabIndex = 522;
-            // 
-            // elementos
-            // 
-            this.elementos.AllowUserToResizeColumns = false;
-            this.elementos.AllowUserToResizeRows = false;
-            this.elementos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.elementos.ColumnHeadersVisible = false;
-            this.elementos.Location = new System.Drawing.Point(799, 293);
-            this.elementos.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.elementos.Name = "elementos";
-            this.elementos.RowHeadersVisible = false;
-            this.elementos.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.elementos.Size = new System.Drawing.Size(400, 249);
-            this.elementos.TabIndex = 519;
-            this.elementos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.elementos_CellContentClick);
             // 
             // realE
             // 
@@ -371,13 +360,44 @@
             this.label11.TabIndex = 510;
             this.label11.Text = "ACUMULADO";
             // 
+            // areasButton
+            // 
+            this.areasButton.Location = new System.Drawing.Point(298, 193);
+            this.areasButton.Name = "areasButton";
+            this.areasButton.Size = new System.Drawing.Size(75, 23);
+            this.areasButton.TabIndex = 523;
+            this.areasButton.Text = "AREAS";
+            this.areasButton.UseVisualStyleBackColor = true;
+            this.areasButton.Click += new System.EventHandler(this.areasButton_Click);
+            // 
+            // elementos
+            // 
+            this.elementos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.elementos.Location = new System.Drawing.Point(799, 293);
+            this.elementos.Name = "elementos";
+            this.elementos.Size = new System.Drawing.Size(400, 249);
+            this.elementos.TabIndex = 524;
+            this.elementos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.elementos_CellContentClick_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(963, 204);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(168, 17);
+            this.label2.TabIndex = 525;
+            this.label2.Text = "ELEMENTOS POR AREA";
+            // 
             // General_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 865);
-            this.Controls.Add(this.acumuladoE);
+            this.ClientSize = new System.Drawing.Size(1428, 703);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.elementos);
+            this.Controls.Add(this.areasButton);
+            this.Controls.Add(this.acumuladoE);
             this.Controls.Add(this.realE);
             this.Controls.Add(this.descuentoE);
             this.Controls.Add(this.estimadoE);
@@ -388,7 +408,7 @@
             this.Controls.Add(this.conceptoE);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.areaText);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.eliminar);
             this.Controls.Add(this.fecha);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label20);
@@ -433,11 +453,9 @@
         private System.Windows.Forms.ComboBox comboConcepto;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker fecha;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button eliminar;
         private System.Windows.Forms.TextBox areaText;
         public System.Windows.Forms.TextBox acumuladoE;
-        public System.Windows.Forms.DataGridView elementos;
         public System.Windows.Forms.TextBox realE;
         public System.Windows.Forms.TextBox descuentoE;
         public System.Windows.Forms.TextBox estimadoE;
@@ -447,5 +465,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label conceptoE;
         private System.Windows.Forms.Label label11;
+        internal System.Windows.Forms.DateTimePicker fecha;
+        private System.Windows.Forms.Button areasButton;
+        private System.Windows.Forms.DataGridView elementos;
+        private System.Windows.Forms.Label label2;
     }
 }

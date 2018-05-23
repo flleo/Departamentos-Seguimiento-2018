@@ -14,15 +14,17 @@ namespace Departamentos_Seguimiento_2018
     {
         internal General_Form gf;
         public Conexion con;
-        DataTable todosConceptos;
         string idelemento, idarea;
         string idasiento;
         
-        internal string areaName;       // Nombre de la clase
+       
         internal string nombreDelArea;  // Como hemos llamado al área
 
 
-
+        public Elemento()
+        {
+            InitializeComponent();
+        }
 
 
         public Elemento(string idasiento,int año, string concepto, string idelemento, string elemento, string idarea, string estimado, string descuento, string real)
@@ -41,28 +43,15 @@ namespace Departamentos_Seguimiento_2018
 
         }
 
-       
-
-        private void reloadArea()
-        {
-            switch (areaName)
-            {
-               /* case "Area": area.reloadArea(); break;
-                case "Area2": area2.reloadArea(); break;
-            /*    case "Area3": area3.reloadArea(); break;
-                case "Area4": area4.reloadArea(); break;
-                */
-            }
-        }
-
+   
         private void actualizar_Click(object sender, EventArgs e)
         {
             int r = con.actualizarAsiento(idasiento,estimado.Text,descuento.Text,real.Text);
             r = con.actualizarElemento(idelemento,elementoText.Text);
             if (r != 0)
             {
-                gf.elementosArea();
-                gf.areas();
+                gf.elementosArea(gf.fecha.Value.Month);
+                gf.areas(gf.fecha.Value.Month);
                 this.Close();
             }
         }
@@ -72,15 +61,20 @@ namespace Departamentos_Seguimiento_2018
             if (MessageBox.Show("¿Desea eliminar el elemento \"" + elementoText.Text + "\" , del area \"" + nombreDelArea + "\"?", "Departamentos Seguimiento 2018 - Eliminar Asiento",
             MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
+                eliminarElemento(idelemento, idarea);
+            }
+        }
+
+        internal void eliminarElemento(string idelemento, string idarea)
+        {           
                 int r = con.eliminarAsientoIdElemento(idelemento, idarea);
                 r = con.eliminarElementoArea(idelemento, idarea);
                 if (r != 0)
-                {                    
-                    gf.elementosArea();
-                    gf.areas();
+                {
+                    gf.elementosArea(gf.fecha.Value.Month);
+                    gf.areas(gf.fecha.Value.Month);
                     this.Close();
-                }
-            }
+                }          
         }
 
         private void Elemento_Load(object sender, EventArgs e)

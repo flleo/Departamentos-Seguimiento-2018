@@ -11,3 +11,5 @@ C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Se
 C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.Elemento.resources
 C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos Seguimiento 2018.csproj.ResolveComReference.cache
 C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Departamentos_Seguimiento_2018.General_Form.resources
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Interop.otkloadr.dll
+C:\Users\practicas2\source\repos\Departamentos Seguimiento 2018\Departamentos Seguimiento 2018\obj\Debug\Interop.VSTOEE100.dll

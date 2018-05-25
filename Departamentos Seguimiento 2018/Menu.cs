@@ -27,7 +27,7 @@ namespace Departamentos_Seguimiento_2018
         {
             //Tabla conceptos
             //conceptos = con.tabla("select * from concepto where id !=3 and id!=6");
-
+            
             //Inicializamos idconcepto     
             todosconceptos = con.tabla("SELECT * FROM concepto");
      
@@ -48,14 +48,38 @@ namespace Departamentos_Seguimiento_2018
             cargaComboAreas();
             cargaComboElementos();
 
+
            
         }
 
+
+      
+
+        private void nuevaArea_Click(object sender, EventArgs e)
+        {
+            area.Enabled = true;
+            grabarArea.Enabled = true;
+           
+
+        }
+
+        void EnterClicked(object sender, KeyEventArgs e)
+        {
+            grabarArea_();
+        }
+
+
         internal void cargaComboAreas()
         {
-            comboAreaA.DataSource = con.tabla("SELECT * FROM AREA");
+            DataTable areas = con.tabla("SELECT * FROM AREA");
+
+            comboAreaA.DataSource = areas;
             comboAreaA.DisplayMember = "Area";
             comboAreaA.ValueMember = "Id";
+
+            comboAreas.DataSource = areas;
+            comboAreas.DisplayMember = "Area";
+            comboAreas.ValueMember = "Id";
         }
 
         private void cargaComboElementos()
@@ -91,39 +115,114 @@ namespace Departamentos_Seguimiento_2018
                     {
                         MessageBox.Show("El elemento " + comboConcepto.Text.ToString() + "-" + elemento.Text + " YA EXISTE.");
                     }
-                    comboConcepto.Enabled = false;
-                    elemento.Enabled = false;
-                    grabarElemento.Enabled = false;
-                    comboElementoE.Enabled = false;
                 }
             } else
             {
-                MessageBox.Show("Debes rellenar todos los campos");
+                MessageBox.Show("Debes escribir un elemento");
             }
         }
 
        
 
-        private void button1_Click_1(object sender, EventArgs e)
+    
+      
+        private void grabarEA_Click(object sender, EventArgs e)
+        {         
+            int r = 0;
+            try
+            {
+                int n = con.insertarElementoArea(comboElementoA.SelectedValue.ToString(), comboAreaA.SelectedValue.ToString());
+
+                for (int i = 1; i <= 12; i++)
+                {
+                    r = 0;
+                    fecha.Value = new DateTime(fecha.Value.Year, i, fecha.Value.Day);
+                    r = con.insertarAsiento(comboElementoA.SelectedValue.ToString(), comboAreaA.SelectedValue.ToString(), fecha.Value, "0", "0", "0");
+                }
+                if (r == 1)
+                {
+                    MessageBox.Show("Se han añadido los asientos correspondientes para el area \"" + comboAreaA.Text.ToString() + "\", elemento \"" + comboElementoA.Text.ToString() +
+                        "\", y el año " + fecha.Value.Year + " con EXITO");
+                }
+                else
+                {
+                    MessageBox.Show("Ya existen elementos para esa área, y ese año");
+                }
+            }
+            catch { MessageBox.Show("Deben de existir campos para poder relacionarlos"); }
+     
+        }
+
+     
+
+        private void eliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                eliminarArea(comboAreas.SelectedValue.ToString());
+            } catch
+            {
+                MessageBox.Show("No hay areas que eliminar");
+            }
+        }
+
+        internal void eliminarArea(string idarea)
+        {
+            if (!idarea.Equals(""))
+            {
+                if (MessageBox.Show("¿Desea eliminar el area \"" + comboAreas.Text + "\", con todos sus elementos?", "Departamentos Seguimiento 2018 - Eliminar Area",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                   // MessageBox.Show(idarea);
+                    int r = con.eliminarAreaIdArea(idarea);
+                    if (r > 0)
+                    {
+                        MessageBox.Show("Area eliminada");
+                        cargaComboAreas();
+                        gf.Close();
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar un área");
+            }
+        }
+    
+
+
+        private void comboAreas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            eliminar.Enabled = true;
+            this.AcceptButton = eliminar;
+        }
+
+        private void nuevaArea_Click_1(object sender, EventArgs e)
+        {
+            area.Enabled = true;
+            grabarArea.Enabled = true;
+
+           
+        }
+
+        private void elementoArea_Click(object sender, EventArgs e)
         {
             comboElementoA.Enabled = true;
             comboAreaA.Enabled = true;
             grabarEA.Enabled = true;
+
+            this.AcceptButton = grabarEA;
         }
 
-      
-        private void grabarEA_Click(object sender, EventArgs e)
+        private void elemento_TextChanged(object sender, EventArgs e)
         {
-            comboElementoA.Enabled = false;
-            comboAreaA.Enabled = false;
-            int n = con.insertarElementoArea(comboElementoA.SelectedValue.ToString(),comboAreaA.SelectedValue.ToString());
-            if (n > 0)
-            {
-                for(int i = 1; i<=12; i++)
-                {
-                    con.insertarAsientoS(comboElementoA.SelectedValue.ToString(), comboAreaA.SelectedValue.ToString(),new DateTime(gf.fecha.Value.Year,i,gf.fecha.Value.Day),"0","0","0");
-                }
-            }
+            this.AcceptButton = grabarEA;
+        }
+
+        private void area_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = grabarArea;
         }
 
         private void comboConcepto_SelectedIndexChanged(object sender, EventArgs e)
@@ -160,20 +259,24 @@ namespace Departamentos_Seguimiento_2018
       
         private void grabarArea_Click(object sender, EventArgs e)
         {
+            grabarArea_();
+           
+        }
+
+        private void grabarArea_()
+        {
             if (area.Text != "")
             {
                 con.insertarArea(area.Text);
                 //Actualizamos areas
                 cargaComboAreas();
 
-                area.Enabled = false;
-                grabarArea.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Debes rellenar el campo \"Area\"");
             }
         }
-
-
-       
-   
 
         private void nuevoElemento_Click(object sender, EventArgs e)
         {
@@ -181,37 +284,10 @@ namespace Departamentos_Seguimiento_2018
             elemento.Enabled = true;
             grabarElemento.Enabled = true;
             comboElementoE.Enabled = true;
-            
-           
-        }
 
-        
-       
-
-      
-        private void nuevaArea_Click(object sender, EventArgs e)
-        {
-            area.Enabled = true;
-            grabarArea.Enabled = true;
+            this.AcceptButton = grabarElemento;
         }
 
 
-
-      /*  private void abrir_Click(object sender, EventArgs e)
-        {
-            General1 g = new General1();
-            g.con = con;
-            g.fecha = fecha.Value;
-
-            g.idConcepto_ingresos = idConcepto_ingresos;
-            g.idConcepto_gastos = idConcepto_gastos;
-            g.idConcepto_beneficio = idConcepto_beneficio;
-            g.idConcepto_cobros = idConcepto_cobros;
-            g.idConcepto_pagos = idConcepto_pagos;
-            g.idConcepto_diferencia = idConcepto_diferencia;
-
-            g.Show();
         }
-        */
-    }
 }

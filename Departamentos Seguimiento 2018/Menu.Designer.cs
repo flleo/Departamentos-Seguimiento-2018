@@ -38,17 +38,20 @@
             this.concepto_labelE = new System.Windows.Forms.Label();
             this.grabarElemento = new System.Windows.Forms.Button();
             this.area = new System.Windows.Forms.TextBox();
-            this.area_labelA = new System.Windows.Forms.Label();
             this.grabarArea = new System.Windows.Forms.Button();
             this.area_labelE = new System.Windows.Forms.Label();
             this.comboAreaA = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboElementoA = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.elementoArea = new System.Windows.Forms.Button();
             this.grabarEA = new System.Windows.Forms.Button();
             this.elementos_labelE = new System.Windows.Forms.Label();
             this.comboElementoE = new System.Windows.Forms.ComboBox();
             this.comboConcepto = new System.Windows.Forms.ComboBox();
+            this.fecha = new System.Windows.Forms.DateTimePicker();
+            this.comboAreas = new System.Windows.Forms.ComboBox();
+            this.eliminar = new System.Windows.Forms.Button();
+            this.area_labelA = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // abrir
@@ -91,7 +94,7 @@
             this.nuevaArea.TabIndex = 23;
             this.nuevaArea.Text = "NUEVA AREA";
             this.nuevaArea.UseVisualStyleBackColor = true;
-            this.nuevaArea.Click += new System.EventHandler(this.nuevaArea_Click);
+            this.nuevaArea.Click += new System.EventHandler(this.nuevaArea_Click_1);
             // 
             // elemento
             // 
@@ -100,6 +103,7 @@
             this.elemento.Name = "elemento";
             this.elemento.Size = new System.Drawing.Size(100, 20);
             this.elemento.TabIndex = 26;
+            this.elemento.TextChanged += new System.EventHandler(this.elemento_TextChanged);
             // 
             // elemento_labelE
             // 
@@ -132,25 +136,18 @@
             // 
             // area
             // 
-            this.area.Location = new System.Drawing.Point(479, 121);
+            this.area.Enabled = false;
+            this.area.Location = new System.Drawing.Point(554, 71);
             this.area.Name = "area";
             this.area.ShortcutsEnabled = false;
             this.area.Size = new System.Drawing.Size(100, 20);
             this.area.TabIndex = 29;
-            // 
-            // area_labelA
-            // 
-            this.area_labelA.AutoSize = true;
-            this.area_labelA.Location = new System.Drawing.Point(438, 124);
-            this.area_labelA.Name = "area_labelA";
-            this.area_labelA.Size = new System.Drawing.Size(35, 13);
-            this.area_labelA.TabIndex = 28;
-            this.area_labelA.Text = "Area: ";
+            this.area.TextChanged += new System.EventHandler(this.area_TextChanged);
             // 
             // grabarArea
             // 
             this.grabarArea.Enabled = false;
-            this.grabarArea.Location = new System.Drawing.Point(441, 156);
+            this.grabarArea.Location = new System.Drawing.Point(681, 69);
             this.grabarArea.Name = "grabarArea";
             this.grabarArea.Size = new System.Drawing.Size(75, 23);
             this.grabarArea.TabIndex = 33;
@@ -161,7 +158,7 @@
             // area_labelE
             // 
             this.area_labelE.AutoSize = true;
-            this.area_labelE.Location = new System.Drawing.Point(658, 145);
+            this.area_labelE.Location = new System.Drawing.Point(825, 186);
             this.area_labelE.Name = "area_labelE";
             this.area_labelE.Size = new System.Drawing.Size(35, 13);
             this.area_labelE.TabIndex = 46;
@@ -171,7 +168,7 @@
             // 
             this.comboAreaA.Enabled = false;
             this.comboAreaA.FormattingEnabled = true;
-            this.comboAreaA.Location = new System.Drawing.Point(718, 142);
+            this.comboAreaA.Location = new System.Drawing.Point(885, 183);
             this.comboAreaA.Name = "comboAreaA";
             this.comboAreaA.Size = new System.Drawing.Size(121, 21);
             this.comboAreaA.TabIndex = 47;
@@ -179,7 +176,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(658, 114);
+            this.label1.Location = new System.Drawing.Point(825, 155);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 48;
@@ -189,25 +186,25 @@
             // 
             this.comboElementoA.Enabled = false;
             this.comboElementoA.FormattingEnabled = true;
-            this.comboElementoA.Location = new System.Drawing.Point(718, 111);
+            this.comboElementoA.Location = new System.Drawing.Point(885, 152);
             this.comboElementoA.Name = "comboElementoA";
             this.comboElementoA.Size = new System.Drawing.Size(121, 21);
             this.comboElementoA.TabIndex = 49;
             // 
-            // button1
+            // elementoArea
             // 
-            this.button1.Location = new System.Drawing.Point(659, 69);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 23);
-            this.button1.TabIndex = 50;
-            this.button1.Text = "ELEMENTO-AREA";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.elementoArea.Location = new System.Drawing.Point(826, 69);
+            this.elementoArea.Name = "elementoArea";
+            this.elementoArea.Size = new System.Drawing.Size(117, 23);
+            this.elementoArea.TabIndex = 50;
+            this.elementoArea.Text = "ELEMENTO-AREA";
+            this.elementoArea.UseVisualStyleBackColor = true;
+            this.elementoArea.Click += new System.EventHandler(this.elementoArea_Click);
             // 
             // grabarEA
             // 
             this.grabarEA.Enabled = false;
-            this.grabarEA.Location = new System.Drawing.Point(659, 181);
+            this.grabarEA.Location = new System.Drawing.Point(826, 222);
             this.grabarEA.Name = "grabarEA";
             this.grabarEA.Size = new System.Drawing.Size(75, 23);
             this.grabarEA.TabIndex = 51;
@@ -241,16 +238,54 @@
             this.comboConcepto.TabIndex = 479;
             this.comboConcepto.SelectedIndexChanged += new System.EventHandler(this.comboConcepto_SelectedIndexChanged);
             // 
+            // fecha
+            // 
+            this.fecha.Location = new System.Drawing.Point(826, 117);
+            this.fecha.Name = "fecha";
+            this.fecha.Size = new System.Drawing.Size(200, 20);
+            this.fecha.TabIndex = 506;
+            // 
+            // comboAreas
+            // 
+            this.comboAreas.FormattingEnabled = true;
+            this.comboAreas.Location = new System.Drawing.Point(441, 145);
+            this.comboAreas.Name = "comboAreas";
+            this.comboAreas.Size = new System.Drawing.Size(121, 21);
+            this.comboAreas.TabIndex = 507;
+            this.comboAreas.SelectedIndexChanged += new System.EventHandler(this.comboAreas_SelectedIndexChanged);
+            // 
+            // eliminar
+            // 
+            this.eliminar.Location = new System.Drawing.Point(602, 143);
+            this.eliminar.Name = "eliminar";
+            this.eliminar.Size = new System.Drawing.Size(75, 23);
+            this.eliminar.TabIndex = 508;
+            this.eliminar.Text = "ELIMINAR";
+            this.eliminar.UseVisualStyleBackColor = true;
+            this.eliminar.Click += new System.EventHandler(this.eliminar_Click);
+            // 
+            // area_labelA
+            // 
+            this.area_labelA.AutoSize = true;
+            this.area_labelA.Location = new System.Drawing.Point(438, 114);
+            this.area_labelA.Name = "area_labelA";
+            this.area_labelA.Size = new System.Drawing.Size(35, 13);
+            this.area_labelA.TabIndex = 28;
+            this.area_labelA.Text = "Area: ";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 465);
+            this.ClientSize = new System.Drawing.Size(1162, 465);
+            this.Controls.Add(this.eliminar);
+            this.Controls.Add(this.comboAreas);
+            this.Controls.Add(this.fecha);
             this.Controls.Add(this.comboConcepto);
             this.Controls.Add(this.comboElementoE);
             this.Controls.Add(this.elementos_labelE);
             this.Controls.Add(this.grabarEA);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.elementoArea);
             this.Controls.Add(this.comboElementoA);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboAreaA);
@@ -285,17 +320,20 @@
         private System.Windows.Forms.Label concepto_labelE;
         private System.Windows.Forms.Button grabarElemento;
         private System.Windows.Forms.TextBox area;
-        private System.Windows.Forms.Label area_labelA;
         private System.Windows.Forms.Button grabarArea;
         private System.Windows.Forms.Label area_labelE;
         private System.Windows.Forms.ComboBox comboAreaA;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboElementoA;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button elementoArea;
         private System.Windows.Forms.Button grabarEA;
         private System.Windows.Forms.Label elementos_labelE;
         private System.Windows.Forms.ComboBox comboElementoE;
         private System.Windows.Forms.ComboBox comboConcepto;
+        internal System.Windows.Forms.DateTimePicker fecha;
+        private System.Windows.Forms.ComboBox comboAreas;
+        private System.Windows.Forms.Button eliminar;
+        private System.Windows.Forms.Label area_labelA;
     }
 }
 

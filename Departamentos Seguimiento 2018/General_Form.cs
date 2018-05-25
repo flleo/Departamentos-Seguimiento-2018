@@ -18,6 +18,7 @@ namespace Departamentos_Seguimiento_2018
         private string idarea="";
         string idconcepto = "";
         internal Menu menu;
+        private int ex;
 
         public General_Form()
         {
@@ -26,7 +27,7 @@ namespace Departamentos_Seguimiento_2018
 
         private void General_Form_Load(object sender, EventArgs e)
         {
-        
+            elementos.ScrollBars=0;
             // Combo Concepto
             comboConcepto.DataSource = con.tabla("SELECT * FROM CONCEPTO");
             comboConcepto.DisplayMember = "Concepto";
@@ -71,52 +72,83 @@ namespace Departamentos_Seguimiento_2018
                 r1 = 0; r2 = 0; di3 = 0.0;
                 DataTable totalesIngresos = con.tablaTotalesConceptoMesAño_("1", mes, fecha.Value.Year);
                 DataTable totalesGastos = con.tablaTotalesConceptoMesAño_("2", mes, fecha.Value.Year);
-                estimado.Text = (Double.Parse(totalesIngresos.Rows[0][0].ToString())-Double.Parse(totalesGastos.Rows[0][0].ToString())).ToString();
-                descuento.Text = (Double.Parse(totalesIngresos.Rows[0][1].ToString()) - Double.Parse(totalesGastos.Rows[0][1].ToString())).ToString();
-                real.Text = (Double.Parse(totalesIngresos.Rows[0][2].ToString()) - Double.Parse(totalesGastos.Rows[0][2].ToString())).ToString();
-                for(int i=1; i<=12; i++)
-                { 
-                   r1 += Double.Parse(con.tablaTotalesConceptoMesAño_("1", i, fecha.Value.Year).Rows[0][2].ToString());
-                   r2 += Double.Parse(con.tablaTotalesConceptoMesAño_("2", i, fecha.Value.Year).Rows[0][2].ToString());                    
-                }             
-                di3 = r1 - r2;
-                acumulado.Text = di3.ToString();
+                try
+                {
+                    estimado.Text = (Double.Parse(totalesIngresos.Rows[0][0].ToString()) - Double.Parse(totalesGastos.Rows[0][0].ToString())).ToString();
+                    descuento.Text = (Double.Parse(totalesIngresos.Rows[0][1].ToString()) - Double.Parse(totalesGastos.Rows[0][1].ToString())).ToString();
+                    real.Text = (Double.Parse(totalesIngresos.Rows[0][2].ToString()) - Double.Parse(totalesGastos.Rows[0][2].ToString())).ToString();
+                    for (int i = 1; i <= 12; i++)
+                    {
+                        r1 += Double.Parse(con.tablaTotalesConceptoMesAño_("1", i, fecha.Value.Year).Rows[0][2].ToString());
+                        r2 += Double.Parse(con.tablaTotalesConceptoMesAño_("2", i, fecha.Value.Year).Rows[0][2].ToString());
+                    }
+                    di3 = r1 - r2;
+                    acumulado.Text = di3.ToString();
+                }
+                catch {
+                    acumulado.Text = 0.ToString();
+                    estimado.Text = 0.ToString();
+                    descuento.Text = 0.ToString();
+                    real.Text = 0.ToString();
+                }
             }
             else if (idconcepto.Equals("6"))
             {
                 r1 = 0; r2 = 0; di3 = 0.0;
                 DataTable totalesIngresos = con.tablaTotalesConceptoMesAño_("4", mes, fecha.Value.Year);
                 DataTable totalesGastos = con.tablaTotalesConceptoMesAño_("5", mes, fecha.Value.Year);
-                estimado.Text = (Double.Parse(totalesIngresos.Rows[0][0].ToString()) - Double.Parse(totalesGastos.Rows[0][0].ToString())).ToString();
-                descuento.Text = (Double.Parse(totalesIngresos.Rows[0][1].ToString()) - Double.Parse(totalesGastos.Rows[0][1].ToString())).ToString();
-                real.Text = (Double.Parse(totalesIngresos.Rows[0][2].ToString()) - Double.Parse(totalesGastos.Rows[0][2].ToString())).ToString();
-                for (int i = 1; i <= 12; i++)
+                try
                 {
-                    r1 += Double.Parse(con.tablaTotalesConceptoMesAño_("4", i, fecha.Value.Year).Rows[0][2].ToString());
-                    r2 += Double.Parse(con.tablaTotalesConceptoMesAño_("5", i, fecha.Value.Year).Rows[0][2].ToString());
+                    estimado.Text = (Double.Parse(totalesIngresos.Rows[0][0].ToString()) - Double.Parse(totalesGastos.Rows[0][0].ToString())).ToString();
+                    descuento.Text = (Double.Parse(totalesIngresos.Rows[0][1].ToString()) - Double.Parse(totalesGastos.Rows[0][1].ToString())).ToString();
+                    real.Text = (Double.Parse(totalesIngresos.Rows[0][2].ToString()) - Double.Parse(totalesGastos.Rows[0][2].ToString())).ToString();
+                    for (int i = 1; i <= 12; i++)
+                    {
+                        r1 += Double.Parse(con.tablaTotalesConceptoMesAño_("4", i, fecha.Value.Year).Rows[0][2].ToString());
+                        r2 += Double.Parse(con.tablaTotalesConceptoMesAño_("5", i, fecha.Value.Year).Rows[0][2].ToString());
+                    }
+                    di3 = r1 - r2;
+                    acumulado.Text = di3.ToString();
                 }
-                di3 = r1 - r2;
-                acumulado.Text = di3.ToString();
+                catch
+                {
+                    acumulado.Text = 0.ToString();
+                    estimado.Text = 0.ToString();
+                    descuento.Text = 0.ToString();
+                    real.Text = 0.ToString();
+                }
             }
             else
             {
                 data.DataSource = con.tablaAreasConceptoMesAño_(idconcepto, mes, fecha.Value.Year);
-                if (data.Rows.Count > 0)
+                try
                 {
+                    //    if (data.Rows.Count > 0)
+                    //   {
                     data.Columns[0].Visible = false;
                     acumulado.Text = con.tablaAcumuladoAño_(idconcepto, fecha.Value.Year).Rows[0][0].ToString();
                     DataTable totales = con.tablaTotalesConceptoMesAño_(idconcepto, fecha.Value.Month, fecha.Value.Year);
                     estimado.Text = totales.Rows[0][0].ToString();
                     descuento.Text = totales.Rows[0][1].ToString();
                     real.Text = totales.Rows[0][2].ToString();
-                    if (data.Rows.Count == 1)
-                    {
-                        if (idconcepto.Equals("1") || idconcepto.Equals("2") || idconcepto.Equals("4") || idconcepto.Equals("5"))
-                            MessageBox.Show("No existen elementos relacionados para " + concepto.Text + " en " + fecha.Value.Year + "\nDebes asociar un Elemento a un Area");
-                        else
-                            MessageBox.Show("Debes asociar un Elemento a un Area");
+                    /*       if (data.Rows.Count == 1)
+                           {
+                               if (idconcepto.Equals("1") || idconcepto.Equals("2") || idconcepto.Equals("4") || idconcepto.Equals("5"))
+                                   MessageBox.Show("No existen elementos relacionados para " + concepto.Text + " en " + fecha.Value.Year + "\nDebes asociar un Elemento a un Area"
+                                       + "\nSólo se permitiran registros nuevos en el presente año");
+                               else
+                                   MessageBox.Show("Debes asociar un Elemento a un Area");
+                               this.Close();
+                           }
+                       }*/
+                } catch  {
+                    if (idconcepto.Equals("1") || idconcepto.Equals("2") || idconcepto.Equals("4") || idconcepto.Equals("5"))
+                        MessageBox.Show("No existen elementos relacionados para " + concepto.Text + " en " + fecha.Value.Year + "\nDebes asociar un Elemento a un Area"
+                            + "\nSólo se permitiran registros nuevos en el presente año");
+                    else
+                        MessageBox.Show("Debes asociar un Elemento a un Area");
+                    if(ex==0)
                         this.Close();
-                    }
                 }
             }
         }
@@ -126,7 +158,8 @@ namespace Departamentos_Seguimiento_2018
             eliminar.Enabled = true;
             int numeroFila = Convert.ToInt16(e.RowIndex.ToString());       
             areaText.Text = data.Rows[numeroFila].Cells[1].Value.ToString();
-            idarea = data.Rows[numeroFila].Cells[0].Value.ToString();
+            string ida = data.Rows[numeroFila].Cells[0].Value.ToString();
+            idarea = ida;
             elementosArea(fecha.Value.Month);         
            
         }
@@ -135,24 +168,67 @@ namespace Departamentos_Seguimiento_2018
         {
             if (!idarea.Equals(""))
             {
-                elementos.DataSource = null;
-               // MessageBox.Show(elementos.Rows.Count.ToString());
-             //    MessageBox.Show(idconcepto+"@"+ mes.ToString()+"@"+ fecha.Value.Year.ToString()+"@"+ idarea);
-                elementos.DataSource = con.tablaElementosConceptoMesAñoArea_(idconcepto, mes.ToString(), fecha.Value.Year.ToString(), idarea);
-              //  MessageBox.Show(elementos.RowCount.ToString());
-                if (elementos.Rows.Count > 0)
+                elementos.DataSource = null;               
+                if (idconcepto.Equals("3")) totales("1","2");
+                else if (idconcepto.Equals("6")) totales("4", "5");
+                else
                 {
-                    elementos.Columns[0].Visible = false;
-                    elementos.ColumnHeadersVisible = false;
-                    elementos.RowHeadersVisible = false;
+                    // MessageBox.Show(elementos.Rows.Count.ToString());
+                    // MessageBox.Show(idconcepto+"@"+ mes.ToString()+"@"+ fecha.Value.Year.ToString()+"@"+ idarea);
+                    elementos.DataSource = con.tablaElementosConceptoMesAñoArea_(idconcepto, mes.ToString(), fecha.Value.Year.ToString(), idarea);
+                    //  MessageBox.Show(elementos.RowCount.ToString());
+
                     acumuladoE.Text = con.tablaAcumuladoAñoArea(idconcepto, fecha.Value.Year.ToString(), idarea).Rows[0][0].ToString();
                     DataTable totales = con.tablaTotalesConceptoMesAñoArea(idconcepto, mes.ToString(), fecha.Value.Year.ToString(), idarea);
                     estimadoE.Text = totales.Rows[0][0].ToString();
                     descuentoE.Text = totales.Rows[0][1].ToString();
                     realE.Text = totales.Rows[0][2].ToString();
+
+                    if (elementos.Rows.Count > 0)
+                    {
+                        elementos.Columns[0].Visible = false;
+                        elementos.ColumnHeadersVisible = false;
+                        elementos.RowHeadersVisible = false;
+
+                    }
                 }
             }
         }
+
+        private void totales(string idcon1,string idcon2)
+        {
+            double esting=0, desing=0, reaing=0, estgas=0, desgas=0, reagas=0, totreaing=0, totreagas=0;
+         //   MessageBox.Show(idcon1, fecha.Value.Year.ToString()+"@"+ idarea);
+            DataTable totreaingDT = con.tablaTotalesRealesConceptoAñoArea(idcon1, fecha.Value.Year.ToString(), idarea);
+            DataTable totreagasDT = con.tablaTotalesRealesConceptoAñoArea(idcon2, fecha.Value.Year.ToString(), idarea);
+
+            if (!totreaingDT.Rows[0][0].ToString().Equals("")) totreaing = Double.Parse(totreaingDT.Rows[0][0].ToString());           
+            if (!totreagasDT.Rows[0][0].ToString().Equals("")) totreagas = Double.Parse(totreagasDT.Rows[0][0].ToString());
+
+            acumuladoE.Text = (totreaing - totreagas).ToString();
+
+            DataTable toting = con.tablaTotalesConceptoMesAñoArea(idcon1, fecha.Value.Month.ToString(), fecha.Value.Year.ToString(), idarea);
+            DataTable totgas = con.tablaTotalesConceptoMesAñoArea(idcon2, fecha.Value.Month.ToString(), fecha.Value.Year.ToString(), idarea);
+        
+            if (!toting.Rows[0][0].ToString().Equals(""))
+            {
+                esting = Double.Parse(toting.Rows[0][0].ToString());// - Double.Parse(totgas.Rows[0][0].ToString());
+                desing = Double.Parse(toting.Rows[0][1].ToString());// - Double.Parse(totgas.Rows[0][1].ToString());
+                reaing = Double.Parse(toting.Rows[0][2].ToString());// - Double.Parse(totgas.Rows[0][2].ToString());
+            }
+            if (!totgas.Rows[0][0].ToString().Equals(""))
+            {
+                estgas = Double.Parse(totgas.Rows[0][0].ToString());// Double.Parse(toting.Rows[0][0].ToString()) -
+                desgas = Double.Parse(totgas.Rows[0][1].ToString());//Double.Parse(toting.Rows[0][1].ToString()) - 
+                reagas = Double.Parse(totgas.Rows[0][2].ToString());// Double.Parse(toting.Rows[0][2].ToString()) -
+            }
+            estimadoE.Text  = (esting - estgas).ToString();
+            descuentoE.Text = (desing - desgas).ToString();
+            realE.Text = (reaing - reagas).ToString();
+           
+        }
+            
+    
 
         private void elementos_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -170,21 +246,27 @@ namespace Departamentos_Seguimiento_2018
             el.gf = this;
             el.Show();
         }
-
        
 
         private void areasButton_Click(object sender, EventArgs e)
         {
             label_año.Text = fecha.Value.Year.ToString();
             idconcepto = comboConcepto.SelectedValue.ToString();
+            if(idconcepto.Equals("3") || idconcepto.Equals("6"))
+            {
+                //acumuladoE.Text = con.tablaAcumuladoAñoArea(idconcepto,fecha.Value.Year.ToString(),idarea).Rows[0][0].ToString();
+                elementosArea(Int32.Parse(fecha.Value.Month.ToString()));
+            }
             conceptoE.Text = concepto.Text = comboConcepto.Text.ToString();
             actualizaMes();
-            areas(fecha.Value.Month);
             elementos.DataSource = null;
+            areas(fecha.Value.Month);
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ex = 1;
             //Exportar los datos de la tabla que visualicemos en un datagridview a una hoja de Excel
             // Creamos un objeto Excel.
             Excel.Application excel = default(Excel.Application);
@@ -254,8 +336,8 @@ namespace Departamentos_Seguimiento_2018
             Excel.Worksheet worksheet = (Excel.Worksheet)ds2018.Worksheets[n+2];
             worksheet.Delete();
 
-           
 
+            ex = 0;
         }
 
         private void hoja(Excel.Worksheet hoja,int idarea)
@@ -289,8 +371,7 @@ namespace Departamentos_Seguimiento_2018
                     data.DataSource = null;
                     data.DataSource = con.tablaAreasConceptoMesAño_(idconcepto,1,fecha.Value.Year);
                 }
-
-                //elementosArea(fecha.Value.Month);
+               
                 // f = nºfilas
                 int f = 1;
                 int k = 0;
@@ -367,7 +448,6 @@ namespace Departamentos_Seguimiento_2018
                     case 11: { E = "AK"; D = "AL"; R = "AM"; break; }
                     case 12: { E = "AN"; D = "AO"; R = "AP"; break; }
                 }
-                //elementosArea(fecha.Value.Month);
                 // Valores para las areas en los 12 meses
                 for (j = 1; j <= 6; j++)
                 {
@@ -394,7 +474,7 @@ namespace Departamentos_Seguimiento_2018
                             k++;
                         }               
                     }
-                    // Para Areas
+                    // Para Areas los Elementos
                     else
                     {
                         // Filas (Elementos) por Concepto: Estimado Descuento Real para conceptos distintos de beneficio ó diferencia 
@@ -461,19 +541,36 @@ namespace Departamentos_Seguimiento_2018
 
         private void eliminar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Desea eliminar el area \"" + areaText.Text + "\", con todos sus elementos?", "Departamentos Seguimiento 2018 - Eliminar Area",
-            MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
-            {               
-                int r  = con.eliminarAreaIdArea(idarea);
-                if (r > 0)
-                {
-                    MessageBox.Show("Area eliminada");
-                    areas(fecha.Value.Month);
-                    menu.cargaComboAreas();
-                }
-            }
+            eliminarArea(idarea);
+           
         }
 
-       
+        internal void eliminarArea(string idarea)
+        {
+            if (!idarea.Equals(""))
+            {
+                if (MessageBox.Show("¿Desea eliminar el area \"" + areaText.Text + "\", con todos sus elementos?", "Departamentos Seguimiento 2018 - Eliminar Area",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                {
+                    MessageBox.Show(idarea);
+                    int r = con.eliminarAreaIdArea(idarea);
+                    if (r > 0)
+                    {
+                        MessageBox.Show("Area eliminada");
+                        areas(fecha.Value.Month);
+                        menu.cargaComboAreas();
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar un área");
+            }
+        }
     }
+        
+
+       
+    
 }

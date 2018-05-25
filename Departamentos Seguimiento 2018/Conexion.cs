@@ -12,7 +12,7 @@ namespace Departamentos_Seguimiento_2018
 {
     public class Conexion
     {
-        string connectionString = "data source=EHI008\\SQLEXPRESS; initial catalog=DepartamentosSeguimiento2018_2; integrated security=true";
+        string connectionString = "data source=EHI008\\SQLEXPRESS; initial catalog=DepartamentosSeguimiento2018; integrated security=true";
         internal DataSet dataSet = new DataSet();
 
         // Consultas 
@@ -23,7 +23,11 @@ namespace Departamentos_Seguimiento_2018
         internal string qAcumuladoAñoArea = "" +
         "SELECT sum(a.real) FROM asiento AS a " +
 "INNER JOIN Elemento AS e ON e.Id=a.IdElemento " +
-"WHERE e.IdConcepto = @idconcepto  AND Year(a.fecha) LIKE @año AND a.IdArea=@idarea";
+"WHERE e.IdConcepto = @idconcepto  AND Year(a.fecha) = @año AND a.IdArea=@idarea";
+        private string qTotalesRealesConceptoAñoArea="" +
+            "SELECT sum(a.real) FROM asiento AS a "+
+"INNER JOIN ELEMENTO AS E ON E.Id=A.IDELEMENTO "+
+"WHERE E.IdConcepto =  @idconcepto  AND Year(a.fecha) = @año AND idarea=@idarea";
         internal string qTotalesConceptoMesAño = "" +
             "SELECT sum(a.estimado),sum(a.descuento),sum(a.real) FROM asiento AS a "+
 "INNER JOIN ELEMENTO AS E ON E.Id=A.IDELEMENTO "+
@@ -32,7 +36,7 @@ namespace Departamentos_Seguimiento_2018
          internal string qTotalesConceptoMesAñoArea = "" +
            "SELECT sum(a.estimado),sum(a.descuento),sum(a.real) FROM asiento AS a " +
 "INNER JOIN ELEMENTO AS E ON E.Id=A.IDELEMENTO " +
-"WHERE E.IdConcepto =  @idconcepto AND MONTH(a.fecha) like @mes AND Year(a.fecha) LIKE @año AND a.IdArea=@idarea";
+"WHERE E.IdConcepto =  @idconcepto AND MONTH(a.fecha) = @mes AND Year(a.fecha) = @año AND a.IdArea=@idarea";
 
         internal string qAreasConceptoMesAño = "" +
            "SELECT aR.id, ar.area, sum(a.estimado),sum(a.descuento),sum(a.real) FROM asiento AS a " +
@@ -53,6 +57,7 @@ namespace Departamentos_Seguimiento_2018
         private string qElementosIdConcepto = "" +
             "SELECT e.id,e.elemento from elemento as e WHERE e.idConcepto=@id ";
         
+
 
 
 
@@ -111,11 +116,10 @@ namespace Departamentos_Seguimiento_2018
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(qAcumuladoAñoArea, connection);
-                command.Parameters.Add("@idconcepto", SqlDbType.Int);
-                command.Parameters["@idconcepto"].Value = idconcepto;
-                command.Parameters.Add("@idarea", SqlDbType.Int);
-                command.Parameters["@idarea"].Value = idarea;
-                command.Parameters.AddWithValue("@año", "%" + año + "%");
+                command.Parameters.Add("@idconcepto", SqlDbType.Int).Value = idconcepto;
+                command.Parameters.Add("@idarea", SqlDbType.Int).Value = idarea;
+                command.Parameters.Add("@año", SqlDbType.Int).Value = año;
+
                 DataTable dt = new DataTable();
                 try
                 {
@@ -123,7 +127,6 @@ namespace Departamentos_Seguimiento_2018
                     SqlDataReader reader = command.ExecuteReader();
                     dt.Load(reader);
                     connection.Close();
-
                 }
                 catch (Exception ex)
                 {
@@ -230,13 +233,15 @@ namespace Departamentos_Seguimiento_2018
                     r = cmd.ExecuteNonQuery();
                     return r;
                 }
-                catch (SqlException ex)
+                catch (SqlException)
                 {
                     Console.Write("ERROR eliminarArea");
                     return 0;
                 }
             }
         }
+
+        
 
         private int eliminarElementoAreaIdArea(string idarea)
         {
@@ -303,13 +308,13 @@ namespace Departamentos_Seguimiento_2018
                 {
                     int r = cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Asiento Elemento_Area GRABADO");
+                    Console.Write("Asiento Elemento_Area GRABADO");
                     return r;
 
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show("Asiento Elemento_Area YA EXISTE");
+                    Console.Write("Asiento Elemento_Area YA EXISTE");
                     return 0;
                 }
             }
@@ -336,20 +341,20 @@ namespace Departamentos_Seguimiento_2018
                     try
                     {
                         int r = cmd.ExecuteNonQuery();
-                        MessageBox.Show("Asiento GRABADO");
+                        Console.Write("Asiento GRABADO");
                         return r;
 
                     }
                     catch (SqlException ex)
                     {
-                        MessageBox.Show("Asiento YA EXISTE");
+                        Console.Write("Asiento YA EXISTE");
                         return 0;
                     }
                 }
              
         }
 
-        internal int insertarAsientoS(string idelemento, string idarea, DateTime fecha, string estimado, string descuento, string real)
+    /*    internal int insertarAsientoS(string idelemento, string idarea, DateTime fecha, string estimado, string descuento, string real)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -377,7 +382,7 @@ namespace Departamentos_Seguimiento_2018
             }
         }
 
-      
+      */
    
         internal int eliminarAsientoIdElemento(string idelemento,string idarea)
         {
@@ -483,7 +488,31 @@ namespace Departamentos_Seguimiento_2018
                 }
             }
         }
-       
+
+        internal DataTable tablaTotalesRealesConceptoAñoArea(string idconcepto, string año, string idarea)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(qTotalesRealesConceptoAñoArea, connection);
+                command.Parameters.Add("@idconcepto", SqlDbType.Int).Value = idconcepto;
+                command.Parameters.Add("@idarea", SqlDbType.Int).Value = idarea;
+                command.Parameters.Add("@año", SqlDbType.Int).Value = año;
+
+                DataTable dt = new DataTable();
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    dt.Load(reader);
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                return dt;
+            }
+        }
 
         internal DataTable tablaTotalesConceptoMesAño_(string idconcepto, int mes, int año)
         {
@@ -515,12 +544,10 @@ namespace Departamentos_Seguimiento_2018
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(qTotalesConceptoMesAñoArea, connection);
-                command.Parameters.Add("@idconcepto", SqlDbType.Int);
-                command.Parameters["@idconcepto"].Value = idconcepto;
-                command.Parameters.Add("@idarea", SqlDbType.Int);
-                command.Parameters["@idarea"].Value = idarea;
-                command.Parameters.AddWithValue("@mes", "%" + mes + "%");
-                command.Parameters.AddWithValue("@año", "%" + año + "%");
+                command.Parameters.Add("@idconcepto", SqlDbType.Int).Value = idconcepto;
+                command.Parameters.Add("@mes", SqlDbType.Int).Value = mes;
+                command.Parameters.Add("@año", SqlDbType.Int).Value = año;
+                command.Parameters.Add("@idarea", SqlDbType.Int).Value = idarea;
                 DataTable dt = new DataTable();
                 try
                 {

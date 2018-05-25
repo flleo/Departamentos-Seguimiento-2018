@@ -173,24 +173,24 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(95, 258);
+            this.label1.Location = new System.Drawing.Point(66, 257);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.Size = new System.Drawing.Size(129, 13);
             this.label1.TabIndex = 468;
-            this.label1.Text = "ACUMULADO";
+            this.label1.Text = "ACUMULADO ANUAL";
             // 
             // acumulado
             // 
-            this.acumulado.Location = new System.Drawing.Point(95, 274);
+            this.acumulado.Location = new System.Drawing.Point(69, 274);
             this.acumulado.Name = "acumulado";
             this.acumulado.ReadOnly = true;
-            this.acumulado.Size = new System.Drawing.Size(100, 20);
+            this.acumulado.Size = new System.Drawing.Size(126, 20);
             this.acumulado.TabIndex = 467;
             // 
             // label_año
             // 
             this.label_año.AutoSize = true;
-            this.label_año.Location = new System.Drawing.Point(95, 226);
+            this.label_año.Location = new System.Drawing.Point(66, 223);
             this.label_año.Name = "label_año";
             this.label_año.Size = new System.Drawing.Size(26, 13);
             this.label_año.TabIndex = 466;
@@ -237,7 +237,6 @@
             // eliminar
             // 
             this.eliminar.BackColor = System.Drawing.Color.DarkSalmon;
-            this.eliminar.Enabled = false;
             this.eliminar.Location = new System.Drawing.Point(418, 194);
             this.eliminar.Name = "eliminar";
             this.eliminar.Size = new System.Drawing.Size(75, 23);

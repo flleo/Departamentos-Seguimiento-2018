@@ -1,10 +1,10 @@
 USE [master]
 GO
 /****** Object:  Database [SucursalCuenta]    ******/
-CREATE DATABASE [DepartamentosSeguimiento2018_2] 
+CREATE DATABASE [DepartamentosSeguimiento2018] 
 
 GO
-USE [DepartamentosSeguimiento2018_2]
+USE [DepartamentosSeguimiento2018]
 GO
 /****** Object:  Table [dbo].[Cuenta]    ******/
 SET ANSI_NULLS ON
@@ -44,19 +44,21 @@ GO
 CREATE TABLE [dbo].[Asiento](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[IdElemento] [int] NOT NULL,
-	[IdArea][int] NOT NULL,	
-	[fecha] [date] NOT NULL,
+	[IdArea][int]  NOT NULL,	
+	[Fecha] [date] NOT NULL,
+	[mes] as Month(CAST(fecha AS DATE)) PERSISTED ,
+	[año] as Year(CAST(fecha AS DATE)) PERSISTED ,
 	[Estimado] [money]  NULL,
 	[Descuento] [money]  NULL,
 	[Real] [money]  NULL,
-
- CONSTRAINT [PK_Asiento] PRIMARY KEY ([Id]) ,
- CONSTRAINT [FK_Asiento_Elemento_Area] FOREIGN KEY ([IdElemento],[IdArea]) REFERENCES [dbo].[Elemento_Area]([IdElemento],[IdArea])
+	
+ CONSTRAINT [PK_Asiento_Id_IdElemento_IdArea_fecha] PRIMARY KEY ([Id]) ,
+ CONSTRAINT [FK_Asiento_Elemento_Area] FOREIGN KEY ([IdElemento],[IdArea]) REFERENCES [dbo].[Elemento_Area]([IdElemento],[IdArea]),
+ CONSTRAINT [UN_Asiento_IdElemento_IdArea_mes_año] UNIQUE NONCLUSTERED (IdElemento,IdArea,mes,año)
 
  )
-
+ 
 GO
-
 INSERT INTO [dbo].[Concepto] VALUES ('INGRESOS'),('GASTOS'),('BENEFICIO'),('COBROS'),('PAGOS'),('DIFERENCIA')
 GO 
 

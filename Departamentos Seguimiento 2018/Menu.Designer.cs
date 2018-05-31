@@ -52,6 +52,7 @@
             this.comboAreas = new System.Windows.Forms.ComboBox();
             this.eliminar = new System.Windows.Forms.Button();
             this.area_labelA = new System.Windows.Forms.Label();
+            this.eliminarElemento = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // abrir
@@ -228,6 +229,7 @@
             this.comboElementoE.Name = "comboElementoE";
             this.comboElementoE.Size = new System.Drawing.Size(121, 21);
             this.comboElementoE.TabIndex = 56;
+            this.comboElementoE.SelectedIndexChanged += new System.EventHandler(this.comboElementoE_SelectedIndexChanged_1);
             // 
             // comboConcepto
             // 
@@ -273,12 +275,24 @@
             this.area_labelA.TabIndex = 28;
             this.area_labelA.Text = "Area: ";
             // 
+            // eliminarElemento
+            // 
+            this.eliminarElemento.Enabled = false;
+            this.eliminarElemento.Location = new System.Drawing.Point(229, 290);
+            this.eliminarElemento.Name = "eliminarElemento";
+            this.eliminarElemento.Size = new System.Drawing.Size(75, 23);
+            this.eliminarElemento.TabIndex = 509;
+            this.eliminarElemento.Text = "ELIMINAR";
+            this.eliminarElemento.UseVisualStyleBackColor = true;
+            this.eliminarElemento.Click += new System.EventHandler(this.eliminarElemento_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1162, 465);
+            this.Controls.Add(this.eliminarElemento);
             this.Controls.Add(this.eliminar);
             this.Controls.Add(this.comboAreas);
             this.Controls.Add(this.fecha);
@@ -335,6 +349,7 @@
         private System.Windows.Forms.ComboBox comboAreas;
         private System.Windows.Forms.Button eliminar;
         private System.Windows.Forms.Label area_labelA;
+        private System.Windows.Forms.Button eliminarElemento;
     }
 }
 

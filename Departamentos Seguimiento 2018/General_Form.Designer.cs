@@ -203,7 +203,7 @@
             this.comboConcepto.Name = "comboConcepto";
             this.comboConcepto.Size = new System.Drawing.Size(121, 21);
             this.comboConcepto.TabIndex = 478;
-            // 
+           // 
             // label20
             // 
             this.label20.AutoSize = true;

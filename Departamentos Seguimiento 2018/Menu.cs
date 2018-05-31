@@ -17,6 +17,7 @@ namespace Departamentos_Seguimiento_2018
         string idConcepto_ingresos,idConcepto_gastos,idConcepto_beneficio,idConcepto_cobros,idConcepto_pagos,idConcepto_diferencia;
         General_Form gf = new General_Form();
         int i = 0;
+        private int ceE;
 
         public Menu()
         {
@@ -87,6 +88,8 @@ namespace Departamentos_Seguimiento_2018
             comboElementoA.DataSource = con.tabla("SELECT * FROM elemento");
             comboElementoA.DisplayMember = "elemento";
             comboElementoA.ValueMember = "id";
+
+            comboElementoE.DataSource = null;
         }
 
         private void abrir_Click(object sender, EventArgs e)
@@ -131,13 +134,18 @@ namespace Departamentos_Seguimiento_2018
             int r = 0;
             try
             {
+               // MessageBox.Show(comboElementoA.SelectedValue.ToString(), comboAreaA.SelectedValue.ToString());
                 int n = con.insertarElementoArea(comboElementoA.SelectedValue.ToString(), comboAreaA.SelectedValue.ToString());
-
+                int año = fecha.Value.Year;
+                int dia = fecha.Value.Day;
+                
                 for (int i = 1; i <= 12; i++)
-                {
+                {                    
                     r = 0;
-                    fecha.Value = new DateTime(fecha.Value.Year, i, fecha.Value.Day);
-                    r = con.insertarAsiento(comboElementoA.SelectedValue.ToString(), comboAreaA.SelectedValue.ToString(), fecha.Value, "0", "0", "0");
+                    //MessageBox.Show(año+"@"+i+"@"+1);
+                    DateTime fecha1 = new DateTime(año,i,1);
+                    r = con.insertarAsiento(comboElementoA.SelectedValue.ToString(), comboAreaA.SelectedValue.ToString(),fecha1, "0", "0", "0");
+                    
                 }
                 if (r == 1)
                 {
@@ -160,6 +168,7 @@ namespace Departamentos_Seguimiento_2018
             try
             {
                 eliminarArea(comboAreas.SelectedValue.ToString());
+                cargaComboAreas();
             } catch
             {
                 MessageBox.Show("No hay areas que eliminar");
@@ -225,6 +234,33 @@ namespace Departamentos_Seguimiento_2018
             this.AcceptButton = grabarArea;
         }
 
+        private void eliminarElemento_Click(object sender, EventArgs e)
+        {
+
+            if (MessageBox.Show("¿Desea eliminar el elemento \"" + comboElementoE.Text + "\"?", "Departamentos Seguimiento 2018 - Eliminar Elemento",
+            MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                string idEle = comboElementoE.SelectedValue.ToString();
+                con.eliminarAsientoIdElemento(idEle);
+                con.eliminarElementoAreaIdEle(idEle);
+                int r = con.eliminarElemento(idEle);
+                if (r > 0)
+                {
+                    cargaComboElementos();
+                }
+            }
+        }
+
+       
+       
+
+        private void comboElementoE_SelectedIndexChanged_1(object sender, EventArgs e)
+        {           
+                if (ceE > 1)
+                    eliminarElemento.Enabled = true;
+                ceE++;           
+        }
+
         private void comboConcepto_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!comboConcepto.SelectedValue.ToString().Equals("System.Data.DataRowView"))
@@ -233,6 +269,7 @@ namespace Departamentos_Seguimiento_2018
                 comboElementoE.DataSource = null;
                 comboElementoE.DataSource = con.tablaElementosIdConcepto(comboConcepto.SelectedValue.ToString());
                 comboElementoE.DisplayMember = "Elemento";
+                comboElementoE.ValueMember = "Id";
             }
 
         }

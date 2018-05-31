@@ -48,7 +48,9 @@ namespace Departamentos_Seguimiento_2018
             "SELECT e.id, e.elemento, ce.estimado,ce.descuento,ce.real, ce.id FROM asiento as ce "+
 "INNER JOIN Elemento AS e ON e.Id=ce.IdElemento "+
 "WHERE e.IdConcepto = @idconcepto AND Month(ce.fecha) = @mes  AND Year(ce.fecha) like @año AND ce.idarea = @idarea";
+
        
+
         internal string qConceptoIdElemento = "" +
             "SELECT c.concepto from elemento e " +
             "INNER JOIN CONCEPTO AS C ON c.id = e.idConcepto " +
@@ -187,7 +189,55 @@ namespace Departamentos_Seguimiento_2018
             }
         }
 
-   
+        internal int eliminarElemento(string id)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "DELETE elemento WHERE id = @id";
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                cmd.Parameters.Add("@id", SqlDbType.Int).Value = Int32.Parse(id);
+
+                cmd.CommandType = CommandType.Text;
+
+                try
+                {
+                    int r = cmd.ExecuteNonQuery();
+                    Console.Write("Elemento Eliminado");
+                    return r;
+
+                }
+                catch (SqlException ex)
+                {
+                    Console.Write("El elemento no pudo ser eliminado");
+                    return 0;
+                }
+            }
+        }
+
+        internal void eliminarElementoAreaIdEle(string idEle)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "DELETE elemento_area WHERE idElemento=@idelemento";
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                cmd.Parameters.Add("@idelemento", SqlDbType.Int).Value = Int32.Parse(idEle);
+               
+
+                cmd.CommandType = CommandType.Text;
+                try
+                {
+                    int r = cmd.ExecuteNonQuery();
+                   
+                }
+                catch (SqlException ex)
+                {
+                    Console.Write("ERROR eliminarElementoArea");
+                  
+                }
+            }
+        }
 
         internal int insertarArea(string area)
         {
@@ -320,7 +370,7 @@ namespace Departamentos_Seguimiento_2018
             }
         }
 
-        internal int insertarAsiento(string idelemento,string idarea,DateTime fecha,string estimado, string descuento, string real)
+        internal int insertarAsiento(string idelemento,string idarea, DateTime fecha,string estimado, string descuento, string real)
         {
            
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -354,37 +404,7 @@ namespace Departamentos_Seguimiento_2018
              
         }
 
-    /*    internal int insertarAsientoS(string idelemento, string idarea, DateTime fecha, string estimado, string descuento, string real)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                string sql = "INSERT INTO asiento VALUES(@idelemento,@idarea, @fecha,@estimado,@descuento,@real)";
-                SqlCommand cmd = new SqlCommand(sql, connection);
-                cmd.Parameters.Add("@idelemento", SqlDbType.Int).Value = Int32.Parse(idelemento);
-                cmd.Parameters.Add("@idarea", SqlDbType.Int).Value = Int32.Parse(idarea);
-                cmd.Parameters.Add("@fecha", SqlDbType.Date).Value = fecha;
-                cmd.Parameters.Add("@estimado", SqlDbType.Money).Value = estimado;
-                cmd.Parameters.Add("@descuento", SqlDbType.Money).Value = descuento;
-                cmd.Parameters.Add("@real", SqlDbType.Money).Value = real;
-
-                cmd.CommandType = CommandType.Text;
-
-                try
-                {
-                    int r = cmd.ExecuteNonQuery();
-                    return r;
-                }
-                catch (SqlException ex)
-                {
-                    return 0;
-                }
-            }
-        }
-
-      */
-   
-        internal int eliminarAsientoIdElemento(string idelemento,string idarea)
+        internal int eliminarAsientoIdElementoIdArea(string idelemento, string idarea)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -404,7 +424,32 @@ namespace Departamentos_Seguimiento_2018
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show("Se ha producido un error");
+
+                    return 0;
+                }
+            }
+        }
+
+        internal int eliminarAsientoIdElemento(string idelemento)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = "DELETE asiento WHERE idElemento=@idelemento";
+                SqlCommand cmd = new SqlCommand(sql, connection);
+                cmd.Parameters.Add("@idelemento", SqlDbType.Int).Value = Int32.Parse(idelemento);
+            
+                cmd.CommandType = CommandType.Text;
+
+                try
+                {
+                    int r = cmd.ExecuteNonQuery();
+                    return r;
+
+                }
+                catch (SqlException ex)
+                {
+                   
                     return 0;
                 }
             }

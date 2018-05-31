@@ -67,7 +67,7 @@ namespace Departamentos_Seguimiento_2018
 
         internal void eliminarElemento(string idelemento, string idarea)
         {           
-                int r = con.eliminarAsientoIdElemento(idelemento, idarea);
+                int r = con.eliminarAsientoIdElementoIdArea(idelemento, idarea);
                 r = con.eliminarElementoArea(idelemento, idarea);
                 if (r != 0)
                 {
